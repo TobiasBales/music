@@ -4,6 +4,25 @@ skip_output:
   - meta
   - success
   - summary
+
+pre-push:
+  parallel: true
+  commands:
+    rubocop:
+      run: bundle exec rubocop
+    sorbet:
+      run: bundle exec srb tc
+    spoom_verify:
+      run: bundle exec spoom bump --dry --from false --to true && bundle exec spoom bump --dry --from true --to strict
+    system_tests:
+      run: bin/rails test:system
+    tapioca_dsl:
+      run: bin/tapioca dsl --verify
+    tapioca_gem:
+      run: bin/tapioca gem --verify
+    tests:
+      run: bin/rails test
+      
 pre-commit:
   parallel: true
   commands:
@@ -27,3 +46,4 @@ pre-commit:
       files: git diff --name-only --staged
       glob: "*.{rb,html.erb}"
       run: bin/rails test
+      
