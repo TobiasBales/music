@@ -11,6 +11,16 @@ AllCops:
     - bundle/vendor/**/*
     - bin/*
 
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    - test/**/*
+
+Metrics/ClassLength:
+  Enabled: true
+  Exclude:
+    - test/**/*
+
 Style/AccessorGrouping:
   EnforcedStyle: separated
 
