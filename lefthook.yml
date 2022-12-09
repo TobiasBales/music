@@ -23,3 +23,7 @@ pre-commit:
       files: git diff --name-only --staged
       glob: "{*.rb,Gemfile,Gemfile.lock}"
       run: bin/tapioca gem --verify
+    tests:
+      files: git diff --name-only --staged
+      glob: "*.{rb,html.erb}"
+      run: bin/rails test
