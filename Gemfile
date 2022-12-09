@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.2'
+ruby '3.1.3'
 
 gem 'bootsnap', require: false
 gem 'cssbundling-rails'
@@ -26,10 +26,10 @@ end
 
 group :development do
   gem 'rack-mini-profiler'
-  gem "rubocop", require: false
-  gem "rubocop-performance", require: false
-  gem "rubocop-rails", require: false
-  gem "rubocop-sorbet", require: false
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-sorbet', require: false
   # gem "spring"
   gem 'web-console'
 end
