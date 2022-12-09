@@ -1,0 +1,15 @@
+---
+skip_output:
+  ---
+  - meta
+  - success
+  - summary
+pre-commit:
+  parallel: true
+  commands:
+    rubocop:
+      glob: "*.rb"
+      run: bundle exec rubocop --force-exclusion {all_files}
+    sorbet:
+      glob: "*.rb"
+      run: bundle exec srb tc
