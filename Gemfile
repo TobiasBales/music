@@ -32,6 +32,7 @@ group :development do
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-sorbet", require: false
+  gem "ruby-lsp"
   # gem "spring"
   gem "web-console"
 end
