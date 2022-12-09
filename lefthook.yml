@@ -13,3 +13,5 @@ pre-commit:
     sorbet:
       glob: "*.rb"
       run: bundle exec srb tc
+    spoom_verify:
+      run: bundle exec spoom bump --dry --from false --to true && bundle exec spoom bump --dry --from true --to strict
