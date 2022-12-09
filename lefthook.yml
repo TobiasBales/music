@@ -15,3 +15,11 @@ pre-commit:
       run: bundle exec srb tc
     spoom_verify:
       run: bundle exec spoom bump --dry --from false --to true && bundle exec spoom bump --dry --from true --to strict
+    tapioca_dsl:
+      files: git diff --name-only --staged
+      glob: "{*.rb,Gemfile,Gemfile.lock}"
+      run: bin/tapioca dsl --verify
+    tapioca_gem:
+      files: git diff --name-only --staged
+      glob: "{*.rb,Gemfile,Gemfile.lock}"
+      run: bin/tapioca gem --verify
