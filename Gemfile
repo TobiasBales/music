@@ -27,6 +27,8 @@ group :development, :test do
 end
 
 group :development do
+  gem "guard", require: false
+  gem "guard-minitest", require: false
   gem "rack-mini-profiler"
   gem "rubocop", require: false
   gem "rubocop-performance", require: false
@@ -34,6 +36,7 @@ group :development do
   gem "rubocop-sorbet", require: false
   gem "ruby-lsp"
   # gem "spring"
+  gem "terminal-notifier-guard", require: false
   gem "web-console"
 end
 
