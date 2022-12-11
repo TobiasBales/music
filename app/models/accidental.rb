@@ -3,7 +3,7 @@
 
 class Accidental < T::Enum
   enums do
-    Neutral = new("♮")
+    Neutral = new("")
     Sharp = new("♯")
     Flat = new("♭")
     DoubleSharp = new("♯♯")

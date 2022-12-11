@@ -31,4 +31,17 @@ class Note
 
   sig { returns(Accidental) }
   attr_reader :accidental
+
+  sig { returns(String) }
+  def serialize
+    "#{name.serialize}#{accidental.serialize}"
+  end
+
+  sig { params(other: T.untyped).returns(T::Boolean) }
+  def ==(other)
+    return false if other.nil?
+    return false unless other.is_a?(Note)
+
+    name == other.name && accidental == other.accidental
+  end
 end

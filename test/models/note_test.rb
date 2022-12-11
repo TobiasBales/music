@@ -152,4 +152,14 @@ class NoteTest < ActiveSupport::TestCase
     assert_not Note.deserialize("abcd").value?
     assert_not Note.deserialize("a♯♭").value?
   end
+
+  test "serializeing and deserializing gets the same result" do
+    LetterName.each_value do |name|
+      Accidental.each_value do |accidental|
+        note = Note.new(name, accidental)
+
+        assert_equal note, Note.deserialize(note.serialize).value!
+      end
+    end
+  end
 end
