@@ -9,7 +9,7 @@ module Maybe
   sealed!
   abstract!
 
-  Value = type_member
+  Value = type_member(:out)
 
   sig do
     type_parameters(:V)
