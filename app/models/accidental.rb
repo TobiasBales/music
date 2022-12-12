@@ -5,17 +5,21 @@ class Accidental < T::Enum
   extend T::Sig
 
   enums do
+    TripleFlat = new("♭♭♭")
     DoubleFlat = new("♭♭")
     Flat = new("♭")
     Neutral = new("")
     Sharp = new("♯")
     DoubleSharp = new("♯♯")
+    TripleSharp = new("♯♯♯")
   end
 
   # rubocop:disable Metrics/MethodLength
   sig { returns(Accidental) }
   def next
     case self
+    when TripleFlat
+      DoubleFlat
     when DoubleFlat
       Flat
     when Flat
@@ -25,6 +29,8 @@ class Accidental < T::Enum
     when Sharp
       DoubleSharp
     when DoubleSharp
+      TripleSharp
+    when TripleSharp
       raise "#{self} has no next"
     else
       T.absurd(self)
@@ -36,8 +42,10 @@ class Accidental < T::Enum
   sig { returns(Accidental) }
   def previous
     case self
-    when DoubleFlat
+    when TripleFlat
       raise "#{self} has no previous"
+    when DoubleFlat
+      TripleFlat
     when Flat
       DoubleFlat
     when Neutral
@@ -46,6 +54,8 @@ class Accidental < T::Enum
       Neutral
     when DoubleSharp
       Sharp
+    when TripleSharp
+      DoubleSharp
     else
       T.absurd(self)
     end
