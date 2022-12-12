@@ -4,20 +4,18 @@
 class Note
   extend T::Sig
 
-  sig { params(input: String).returns(Maybe[Note]) }
+  sig { params(input: String).returns(Note) }
   def self.deserialize(input)
-    return Maybe.nothing if input.length <= 0
-    return Maybe.nothing if input.length > 4
+    raise "note input can't be empty" if input.empty?
+    raise "note input can't be longer than 4 characters" if input.length > 4
 
     name = LetterName.deserialize(input.first)
 
-    return Maybe.just(Note.new(name)) if input.length == 1
+    return Note.new(name) if input.length == 1
 
     accidental = Accidental.deserialize(input[1..])
 
-    Maybe.just(Note.new(name, accidental))
-  rescue KeyError
-    Maybe.nothing
+    Note.new(name, accidental)
   end
 
   sig { params(name: LetterName, accidental: Accidental).void }

@@ -7,152 +7,163 @@ class NoteTest < ActiveSupport::TestCase
   extend T::Sig
 
   test "deserialize works for valid inputs" do
-    assert Note.deserialize("a♭♭").value?
-    assert_equal LetterName::A, Note.deserialize("a♭♭").value!.name
-    assert_equal Accidental::DoubleFlat, Note.deserialize("a♭♭").value!.accidental
+    assert_not_nil Note.deserialize("a♭♭")
+    assert_equal LetterName::A, Note.deserialize("a♭♭").name
+    assert_equal Accidental::DoubleFlat, Note.deserialize("a♭♭").accidental
 
-    assert Note.deserialize("a♭").value?
-    assert_equal LetterName::A, Note.deserialize("a♭").value!.name
-    assert_equal Accidental::Flat, Note.deserialize("a♭").value!.accidental
+    assert_not_nil Note.deserialize("a♭")
+    assert_equal LetterName::A, Note.deserialize("a♭").name
+    assert_equal Accidental::Flat, Note.deserialize("a♭").accidental
 
-    assert Note.deserialize("a").value?
-    assert_equal LetterName::A, Note.deserialize("a").value!.name
-    assert_equal Accidental::Neutral, Note.deserialize("a").value!.accidental
+    assert_not_nil Note.deserialize("a")
+    assert_equal LetterName::A, Note.deserialize("a").name
+    assert_equal Accidental::Neutral, Note.deserialize("a").accidental
 
-    assert Note.deserialize("a♯").value?
-    assert_equal LetterName::A, Note.deserialize("a♯").value!.name
-    assert_equal Accidental::Sharp, Note.deserialize("a♯").value!.accidental
+    assert_not_nil Note.deserialize("a♯")
+    assert_equal LetterName::A, Note.deserialize("a♯").name
+    assert_equal Accidental::Sharp, Note.deserialize("a♯").accidental
 
-    assert Note.deserialize("a♯♯").value?
-    assert_equal LetterName::A, Note.deserialize("a♯♯").value!.name
-    assert_equal Accidental::DoubleSharp, Note.deserialize("a♯♯").value!.accidental
+    assert_not_nil Note.deserialize("a♯♯")
+    assert_equal LetterName::A, Note.deserialize("a♯♯").name
+    assert_equal Accidental::DoubleSharp, Note.deserialize("a♯♯").accidental
 
-    assert Note.deserialize("b♭♭").value?
-    assert_equal LetterName::B, Note.deserialize("b♭♭").value!.name
-    assert_equal Accidental::DoubleFlat, Note.deserialize("b♭♭").value!.accidental
+    assert_not_nil Note.deserialize("b♭♭")
+    assert_equal LetterName::B, Note.deserialize("b♭♭").name
+    assert_equal Accidental::DoubleFlat, Note.deserialize("b♭♭").accidental
 
-    assert Note.deserialize("b♭").value?
-    assert_equal LetterName::B, Note.deserialize("b♭").value!.name
-    assert_equal Accidental::Flat, Note.deserialize("b♭").value!.accidental
+    assert_not_nil Note.deserialize("b♭")
+    assert_equal LetterName::B, Note.deserialize("b♭").name
+    assert_equal Accidental::Flat, Note.deserialize("b♭").accidental
 
-    assert Note.deserialize("b").value?
-    assert_equal LetterName::B, Note.deserialize("b").value!.name
-    assert_equal Accidental::Neutral, Note.deserialize("b").value!.accidental
+    assert_not_nil Note.deserialize("b")
+    assert_equal LetterName::B, Note.deserialize("b").name
+    assert_equal Accidental::Neutral, Note.deserialize("b").accidental
 
-    assert Note.deserialize("b♯").value?
-    assert_equal LetterName::B, Note.deserialize("b♯").value!.name
-    assert_equal Accidental::Sharp, Note.deserialize("b♯").value!.accidental
+    assert_not_nil Note.deserialize("b♯")
+    assert_equal LetterName::B, Note.deserialize("b♯").name
+    assert_equal Accidental::Sharp, Note.deserialize("b♯").accidental
 
-    assert Note.deserialize("b♯♯").value?
-    assert_equal LetterName::B, Note.deserialize("b♯♯").value!.name
-    assert_equal Accidental::DoubleSharp, Note.deserialize("b♯♯").value!.accidental
+    assert_not_nil Note.deserialize("b♯♯")
+    assert_equal LetterName::B, Note.deserialize("b♯♯").name
+    assert_equal Accidental::DoubleSharp, Note.deserialize("b♯♯").accidental
 
-    assert Note.deserialize("c♭♭").value?
-    assert_equal LetterName::C, Note.deserialize("c♭♭").value!.name
-    assert_equal Accidental::DoubleFlat, Note.deserialize("c♭♭").value!.accidental
+    assert_not_nil Note.deserialize("c♭♭")
+    assert_equal LetterName::C, Note.deserialize("c♭♭").name
+    assert_equal Accidental::DoubleFlat, Note.deserialize("c♭♭").accidental
 
-    assert Note.deserialize("c♭").value?
-    assert_equal LetterName::C, Note.deserialize("c♭").value!.name
-    assert_equal Accidental::Flat, Note.deserialize("c♭").value!.accidental
+    assert_not_nil Note.deserialize("c♭")
+    assert_equal LetterName::C, Note.deserialize("c♭").name
+    assert_equal Accidental::Flat, Note.deserialize("c♭").accidental
 
-    assert Note.deserialize("c").value?
-    assert_equal LetterName::C, Note.deserialize("c").value!.name
-    assert_equal Accidental::Neutral, Note.deserialize("c").value!.accidental
+    assert_not_nil Note.deserialize("c")
+    assert_equal LetterName::C, Note.deserialize("c").name
+    assert_equal Accidental::Neutral, Note.deserialize("c").accidental
 
-    assert Note.deserialize("c♯").value?
-    assert_equal LetterName::C, Note.deserialize("c♯").value!.name
-    assert_equal Accidental::Sharp, Note.deserialize("c♯").value!.accidental
+    assert_not_nil Note.deserialize("c♯")
+    assert_equal LetterName::C, Note.deserialize("c♯").name
+    assert_equal Accidental::Sharp, Note.deserialize("c♯").accidental
 
-    assert Note.deserialize("c♯♯").value?
-    assert_equal LetterName::C, Note.deserialize("c♯♯").value!.name
-    assert_equal Accidental::DoubleSharp, Note.deserialize("c♯♯").value!.accidental
+    assert_not_nil Note.deserialize("c♯♯")
+    assert_equal LetterName::C, Note.deserialize("c♯♯").name
+    assert_equal Accidental::DoubleSharp, Note.deserialize("c♯♯").accidental
 
-    assert Note.deserialize("d♭♭").value?
-    assert_equal LetterName::D, Note.deserialize("d♭♭").value!.name
-    assert_equal Accidental::DoubleFlat, Note.deserialize("d♭♭").value!.accidental
+    assert_not_nil Note.deserialize("d♭♭")
+    assert_equal LetterName::D, Note.deserialize("d♭♭").name
+    assert_equal Accidental::DoubleFlat, Note.deserialize("d♭♭").accidental
 
-    assert Note.deserialize("d♭").value?
-    assert_equal LetterName::D, Note.deserialize("d♭").value!.name
-    assert_equal Accidental::Flat, Note.deserialize("d♭").value!.accidental
+    assert_not_nil Note.deserialize("d♭")
+    assert_equal LetterName::D, Note.deserialize("d♭").name
+    assert_equal Accidental::Flat, Note.deserialize("d♭").accidental
 
-    assert Note.deserialize("d").value?
-    assert_equal LetterName::D, Note.deserialize("d").value!.name
-    assert_equal Accidental::Neutral, Note.deserialize("d").value!.accidental
+    assert_not_nil Note.deserialize("d")
+    assert_equal LetterName::D, Note.deserialize("d").name
+    assert_equal Accidental::Neutral, Note.deserialize("d").accidental
 
-    assert Note.deserialize("d♯").value?
-    assert_equal LetterName::D, Note.deserialize("d♯").value!.name
-    assert_equal Accidental::Sharp, Note.deserialize("d♯").value!.accidental
+    assert_not_nil Note.deserialize("d♯")
+    assert_equal LetterName::D, Note.deserialize("d♯").name
+    assert_equal Accidental::Sharp, Note.deserialize("d♯").accidental
 
-    assert Note.deserialize("d♯♯").value?
-    assert_equal LetterName::D, Note.deserialize("d♯♯").value!.name
-    assert_equal Accidental::DoubleSharp, Note.deserialize("d♯♯").value!.accidental
+    assert_not_nil Note.deserialize("d♯♯")
+    assert_equal LetterName::D, Note.deserialize("d♯♯").name
+    assert_equal Accidental::DoubleSharp, Note.deserialize("d♯♯").accidental
 
-    assert Note.deserialize("e♭♭").value?
-    assert_equal LetterName::E, Note.deserialize("e♭♭").value!.name
-    assert_equal Accidental::DoubleFlat, Note.deserialize("e♭♭").value!.accidental
+    assert_not_nil Note.deserialize("e♭♭")
+    assert_equal LetterName::E, Note.deserialize("e♭♭").name
+    assert_equal Accidental::DoubleFlat, Note.deserialize("e♭♭").accidental
 
-    assert Note.deserialize("e♭").value?
-    assert_equal LetterName::E, Note.deserialize("e♭").value!.name
-    assert_equal Accidental::Flat, Note.deserialize("e♭").value!.accidental
+    assert_not_nil Note.deserialize("e♭")
+    assert_equal LetterName::E, Note.deserialize("e♭").name
+    assert_equal Accidental::Flat, Note.deserialize("e♭").accidental
 
-    assert Note.deserialize("e").value?
-    assert_equal LetterName::E, Note.deserialize("e").value!.name
-    assert_equal Accidental::Neutral, Note.deserialize("e").value!.accidental
+    assert_not_nil Note.deserialize("e")
+    assert_equal LetterName::E, Note.deserialize("e").name
+    assert_equal Accidental::Neutral, Note.deserialize("e").accidental
 
-    assert Note.deserialize("e♯").value?
-    assert_equal LetterName::E, Note.deserialize("e♯").value!.name
-    assert_equal Accidental::Sharp, Note.deserialize("e♯").value!.accidental
+    assert_not_nil Note.deserialize("e♯")
+    assert_equal LetterName::E, Note.deserialize("e♯").name
+    assert_equal Accidental::Sharp, Note.deserialize("e♯").accidental
 
-    assert Note.deserialize("e♯♯").value?
-    assert_equal LetterName::E, Note.deserialize("e♯♯").value!.name
-    assert_equal Accidental::DoubleSharp, Note.deserialize("e♯♯").value!.accidental
+    assert_not_nil Note.deserialize("e♯♯")
+    assert_equal LetterName::E, Note.deserialize("e♯♯").name
+    assert_equal Accidental::DoubleSharp, Note.deserialize("e♯♯").accidental
 
-    assert Note.deserialize("f♭♭").value?
-    assert_equal LetterName::F, Note.deserialize("f♭♭").value!.name
-    assert_equal Accidental::DoubleFlat, Note.deserialize("f♭♭").value!.accidental
+    assert_not_nil Note.deserialize("f♭♭")
+    assert_equal LetterName::F, Note.deserialize("f♭♭").name
+    assert_equal Accidental::DoubleFlat, Note.deserialize("f♭♭").accidental
 
-    assert Note.deserialize("f♭").value?
-    assert_equal LetterName::F, Note.deserialize("f♭").value!.name
-    assert_equal Accidental::Flat, Note.deserialize("f♭").value!.accidental
+    assert_not_nil Note.deserialize("f♭")
+    assert_equal LetterName::F, Note.deserialize("f♭").name
+    assert_equal Accidental::Flat, Note.deserialize("f♭").accidental
 
-    assert Note.deserialize("f").value?
-    assert_equal LetterName::F, Note.deserialize("f").value!.name
-    assert_equal Accidental::Neutral, Note.deserialize("f").value!.accidental
+    assert_not_nil Note.deserialize("f")
+    assert_equal LetterName::F, Note.deserialize("f").name
+    assert_equal Accidental::Neutral, Note.deserialize("f").accidental
 
-    assert Note.deserialize("f♯").value?
-    assert_equal LetterName::F, Note.deserialize("f♯").value!.name
-    assert_equal Accidental::Sharp, Note.deserialize("f♯").value!.accidental
+    assert_not_nil Note.deserialize("f♯")
+    assert_equal LetterName::F, Note.deserialize("f♯").name
+    assert_equal Accidental::Sharp, Note.deserialize("f♯").accidental
 
-    assert Note.deserialize("f♯♯").value?
-    assert_equal LetterName::F, Note.deserialize("f♯♯").value!.name
-    assert_equal Accidental::DoubleSharp, Note.deserialize("f♯♯").value!.accidental
+    assert_not_nil Note.deserialize("f♯♯")
+    assert_equal LetterName::F, Note.deserialize("f♯♯").name
+    assert_equal Accidental::DoubleSharp, Note.deserialize("f♯♯").accidental
 
-    assert Note.deserialize("g♭♭").value?
-    assert_equal LetterName::G, Note.deserialize("g♭♭").value!.name
-    assert_equal Accidental::DoubleFlat, Note.deserialize("g♭♭").value!.accidental
+    assert_not_nil Note.deserialize("g♭♭")
+    assert_equal LetterName::G, Note.deserialize("g♭♭").name
+    assert_equal Accidental::DoubleFlat, Note.deserialize("g♭♭").accidental
 
-    assert Note.deserialize("g♭").value?
-    assert_equal LetterName::G, Note.deserialize("g♭").value!.name
-    assert_equal Accidental::Flat, Note.deserialize("g♭").value!.accidental
+    assert_not_nil Note.deserialize("g♭")
+    assert_equal LetterName::G, Note.deserialize("g♭").name
+    assert_equal Accidental::Flat, Note.deserialize("g♭").accidental
 
-    assert Note.deserialize("g").value?
-    assert_equal LetterName::G, Note.deserialize("g").value!.name
-    assert_equal Accidental::Neutral, Note.deserialize("g").value!.accidental
+    assert_not_nil Note.deserialize("g")
+    assert_equal LetterName::G, Note.deserialize("g").name
+    assert_equal Accidental::Neutral, Note.deserialize("g").accidental
 
-    assert Note.deserialize("g♯").value?
-    assert_equal LetterName::G, Note.deserialize("g♯").value!.name
-    assert_equal Accidental::Sharp, Note.deserialize("g♯").value!.accidental
+    assert_not_nil Note.deserialize("g♯")
+    assert_equal LetterName::G, Note.deserialize("g♯").name
+    assert_equal Accidental::Sharp, Note.deserialize("g♯").accidental
 
-    assert Note.deserialize("g♯♯").value?
-    assert_equal LetterName::G, Note.deserialize("g♯♯").value!.name
-    assert_equal Accidental::DoubleSharp, Note.deserialize("g♯♯").value!.accidental
+    assert_not_nil Note.deserialize("g♯♯")
+    assert_equal LetterName::G, Note.deserialize("g♯♯").name
+    assert_equal Accidental::DoubleSharp, Note.deserialize("g♯♯").accidental
   end
 
   test "deserialize works for invalid inputs" do
-    assert_not Note.deserialize("").value?
-    assert_not Note.deserialize("i").value?
-    assert_not Note.deserialize("abcd").value?
-    assert_not Note.deserialize("a♯♭").value?
+    assert_raises do
+      Note.deserialize("")
+    end
+
+    assert_raises do
+      assert_not Note.deserialize("i")
+    end
+
+    assert_raises do
+      assert_not Note.deserialize("abcd")
+    end
+
+    assert_raises do
+      assert_not Note.deserialize("a♯♭")
+    end
   end
 
   test "serializeing and deserializing gets the same result" do
@@ -160,7 +171,7 @@ class NoteTest < ActiveSupport::TestCase
       Accidental.each_value do |accidental|
         note = Note.new(name, accidental)
 
-        assert_equal note, Note.deserialize(note.serialize).value!
+        assert_equal note, Note.deserialize(note.serialize)
       end
     end
   end
@@ -274,6 +285,6 @@ class NoteTest < ActiveSupport::TestCase
 
   sig { params(input: String).returns(Note) }
   def note(input)
-    Note.deserialize(input).value!
+    Note.deserialize(input)
   end
 end
