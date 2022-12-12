@@ -55,10 +55,13 @@ class Accidental < T::Enum
   # rubocop:disable Metrics/MethodLength
   sig { params(interval: Integer).returns(Accidental) }
   def add_specific_interval(interval)
+    interval = interval.remainder(12)
+
     if interval.zero?
       self
     elsif interval.positive?
-      result = dup
+      result = self
+
       while interval.positive?
         result = result.next
         interval -= 1
@@ -66,7 +69,8 @@ class Accidental < T::Enum
 
       result
     elsif interval.negative?
-      result = dup
+      result = self
+
       while interval.negative?
         result = result.previous
         interval += 1
