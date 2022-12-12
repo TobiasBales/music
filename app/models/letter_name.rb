@@ -14,7 +14,7 @@ class LetterName < T::Enum
     G = new
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
+  # rubocop:disable Metrics/MethodLength
   sig { returns(LetterName) }
   def next
     case self
@@ -36,7 +36,7 @@ class LetterName < T::Enum
       T.absurd(self)
     end
   end
-  # rubocop:enable Metrics/CyclomaticComplexity, Metrics/MethodLength
+  # rubocop:enable Metrics/MethodLength
 
   sig { returns(Integer) }
   def specific_interval_to_next

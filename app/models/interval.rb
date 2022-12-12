@@ -35,7 +35,7 @@ class Interval < T::Enum
     PerfectOctave = new("P8")
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
+  # rubocop:disable Metrics/MethodLength
   sig { returns(Integer) }
   def generic_interval
     case self
@@ -59,7 +59,7 @@ class Interval < T::Enum
       T.absurd(self)
     end
   end
-  # rubocop:enable Metrics/CyclomaticComplexity, Metrics/MethodLength
+  # rubocop:enable Metrics/MethodLength
 
   # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
   sig { returns(Integer) }
