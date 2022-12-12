@@ -7,7 +7,7 @@ class Note
   sig { params(input: String).returns(Maybe[Note]) }
   def self.deserialize(input)
     return Maybe.nothing if input.length <= 0
-    return Maybe.nothing if input.length > 3
+    return Maybe.nothing if input.length > 4
 
     name = LetterName.deserialize(input.first)
 
@@ -35,6 +35,16 @@ class Note
   sig { returns(String) }
   def serialize
     "#{name.serialize}#{accidental.serialize}"
+  end
+
+  sig { params(interval: Interval).returns(Note) }
+  def add(interval)
+    new_name = name.add_generic_interval(interval.generic_interval)
+
+    specific_interval_offset = interval.specific_interval - name.specific_interval(to: new_name)
+
+    new_accidental = accidental.add_specific_interval(specific_interval_offset)
+    Note.new(new_name, new_accidental)
   end
 
   sig { params(other: T.untyped).returns(T::Boolean) }

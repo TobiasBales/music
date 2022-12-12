@@ -4,6 +4,8 @@
 require "test_helper"
 
 class NoteTest < ActiveSupport::TestCase
+  extend T::Sig
+
   test "deserialize works for valid inputs" do
     assert Note.deserialize("a♭♭").value?
     assert_equal LetterName::A, Note.deserialize("a♭♭").value!.name
@@ -161,5 +163,117 @@ class NoteTest < ActiveSupport::TestCase
         assert_equal note, Note.deserialize(note.serialize).value!
       end
     end
+  end
+
+  test "adding intervals works for C♭" do
+    assert_equal note("c♭"), note("c♭").add(Interval::PerfectUnision)
+    assert_equal note("c"), note("c♭").add(Interval::AugmentedUnison)
+
+    assert_equal note("d♭♭♭"), note("c♭").add(Interval::DiminishedSecond)
+    assert_equal note("d♭♭"), note("c♭").add(Interval::MinorSecond)
+    assert_equal note("d♭"), note("c♭").add(Interval::MajorSecond)
+    assert_equal note("d"), note("c♭").add(Interval::AugmentedSecond)
+
+    assert_equal note("e♭♭♭"), note("c♭").add(Interval::DiminishedThird)
+    assert_equal note("e♭♭"), note("c♭").add(Interval::MinorThird)
+    assert_equal note("e♭"), note("c♭").add(Interval::MajorThird)
+    assert_equal note("e"), note("c♭").add(Interval::AugmentedThird)
+
+    assert_equal note("f♭♭"), note("c♭").add(Interval::DiminishedFourth)
+    assert_equal note("f♭"), note("c♭").add(Interval::PerfectFourth)
+    assert_equal note("f"), note("c♭").add(Interval::AugmentedFourth)
+
+    assert_equal note("g♭♭"), note("c♭").add(Interval::DiminishedFifth)
+    assert_equal note("g♭"), note("c♭").add(Interval::PerfectFifth)
+    assert_equal note("g"), note("c♭").add(Interval::AugmentedFifth)
+
+    assert_equal note("a♭♭♭"), note("c♭").add(Interval::DiminishedSixth)
+    assert_equal note("a♭♭"), note("c♭").add(Interval::MinorSixth)
+    assert_equal note("a♭"), note("c♭").add(Interval::MajorSixth)
+    assert_equal note("a"), note("c♭").add(Interval::AugmentedSixth)
+
+    assert_equal note("b♭♭♭"), note("c♭").add(Interval::DiminishedSeventh)
+    assert_equal note("b♭♭"), note("c♭").add(Interval::MinorSeventh)
+    assert_equal note("b♭"), note("c♭").add(Interval::MajorSeventh)
+    assert_equal note("b"), note("c♭").add(Interval::AugmentedSeventh)
+
+    assert_equal note("c♭"), note("c♭").add(Interval::PerfectOctave)
+  end
+
+  test "adding intervals works for C" do
+    assert_equal note("c"), note("c").add(Interval::PerfectUnision)
+    assert_equal note("c♯"), note("c").add(Interval::AugmentedUnison)
+
+    assert_equal note("d♭♭"), note("c").add(Interval::DiminishedSecond)
+    assert_equal note("d♭"), note("c").add(Interval::MinorSecond)
+    assert_equal note("d"), note("c").add(Interval::MajorSecond)
+    assert_equal note("d♯"), note("c").add(Interval::AugmentedSecond)
+
+    assert_equal note("e♭♭"), note("c").add(Interval::DiminishedThird)
+    assert_equal note("e♭"), note("c").add(Interval::MinorThird)
+    assert_equal note("e"), note("c").add(Interval::MajorThird)
+    assert_equal note("e♯"), note("c").add(Interval::AugmentedThird)
+
+    assert_equal note("f♭"), note("c").add(Interval::DiminishedFourth)
+    assert_equal note("f"), note("c").add(Interval::PerfectFourth)
+    assert_equal note("f♯"), note("c").add(Interval::AugmentedFourth)
+
+    assert_equal note("g♭"), note("c").add(Interval::DiminishedFifth)
+    assert_equal note("g"), note("c").add(Interval::PerfectFifth)
+    assert_equal note("g♯"), note("c").add(Interval::AugmentedFifth)
+
+    assert_equal note("a♭♭"), note("c").add(Interval::DiminishedSixth)
+    assert_equal note("a♭"), note("c").add(Interval::MinorSixth)
+    assert_equal note("a"), note("c").add(Interval::MajorSixth)
+    assert_equal note("a♯"), note("c").add(Interval::AugmentedSixth)
+
+    assert_equal note("b♭♭"), note("c").add(Interval::DiminishedSeventh)
+    assert_equal note("b♭"), note("c").add(Interval::MinorSeventh)
+    assert_equal note("b"), note("c").add(Interval::MajorSeventh)
+    assert_equal note("b♯"), note("c").add(Interval::AugmentedSeventh)
+
+    assert_equal note("c"), note("c").add(Interval::PerfectOctave)
+  end
+
+  test "adding intervals works for C♯" do
+    assert_equal note("c♯"), note("c♯").add(Interval::PerfectUnision)
+    assert_equal note("c♯♯"), note("c♯").add(Interval::AugmentedUnison)
+
+    assert_equal note("d♭"), note("c♯").add(Interval::DiminishedSecond)
+    assert_equal note("d"), note("c♯").add(Interval::MinorSecond)
+    assert_equal note("d♯"), note("c♯").add(Interval::MajorSecond)
+    assert_equal note("d♯♯"), note("c♯").add(Interval::AugmentedSecond)
+
+    assert_equal note("e♭"), note("c♯").add(Interval::DiminishedThird)
+    assert_equal note("e"), note("c♯").add(Interval::MinorThird)
+    assert_equal note("e♯"), note("c♯").add(Interval::MajorThird)
+    assert_equal note("e♯♯"), note("c♯").add(Interval::AugmentedThird)
+
+    assert_equal note("f"), note("c♯").add(Interval::DiminishedFourth)
+    assert_equal note("f♯"), note("c♯").add(Interval::PerfectFourth)
+    assert_equal note("f♯♯"), note("c♯").add(Interval::AugmentedFourth)
+
+    assert_equal note("g"), note("c♯").add(Interval::DiminishedFifth)
+    assert_equal note("g♯"), note("c♯").add(Interval::PerfectFifth)
+    assert_equal note("g♯♯"), note("c♯").add(Interval::AugmentedFifth)
+
+    assert_equal note("a♭"), note("c♯").add(Interval::DiminishedSixth)
+    assert_equal note("a"), note("c♯").add(Interval::MinorSixth)
+    assert_equal note("a♯"), note("c♯").add(Interval::MajorSixth)
+    assert_equal note("a♯♯"), note("c♯").add(Interval::AugmentedSixth)
+
+    assert_equal note("b♭"), note("c♯").add(Interval::DiminishedSeventh)
+    assert_equal note("b"), note("c♯").add(Interval::MinorSeventh)
+    assert_equal note("b♯"), note("c♯").add(Interval::MajorSeventh)
+    assert_equal note("b♯♯"), note("c♯").add(Interval::AugmentedSeventh)
+
+    assert_equal note("c♯"), note("c♯").add(Interval::PerfectOctave)
+  end
+
+  private
+
+  sig { params(input: String).returns(Note) }
+  def note(input)
+    Note.deserialize(input).value!
   end
 end
