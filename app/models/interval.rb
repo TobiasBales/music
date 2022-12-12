@@ -75,9 +75,11 @@ class Interval < T::Enum
       3
     when MajorThird, DiminishedFourth
       4
-    when AugmentedThird, PerfectFourth, DiminishedFifth
+    when AugmentedThird, PerfectFourth
       5
-    when AugmentedFourth, PerfectFifth, DiminishedSixth
+    when AugmentedFourth, DiminishedFifth
+      6
+    when PerfectFifth, DiminishedSixth
       7
     when AugmentedFifth, MinorSixth
       8
