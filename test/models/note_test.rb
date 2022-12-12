@@ -280,11 +280,4 @@ class NoteTest < ActiveSupport::TestCase
 
     assert_equal note("c♯"), note("c♯").add(Interval::PerfectOctave)
   end
-
-  private
-
-  sig { params(input: String).returns(Note) }
-  def note(input)
-    Note.deserialize(input)
-  end
 end
