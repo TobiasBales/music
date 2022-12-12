@@ -49,7 +49,6 @@ class Note
 
   sig { params(other: T.untyped).returns(T::Boolean) }
   def ==(other)
-    return false if other.nil?
     return false unless other.is_a?(Note)
 
     name == other.name && accidental == other.accidental
