@@ -26,4 +26,14 @@ class LetterNameTest < ActiveSupport::TestCase
     assert_equal LetterName::B, LetterName::C.add_generic_interval(6)
     assert_equal LetterName::C, LetterName::C.add_generic_interval(7)
   end
+
+  test "#specific_interval works for C" do
+    assert_equal LetterName::C.specific_interval(to: LetterName::C), 0
+    assert_equal LetterName::C.specific_interval(to: LetterName::D), 2
+    assert_equal LetterName::C.specific_interval(to: LetterName::E), 4
+    assert_equal LetterName::C.specific_interval(to: LetterName::F), 5
+    assert_equal LetterName::C.specific_interval(to: LetterName::G), 7
+    assert_equal LetterName::C.specific_interval(to: LetterName::A), 9
+    assert_equal LetterName::C.specific_interval(to: LetterName::B), 11
+  end
 end

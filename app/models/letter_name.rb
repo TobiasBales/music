@@ -38,6 +38,32 @@ class LetterName < T::Enum
   end
   # rubocop:enable Metrics/CyclomaticComplexity, Metrics/MethodLength
 
+  sig { returns(Integer) }
+  def specific_interval_to_next
+    case self
+    when A, C, D, F, G
+      2
+    when B, E
+      1
+    else
+      T.absurd(self)
+    end
+  end
+
+  sig { params(to: LetterName).returns(Integer) }
+  def specific_interval(to:)
+    distance = 0
+
+    current = dup
+
+    while current != to
+      distance += current.specific_interval_to_next
+      current = current.next
+    end
+
+    distance
+  end
+
   sig { params(interval: Integer).returns(LetterName) }
   def add_generic_interval(interval)
     raise "interval can't be negative" if interval.negative?
