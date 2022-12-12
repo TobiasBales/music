@@ -51,4 +51,9 @@ class Note
 
     name == other.name && accidental == other.accidental
   end
+
+  sig { returns(String) }
+  def inspect
+    "#<Note: #{serialize}>"
+  end
 end
