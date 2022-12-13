@@ -31,33 +31,33 @@ class Chord < T::Enum
   def intervals
     case self
     when Diminished
-      [Interval::MinorThird, Interval::DiminishedFifth]
+      [I::MinorThird, I::DiminishedFifth]
     when Augmented
-      [Interval::MajorThird, Interval::AugmentedFifth]
+      [I::MajorThird, I::AugmentedFifth]
     when Major
-      [Interval::MajorThird, Interval::PerfectFifth]
+      [I::MajorThird, I::PerfectFifth]
     when Minor
-      [Interval::MinorThird, Interval::PerfectFifth]
+      [I::MinorThird, I::PerfectFifth]
     when MajorSeventh
-      [Interval::MajorThird, Interval::PerfectFifth, Interval::MajorSeventh]
+      [I::MajorThird, I::PerfectFifth, I::MajorSeventh]
     when MinorSeventh
-      [Interval::MinorThird, Interval::PerfectFifth, Interval::MinorSeventh]
+      [I::MinorThird, I::PerfectFifth, I::MinorSeventh]
     when DominantSeventh
-      [Interval::MajorThird, Interval::PerfectFifth, Interval::MinorSeventh]
+      [I::MajorThird, I::PerfectFifth, I::MinorSeventh]
     when HalfDiminishedSeventh
-      [Interval::MinorThird, Interval::DiminishedFifth, Interval::MinorSeventh]
+      [I::MinorThird, I::DiminishedFifth, I::MinorSeventh]
     when DiminishedSeventh
-      [Interval::MinorThird, Interval::DiminishedFifth, Interval::DiminishedSeventh]
+      [I::MinorThird, I::DiminishedFifth, I::DiminishedSeventh]
     when MinorMajorSeventh
-      [Interval::MinorThird, Interval::PerfectFifth, Interval::MajorSeventh]
+      [I::MinorThird, I::PerfectFifth, I::MajorSeventh]
     when AugmentedSeventh
-      [Interval::MajorThird, Interval::AugmentedFifth, Interval::MinorSeventh]
+      [I::MajorThird, I::AugmentedFifth, I::MinorSeventh]
     when DiminishedMajorSeventh
-      [Interval::MinorThird, Interval::DiminishedFifth, Interval::MajorSeventh]
+      [I::MinorThird, I::DiminishedFifth, I::MajorSeventh]
     when MajorSeventhFlatFive
-      [Interval::MajorThird, Interval::DiminishedFifth, Interval::MajorSeventh]
+      [I::MajorThird, I::DiminishedFifth, I::MajorSeventh]
     when DominantSeventhFlatFive
-      [Interval::MajorThird, Interval::DiminishedFifth, Interval::MinorSeventh]
+      [I::MajorThird, I::DiminishedFifth, I::MinorSeventh]
     else
       T.absurd(self)
     end
