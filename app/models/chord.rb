@@ -4,6 +4,8 @@
 class Chord < T::Enum
   extend T::Sig
 
+  include RootAndInterval
+
   enums do
     # triads
     Diminished = new
@@ -63,7 +65,7 @@ class Chord < T::Enum
   # rubocop:enable Metrics/CyclomaticComplexity, Metrics/MethodLength
 
   sig { params(root: Note).returns(T::Array[Note]) }
-  def for_root(root)
-    [root].concat(intervals.map { |interval| root.add(interval) })
+  def notes(root:)
+    build(root: root, intervals: intervals)
   end
 end
