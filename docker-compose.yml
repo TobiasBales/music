@@ -11,3 +11,24 @@ services:
       - ./tmp/postgresql:/var/lib/postgresql
     ports:
       - 5432:5432
+  minio:
+    image: minio/minio
+    ports:
+      - 9000:9000
+    volumes:
+      - ./tmp/minio:/data
+    environment:
+      - "MINIO_ACCESS_KEY=music"
+      - "MINIO_SECRET_KEY=music123"
+    command: server /data
+  createbuckets:
+    image: minio/mc
+    depends_on:
+      - minio
+    entrypoint: >
+      /bin/sh -c "
+      /usr/bin/mc alias set minio http://minio:9000 music music123;
+      /usr/bin/mc mb minio/music-dev;
+      /usr/bin/mc mb minio/music-test;
+      exit 0;
+      "
