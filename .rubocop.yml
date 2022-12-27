@@ -10,6 +10,8 @@ AllCops:
   Exclude:
     - bundle/vendor/**/*
     - bin/*
+    - db/migrate/*
+    - db/schema.rb
 
 Metrics/BlockLength:
   Enabled: true
