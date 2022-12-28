@@ -21,6 +21,7 @@ class Rails::Conductor::ActionMailbox::InboundEmails::SourcesController
     include ::ActionText::TagHelper
     include ::ActionController::Base::HelperMethods
     include ::ApplicationHelper
+    include ::PreviewHelper
   end
 
   class HelperProxy < ::ActionView::Base
