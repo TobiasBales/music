@@ -12,10 +12,15 @@ module Bootstrap
           field: Symbol,
           type: Symbol,
           autofocus: T::Boolean,
-          multiple: T::Boolean
+          multiple: T::Boolean,
+          autocomplete: T.nilable(String),
+          required: T::Boolean,
+          hint: T.nilable(String)
         ).void
       end
-      def initialize(form:, field:, type: :text, autofocus: false, multiple: false)
+      # rubocop:disable Metrics/ParameterLists
+      def initialize(form:, field:, type: :text, autofocus: false, multiple: false, autocomplete: nil, required: false,
+                     hint: nil)
         super()
 
         @form = form
@@ -23,7 +28,11 @@ module Bootstrap
         @type = type
         @autofocus = autofocus
         @multiple = multiple
+        @autocomplete = autocomplete
+        @required = required
+        @hint = hint
       end
+      # rubocop:enable Metrics/ParameterLists
 
       sig { returns(ActionView::Helpers::FormBuilder) }
       attr_reader :form
@@ -39,6 +48,15 @@ module Bootstrap
 
       sig { returns(T::Boolean) }
       attr_reader :multiple
+
+      sig { returns(T.nilable(String)) }
+      attr_reader :autocomplete
+
+      sig { returns(T::Boolean) }
+      attr_reader :required
+
+      sig { returns(T.nilable(String)) }
+      attr_reader :hint
     end
   end
 end
