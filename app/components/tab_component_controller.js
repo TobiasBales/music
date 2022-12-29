@@ -2,6 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   static values = {
+    bpm: Number,
     countIn: Boolean,
     metronome: Boolean,
     tab: String,
@@ -11,6 +12,7 @@ export default class extends Controller {
 
   connect() {
     this.previousTime = -1;
+    this.bpm = this.bpmValue;
 
     this.api = new alphaTab.AlphaTabApi(this.mainTarget, this.settings);
 
@@ -33,7 +35,7 @@ export default class extends Controller {
       this.toggleCountIn();
     }
 
-    this.api.tex(this.tabTarget.innerHTML);
+    this.updateTabBpm();
   }
 
   scoreLoaded = (score) => {
@@ -101,6 +103,20 @@ export default class extends Controller {
     }
     this.api.updateSettings();
     this.api.render();
+  }
+
+  updateTabBpm() {
+    this.api.tex(this.tabTarget.innerHTML.replace("BPM", this.bpmValue));
+  }
+
+  increaseBpm() {
+    this.bpmValue += 5;
+    this.updateTabBpm();
+  }
+
+  decreaseBpm() {
+    this.bpmValue -= 5;
+    this.updateTabBpm();
   }
 
   updateTitle(score) {

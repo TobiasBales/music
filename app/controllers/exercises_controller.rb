@@ -10,5 +10,6 @@ class ExercisesController < ApplicationController
 
   def show
     @exercise = Exercise.find(params[:id])
+    @bpm = 120
   end
 end

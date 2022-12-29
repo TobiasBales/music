@@ -1,4 +1,4 @@
-<div data-controller="tab-component" data-tab-component-metronome-value="<%= metronome %>" data-tab-component-count-in-value="<%= count_in %>">
+<div data-controller="tab-component" data-tab-component-metronome-value="<%= metronome %>" data-tab-component-count-in-value="<%= count_in %>" data-tab-component-bpm-value="<%= bpm %>">
   <div data-tab-component-target="tab" class="d-none">
     <%= tab %>
   </div>
@@ -34,7 +34,13 @@
         <div data-tab-component-target="songPosition" class="at-song-position">00:00 / 00:00</div>
       </div>
       <div class="at-controls-right">
-              <a data-action="click->tab-component#toggleCountIn" data-tab-component-target="countIn" class="btn toggle at-count-in">
+        <a data-action="click->tab-component#increaseBpm" class="btn">
+          <i class="fas fa-plus"></i>
+        </a>
+        <a data-action="click->tab-component#decreaseBpm" class="btn">
+          <i class="fas fa-minus"></i>
+        </a>
+        <a data-action="click->tab-component#toggleCountIn" data-tab-component-target="countIn" class="btn toggle at-count-in">
           <i class="fas fa-hourglass-half"></i>
         </a>  
         <a data-action="click->tab-component#toggleMetronome" data-tab-component-target="metronome" class="btn at-metronome">
