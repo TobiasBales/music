@@ -17,6 +17,7 @@ gem "redis", "~> 4.0"
 gem "sorbet-runtime"
 gem "sprockets-rails"
 gem "stimulus-rails"
+gem "strong_migrations"
 gem "turbo-rails"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 

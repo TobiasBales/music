@@ -287,6 +287,8 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
+    strong_migrations (1.4.0)
+      activerecord (>= 5.2)
     syntax_tree (4.3.0)
       prettier_print (>= 1.0.2)
     tapioca (0.10.3)
@@ -368,6 +370,7 @@ DEPENDENCIES
   spoom
   sprockets-rails
   stimulus-rails
+  strong_migrations
   tapioca
   terminal-notifier-guard
   turbo-rails
