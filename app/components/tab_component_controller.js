@@ -225,6 +225,12 @@ export default class extends Controller {
 
   get settings() {
     return {
+      display: {
+        staveProfile: "Tab",
+      },
+      notation: {
+        rhythmMode: "ShowWithBars",
+      },
       player: {
         enablePlayer: true,
         soundFont: "https://cdn.jsdelivr.net/npm/@coderline/alphatab@latest/dist/soundfont/sonivox.sf2",
