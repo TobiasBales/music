@@ -1,0 +1,7 @@
+<%= render(Bootstrap::Page.new(title: "Courses")) do %>
+  <%= render(Bootstrap::List::Group.new) do %>
+    <% @courses.each do |course| %>
+      <%= render(Bootstrap::List::Item.new(text: course.name, to: course)) %>
+    <% end %>
+  <% end %>
+<% end %>

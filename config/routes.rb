@@ -2,7 +2,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root "exercises#index"
+  root "courses#index"
 
+  resources :courses
   resources :exercises
 end

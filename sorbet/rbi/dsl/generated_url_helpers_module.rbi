@@ -9,6 +9,15 @@ module GeneratedUrlHelpersModule
   include ::ActionDispatch::Routing::PolymorphicRoutes
 
   sig { params(args: T.untyped).returns(String) }
+  def course_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def courses_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_course_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def edit_exercise_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -19,6 +28,9 @@ module GeneratedUrlHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def exercises_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_course_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def new_exercise_url(*args); end
