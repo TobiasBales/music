@@ -5,7 +5,9 @@ module Bootstrap
   class Crumb
     extend T::Sig
 
-    sig { params(text: String, to: String).void }
+    Target = T.type_alias { T.any(String, Symbol, ActiveRecord::Base) }
+
+    sig { params(text: String, to: Target).void }
     def initialize(text:, to:)
       @text = text
       @to = to
@@ -14,7 +16,7 @@ module Bootstrap
     sig { returns(String) }
     attr_reader :text
 
-    sig { returns(String) }
+    sig { returns(Target) }
     attr_reader :to
   end
 end
