@@ -1,3 +1,7 @@
-<%= render(Bootstrap::Page.new(title: @exercise.name)) do %>
+<%= render(Bootstrap::Page.new(crumbs: [
+  Bootstrap::Crumb.new(text: "Courses", to: courses_path),
+  Bootstrap::Crumb.new(text: @exercise.course.name, to: @exercise.course),
+  Bootstrap::Crumb.new(text: @exercise.name, to: @exercise)
+])) do %>
   <%= render(TabComponent.new(tab: @exercise.tab, bpm: @bpm)) %>
 <% end %>

@@ -1,4 +1,6 @@
-<%= render(Bootstrap::Page.new(title: "Courses")) do %>
+<%= render(Bootstrap::Page.new(crumbs: [
+  Bootstrap::Crumb.new(text: "Courses", to: courses_path)
+])) do %>
   <%= render(Bootstrap::List::Group.new) do %>
     <% @courses.each do |course| %>
       <%= render(Bootstrap::List::Item.new(text: course.name, to: course)) %>
