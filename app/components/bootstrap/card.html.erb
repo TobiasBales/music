@@ -1,0 +1,14 @@
+<div class="card">
+    <% if image.present? %>
+        <img src="<%= image %>" class="card-img-top">
+    <% end %>
+    <div class="card-body">
+        <% if title.present? %>
+            <h5 class="card-title"><%= title %></h5>
+        <% end %>
+        <% if body? %>
+            <%= body %>
+        <% end %>
+    </div>
+    <%= content %>
+</div>

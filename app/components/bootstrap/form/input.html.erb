@@ -1,0 +1,4 @@
+<div class="mt-3 form-group">
+  <%= render(Bootstrap::Form::Tag::Label.new(form: form, field: field)) %>
+  <%= render(Bootstrap::Form::Tag::Input.new(form: form, field: field, type: type, autofocus: autofocus, multiple: multiple)) %>
+</div>
