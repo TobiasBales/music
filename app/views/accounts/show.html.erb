@@ -1,0 +1,9 @@
+<%= render(Bootstrap::Page.new(crumbs: [
+  Bootstrap::Crumb.new(text: "Account", to: account_path)
+])) do %>
+  <%= render(Bootstrap::Link.new(text: "Change email address", to: edit_identity_email_path)) %>
+  <br/>
+  <%= render(Bootstrap::Link.new(text: "Change password", to: edit_password_path)) %>
+  <br/>
+  <%= render(Bootstrap::Link.new(text: "Devices & Sessions", to: sessions_path)) %>
+<% end %>

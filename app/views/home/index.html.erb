@@ -1,19 +1,2 @@
 <%= render(Bootstrap::Page.new) do %>
-  <% if Current.user.present? %>
-    <p>Signed as <%= Current.user.email %></p>
-
-    <%= render(Bootstrap::Link.new(text: "Change email address", to: edit_identity_email_path)) %>
-    <br/>
-    <%= render(Bootstrap::Link.new(text: "Change password", to: edit_password_path)) %>
-    <br/>
-    <%= render(Bootstrap::Link.new(text: "Devices & Sessions", to: sessions_path)) %>
-
-    <br>
-
-    <%= render(Bootstrap::Form::Actions.new) do %>
-      <%= render(Bootstrap::Button.new(text: "Log out", to: Current.session, method: :delete, style: :secondary)) %>
-    <% end %>
-  <% else %>
-    Please <%= link_to "sign in", sign_in_path %> or <%= link_to "sign up", sign_up_path %>.
-  <% end %>
 <% end %>

@@ -9,10 +9,16 @@ module GeneratedUrlHelpersModule
   include ::ActionDispatch::Routing::PolymorphicRoutes
 
   sig { params(args: T.untyped).returns(String) }
+  def account_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def course_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def courses_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_account_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def edit_course_url(*args); end
@@ -49,6 +55,9 @@ module GeneratedUrlHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def identity_password_reset_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_account_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def new_course_url(*args); end

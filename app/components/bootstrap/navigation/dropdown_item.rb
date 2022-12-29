@@ -9,7 +9,7 @@ module Bootstrap
       Target = T.type_alias { T.any(String, Symbol, ActiveRecord::Base) }
 
       sig { params(text: String, to: Target, method: T.nilable(Symbol)).void }
-      def initialize(text:, to:, method:)
+      def initialize(text:, to:, method: nil)
         super()
 
         @text = text

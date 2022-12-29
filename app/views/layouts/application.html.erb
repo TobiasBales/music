@@ -21,6 +21,8 @@
         <% if Current.user.present? %>
           <% c.with_right_item do  %>
             <%= render(Bootstrap::Navigation::Dropdown.new(text: Current.user.email)) do %>
+              <%= render(Bootstrap::Navigation::DropdownItem.new(text: "Account", to: account_path)) %>
+              <%= render(Bootstrap::Navigation::DropdownDivider.new) %>
               <%= render(Bootstrap::Navigation::DropdownItem.new(text: "Log out", to: Current.session, method: :delete)) %>
             <% end %>
           <% end %>

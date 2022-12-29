@@ -11,7 +11,10 @@ class SessionsTest < ApplicationSystemTestCase
   test "visiting the index" do
     sign_in_as @user
 
+    click_on @user.email
+    click_on "Account"
     click_on "Devices & Sessions"
+
     assert_selector "h1", text: "Sessions"
   end
 
@@ -26,6 +29,8 @@ class SessionsTest < ApplicationSystemTestCase
 
   test "signing out" do
     sign_in_as @user
+
+    click_on @user.email
 
     click_on "Log out"
     assert_text "That session has been logged out"

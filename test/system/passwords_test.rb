@@ -9,6 +9,8 @@ class PasswordsTest < ApplicationSystemTestCase
   end
 
   test "updating the password" do
+    click_on @user.email
+    click_on "Account"
     click_on "Change password"
 
     fill_in "Current password", with: "Secret1*3*5*"
