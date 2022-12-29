@@ -1,14 +1,9 @@
-<p style="color: red"><%= alert %></p>
+<%= render(Bootstrap::Page.new(title: "Forgot your password")) do %>
+  <%= form_with(url: identity_password_reset_path) do |form| %>
+    <%= render(Bootstrap::Form::Input.new(form: form, field: :email, type: :email, autofocus: true, autocomplete: "email")) %>
 
-<h1>Forgot your password?</h1>
-
-<%= form_with(url: identity_password_reset_path) do |form| %>
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.email_field :email, autofocus: true, required: true %>
-  </div>
-
-  <div>
-    <%= form.submit "Send password reset email" %>
-  </div>
+    <%= render(Bootstrap::Form::Actions.new) do %>
+      <%= render(Bootstrap::Form::Button.new(form: form, label: "Send password reset email", type: :submit)) %>
+    <% end %>
+  <% end %>
 <% end %>

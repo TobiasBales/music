@@ -15,12 +15,13 @@ module Bootstrap
           multiple: T::Boolean,
           autocomplete: T.nilable(String),
           required: T::Boolean,
-          hint: T.nilable(String)
+          hint: T.nilable(String),
+          label: T.nilable(String)
         ).void
       end
       # rubocop:disable Metrics/ParameterLists
       def initialize(form:, field:, type: :text, autofocus: false, multiple: false, autocomplete: nil, required: false,
-                     hint: nil)
+                     hint: nil, label: nil)
         super()
 
         @form = form
@@ -31,6 +32,7 @@ module Bootstrap
         @autocomplete = autocomplete
         @required = required
         @hint = hint
+        @label = label
       end
       # rubocop:enable Metrics/ParameterLists
 
@@ -57,6 +59,9 @@ module Bootstrap
 
       sig { returns(T.nilable(String)) }
       attr_reader :hint
+
+      sig { returns(T.nilable(String)) }
+      attr_reader :label
     end
   end
 end
