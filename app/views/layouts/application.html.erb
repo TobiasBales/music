@@ -14,7 +14,29 @@
   </head>
 
   <body>
+    <% unless current_page?(sign_in_path) || current_page?(sign_up_path) %>
+      <%= render(Bootstrap::Navigation.new) do |c| %>
+        <%= render(Bootstrap::Navigation::Item.new(text: "Home", to: root_path)) %>
+        <%= render(Bootstrap::Navigation::Item.new(text: "Courses", to: courses_path)) %>
+        <% if Current.user.present? %>
+          <% c.with_right_item do  %>
+            <%= render(Bootstrap::Navigation::Dropdown.new(text: Current.user.email)) do %>
+              <%= render(Bootstrap::Navigation::DropdownItem.new(text: "Log out", to: Current.session, method: :delete)) %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <% c.with_right_item do  %>
+            <%= render(Bootstrap::Navigation::Item.new(text: "Sign in", to: sign_in_path)) %>
+          <% end %>
+          <% c.with_right_item do  %>
+            <%= render(Bootstrap::Navigation::Item.new(text: "Sign up", to: sign_up_path)) %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+    
     <%= render(Bootstrap::Notifications.new(flash: flash)) %>
+    
     <%= yield %>
   </body>
 </html>
