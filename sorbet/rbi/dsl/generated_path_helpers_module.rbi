@@ -21,6 +21,18 @@ module GeneratedPathHelpersModule
   def edit_exercise_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def edit_identity_email_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_identity_email_verification_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_identity_password_reset_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_password_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def edit_rails_conductor_inbound_email_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -30,16 +42,31 @@ module GeneratedPathHelpersModule
   def exercises_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def identity_email_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def identity_email_verification_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def identity_password_reset_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def new_course_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def new_exercise_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def new_identity_password_reset_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def new_rails_conductor_inbound_email_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def new_rails_conductor_inbound_email_source_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def password_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def preview_view_component_path(*args); end
@@ -124,6 +151,18 @@ module GeneratedPathHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def root_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def session_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def sessions_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def sign_in_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def sign_up_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def turbo_recede_historical_location_path(*args); end

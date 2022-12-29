@@ -6,6 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.2.0"
 
 gem "aws-sdk-s3", require: false
+gem "bcrypt"
 gem "bootsnap", require: false
 gem "cssbundling-rails"
 gem "jbuilder"
@@ -49,3 +50,5 @@ group :test do
 end
 
 gem "view_component", "~> 2.80"
+
+gem "authentication-zero", "~> 2.16"

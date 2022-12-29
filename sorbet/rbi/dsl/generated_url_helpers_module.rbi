@@ -21,6 +21,18 @@ module GeneratedUrlHelpersModule
   def edit_exercise_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def edit_identity_email_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_identity_email_verification_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_identity_password_reset_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_password_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def edit_rails_conductor_inbound_email_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -30,16 +42,31 @@ module GeneratedUrlHelpersModule
   def exercises_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def identity_email_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def identity_email_verification_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def identity_password_reset_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def new_course_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def new_exercise_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def new_identity_password_reset_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def new_rails_conductor_inbound_email_source_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def new_rails_conductor_inbound_email_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def password_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def preview_view_component_url(*args); end
@@ -124,6 +151,18 @@ module GeneratedUrlHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def root_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def session_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def sessions_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def sign_in_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def sign_up_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def turbo_recede_historical_location_url(*args); end

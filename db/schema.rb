@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_29_172434) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_29_174849) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_29_172434) do
     t.index ["instrument_id"], name: "index_courses_on_instrument_id"
   end
 
+  create_table "email_verification_tokens", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.index ["user_id"], name: "index_email_verification_tokens_on_user_id"
+  end
+
   create_table "exercises", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "tab"
@@ -65,8 +70,34 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_29_172434) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "password_reset_tokens", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.index ["user_id"], name: "index_password_reset_tokens_on_user_id"
+  end
+
+  create_table "sessions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.string "user_agent"
+    t.string "ip_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.boolean "verified", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "courses", "instruments"
+  add_foreign_key "email_verification_tokens", "users"
   add_foreign_key "exercises", "courses"
+  add_foreign_key "password_reset_tokens", "users"
+  add_foreign_key "sessions", "users"
 end

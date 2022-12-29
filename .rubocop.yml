@@ -23,8 +23,14 @@ Metrics/ClassLength:
   Exclude:
     - test/**/*
 
+Metrics/AbcSize:
+  Max: 20
+    
 Metrics/CyclomaticComplexity:
   Max: 10
+
+Rails/I18nLocaleTexts:
+  Enabled: false
 
 Style/AccessorGrouping:
   EnforcedStyle: separated
