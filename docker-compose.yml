@@ -32,3 +32,8 @@ services:
       /usr/bin/mc mb minio/music-test;
       exit 0;
       "
+  mailcatcher:
+    image: sj26/mailcatcher
+    ports:
+      - 1080:1080
+      - 1025:1025
