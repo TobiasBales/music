@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Exercises</h1>
+  <ul>
+    <% @exercises.each do |exercise| %>
+      <li><%= link_to exercise.name, exercise %></li>
+    <% end %>
+  </ul>
+</div>
