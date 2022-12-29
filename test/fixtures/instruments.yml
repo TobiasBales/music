@@ -1,0 +1,8 @@
+guitar:
+  name: Guitar
+
+bass:
+  name: Bass
+
+drums:
+  name: Drums
