@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
   before_action :set_current_request_details
-  before_action :authenticate
+  before_action :load_current_session
 
   private
 
@@ -13,6 +13,12 @@ class ApplicationController < ActionController::Base
     else
       redirect_to sign_in_path
     end
+  end
+
+  def load_current_session
+    session = Session.find_by(id: cookies.signed[:session_token])
+
+    Current.session = session if session.present?
   end
 
   def set_current_request_details

@@ -2,6 +2,7 @@
 # frozen_string_literal: true
 
 class PasswordsController < ApplicationController
+  before_action :authenticate
   before_action :set_user
 
   def edit; end

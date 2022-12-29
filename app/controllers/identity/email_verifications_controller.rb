@@ -3,8 +3,7 @@
 
 module Identity
   class EmailVerificationsController < ApplicationController
-    skip_before_action :authenticate, only: :edit
-
+    before_action :authenticate, except: :edit
     before_action :set_user, only: :edit
 
     def edit

@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
-  skip_before_action :authenticate, only: [:new, :create]
+  before_action :authenticate, except: [:new, :create]
 
   before_action :set_session, only: :destroy
 
