@@ -14,6 +14,7 @@
   </head>
 
   <body>
+    <%= render(Bootstrap::Notifications.new(flash: flash)) %>
     <%= yield %>
   </body>
 </html>
