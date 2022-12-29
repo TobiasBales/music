@@ -185,6 +185,20 @@ class Course
     sig { params(args: T.untyped, blk: T.untyped).returns(::Instrument) }
     def create_instrument!(*args, &blk); end
 
+    sig { returns(T::Array[T.untyped]) }
+    def exercise_ids; end
+
+    sig { params(ids: T::Array[T.untyped]).returns(T::Array[T.untyped]) }
+    def exercise_ids=(ids); end
+
+    # This method is created by ActiveRecord on the `Course` class because it declared `has_many :exercises`.
+    # 🔗 [Rails guide for `has_many` association](https://guides.rubyonrails.org/association_basics.html#the-has-many-association)
+    sig { returns(::Exercise::PrivateCollectionProxy) }
+    def exercises; end
+
+    sig { params(value: T::Enumerable[::Exercise]).void }
+    def exercises=(value); end
+
     sig { returns(T.nilable(::Instrument)) }
     def instrument; end
 

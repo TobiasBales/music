@@ -2,9 +2,8 @@
 # frozen_string_literal: true
 
 class Course < ApplicationRecord
-  self.ignored_columns += ["course_id"]
-
   belongs_to :instrument
+  has_many :exercises, dependent: :destroy
 
   validates :name, presence: true
 end

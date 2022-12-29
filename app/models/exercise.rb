@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 class Exercise < ApplicationRecord
-  self.ignored_columns += ["instrument_id"]
+  belongs_to :course
 
   validates :name, presence: true
   validates :tab, presence: true

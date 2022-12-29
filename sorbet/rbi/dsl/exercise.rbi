@@ -5,6 +5,7 @@
 # Please instead update this file by running `bin/tapioca dsl Exercise`.
 
 class Exercise
+  include GeneratedAssociationMethods
   include GeneratedAttributeMethods
   extend CommonRelationMethods
   extend GeneratedRelationMethods
@@ -172,6 +173,26 @@ class Exercise
 
     sig { returns(::Exercise) }
     def third_to_last!; end
+  end
+
+  module GeneratedAssociationMethods
+    sig { params(args: T.untyped, blk: T.untyped).returns(::Course) }
+    def build_course(*args, &blk); end
+
+    sig { returns(T.nilable(::Course)) }
+    def course; end
+
+    sig { params(value: T.nilable(::Course)).void }
+    def course=(value); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(::Course) }
+    def create_course(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(::Course) }
+    def create_course!(*args, &blk); end
+
+    sig { returns(T.nilable(::Course)) }
+    def reload_course; end
   end
 
   module GeneratedAssociationRelationMethods

@@ -25,13 +25,13 @@ class Seeds
     course
   end
 
-  sig { params(name: String, tab: String).void }
-  def exercise(name, tab)
+  sig { params(course: Course, name: String, tab: String).void }
+  def exercise(course, name, tab)
     exercise = Exercise.find_by(name: name)
 
     return if exercise.present?
 
-    Exercise.new(name: name, tab: tab).save!
+    Exercise.new(course: course, name: name, tab: tab).save!
   end
 end
 
@@ -40,16 +40,16 @@ guitar = seeds.instrument("Guitar")
 seeds.instrument("Bass")
 seeds.instrument("Drums")
 
-seeds.course(guitar, "Speed builder")
+speed_builder = seeds.course(guitar, "Speed builder")
 
-seeds.exercise("1 String Ascending", <<~TAB)
+seeds.exercise(speed_builder, "1 String Ascending", <<~TAB)
   \\title "1 String Ascending"
   \\tempo BPM
   \\instrument 29
   .
   \\ro \\rc 8 :16 5.1 6.1 7.1 8.1 9.1 r.8{d} r.4 r.4 | \\rc 5
 TAB
-seeds.exercise("1 String Descending", <<~TAB)
+seeds.exercise(speed_builder, "1 String Descending", <<~TAB)
   \\title "1 String Descending"
   \\tempo BPM
   \\instrument 29
