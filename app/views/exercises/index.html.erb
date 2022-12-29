@@ -1,8 +1,7 @@
-<div class="container">
-  <h1>Exercises</h1>
-  <ul>
+<%= render(Bootstrap::Page.new(title: "Exercises")) do %>
+  <%= render(Bootstrap::List::Group.new) do %>
     <% @exercises.each do |exercise| %>
-      <li><%= link_to exercise.name, exercise %></li>
+      <%= render(Bootstrap::List::Item.new(text: exercise.name, to: exercise)) %>
     <% end %>
-  </ul>
-</div>
+  <% end %>
+<% end %>
