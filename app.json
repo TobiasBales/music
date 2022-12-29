@@ -1,0 +1,10 @@
+{
+  "name": "music",
+  "description": "Music software",
+  "keywords": [],
+  "scripts": {
+    "dokku": {
+      "postdeploy": "bundle exec rake db:migrate"
+    }
+  }
+}
