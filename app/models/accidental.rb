@@ -5,13 +5,13 @@ class Accidental < T::Enum
   extend T::Sig
 
   enums do
-    TripleFlat = new("♭♭♭")
-    DoubleFlat = new("♭♭")
-    Flat = new("♭")
+    TripleFlat = new("bbb")
+    DoubleFlat = new("bb")
+    Flat = new("b")
     Neutral = new("")
-    Sharp = new("♯")
-    DoubleSharp = new("♯♯")
-    TripleSharp = new("♯♯♯")
+    Sharp = new("#")
+    DoubleSharp = new("##")
+    TripleSharp = new("###")
   end
 
   # rubocop:disable Metrics/MethodLength
