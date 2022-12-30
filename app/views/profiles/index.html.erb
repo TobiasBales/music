@@ -1,0 +1,16 @@
+<%= render(Bootstrap::Page.new(title: Profiles)) do |c| %>
+  <div id="profiles">
+    <% @profiles.each do |profile| %>
+      <%= render(Bootstrap::Card.new) do |c| %>
+        <% c.with_body do %>
+          <%= render profile %>
+          <%= render(Bootstrap::Button.new(text: "Show this profile", to: profile, style: :secondary)) %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= render(Bootstrap::Form::Actions.new) do %>
+    <%= render(Bootstrap::Button.new(text: "New profile", to: new_profile_path)) %>
+  <% end %>
+<% end %>

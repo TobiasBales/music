@@ -39,6 +39,9 @@ module GeneratedPathHelpersModule
   def edit_password_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def edit_profile_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def edit_rails_conductor_inbound_email_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -69,6 +72,9 @@ module GeneratedPathHelpersModule
   def new_identity_password_reset_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def new_profile_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def new_rails_conductor_inbound_email_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -82,6 +88,9 @@ module GeneratedPathHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def preview_view_components_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def profile_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def rails_blob_path(*args); end

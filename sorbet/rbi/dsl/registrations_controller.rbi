@@ -21,6 +21,7 @@ class RegistrationsController
     include ::ActionText::TagHelper
     include ::ActionController::Base::HelperMethods
     include ::ApplicationHelper
+    include ::ProfilesHelper
     include ::PreviewHelper
   end
 

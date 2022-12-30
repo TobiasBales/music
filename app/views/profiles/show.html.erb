@@ -1,0 +1,7 @@
+<%= render(Bootstrap::Page.new) do |c| %>
+  <%= render @profile %>
+
+  <%= render(Bootstrap::Form::Actions.new) do %>
+    <%= render(Bootstrap::Button.new(text: "Edit your profile", to: edit_profile_path, style: :secondary)) %>
+  <% end %>
+<% end %>

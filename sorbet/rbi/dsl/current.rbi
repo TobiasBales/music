@@ -36,6 +36,9 @@ class Current
     sig { params(value: T.untyped).returns(T.untyped) }
     def ip_address=(value); end
 
+    sig { returns(::Profile) }
+    def profile; end
+
     sig { returns(T.untyped) }
     def session; end
 

@@ -1,0 +1,21 @@
+<%= form_with(model: profile, url: profile_path, method: :patch) do |form| %>
+  <% if profile.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+        <% profile.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <%= render(Bootstrap::Form::Checkbox.new(form: form, field: :count_in)) %>
+
+  <%= render(Bootstrap::Form::Actions.new) do %>
+    <%= render(Bootstrap::Form::Button.new(form: form, label: "Save", type: :submit)) %>
+    <%= render(Bootstrap::Button.new(text: "Back", style: :secondary, to: :back)) %>
+  <% end %>
+<% end %>
