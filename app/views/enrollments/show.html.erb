@@ -1,0 +1,7 @@
+<%= turbo_frame_tag @course, :enrollment do %>
+  <% if @enrollment.new_record? %>
+    <%= render(Bootstrap::Button.new(text: "Enroll", to: enrollment_path(@course), method: :patch)) %>
+  <% else %>
+    <%= render(Bootstrap::Button.new(text: "Leave", to: enrollment_path(@course), method: :delete, confirm: "Are you sure?", style: :danger)) %>
+  <% end %>
+<% end %>

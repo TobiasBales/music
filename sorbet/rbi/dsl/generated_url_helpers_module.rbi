@@ -24,6 +24,9 @@ module GeneratedUrlHelpersModule
   def edit_course_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def edit_enrollment_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def edit_exercise_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -45,6 +48,12 @@ module GeneratedUrlHelpersModule
   def edit_rails_conductor_inbound_email_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def enrollment_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def enrollments_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def exercise_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -64,6 +73,9 @@ module GeneratedUrlHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def new_course_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_enrollment_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def new_exercise_url(*args); end

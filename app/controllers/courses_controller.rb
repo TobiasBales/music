@@ -10,5 +10,6 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+    @enrollment = Current.user&.enrollment(@course)
   end
 end

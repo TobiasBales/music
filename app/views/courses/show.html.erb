@@ -7,4 +7,10 @@
       <%= render(Bootstrap::List::Item.new(text: exercise.name, to: exercise)) %>
     <% end %>
   <% end %>
+
+  <% if Current.user.present? %>
+    <%= render(Bootstrap::Form::Actions.new) do %>
+      <%= turbo_frame_tag @course, :enrollment, src: enrollment_path(@course) %>
+    <% end %>
+  <% end %>
 <% end %>
