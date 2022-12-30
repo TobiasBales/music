@@ -7,5 +7,7 @@ class Course < ApplicationRecord
   has_many :exercises, dependent: :destroy
   has_many :enrollments, dependent: :destroy
 
+  has_one_attached :image
+
   validates :name, presence: true
 end

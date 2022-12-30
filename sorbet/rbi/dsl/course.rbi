@@ -10,6 +10,12 @@ class Course
   extend CommonRelationMethods
   extend GeneratedRelationMethods
 
+  sig { returns(ActiveStorage::Attached::One) }
+  def image; end
+
+  sig { params(attachable: T.untyped).returns(T.untyped) }
+  def image=(attachable); end
+
   private
 
   sig { returns(NilClass) }
@@ -185,6 +191,12 @@ class Course
     sig { params(args: T.untyped, blk: T.untyped).returns(::Author) }
     def build_author(*args, &blk); end
 
+    sig { params(args: T.untyped, blk: T.untyped).returns(::ActiveStorage::Attachment) }
+    def build_image_attachment(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(::ActiveStorage::Blob) }
+    def build_image_blob(*args, &blk); end
+
     sig { params(args: T.untyped, blk: T.untyped).returns(::Instrument) }
     def build_instrument(*args, &blk); end
 
@@ -193,6 +205,18 @@ class Course
 
     sig { params(args: T.untyped, blk: T.untyped).returns(::Author) }
     def create_author!(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(::ActiveStorage::Attachment) }
+    def create_image_attachment(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(::ActiveStorage::Attachment) }
+    def create_image_attachment!(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(::ActiveStorage::Blob) }
+    def create_image_blob(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(::ActiveStorage::Blob) }
+    def create_image_blob!(*args, &blk); end
 
     sig { params(args: T.untyped, blk: T.untyped).returns(::Instrument) }
     def create_instrument(*args, &blk); end
@@ -228,6 +252,18 @@ class Course
     sig { params(value: T::Enumerable[::Exercise]).void }
     def exercises=(value); end
 
+    sig { returns(T.nilable(::ActiveStorage::Attachment)) }
+    def image_attachment; end
+
+    sig { params(value: T.nilable(::ActiveStorage::Attachment)).void }
+    def image_attachment=(value); end
+
+    sig { returns(T.nilable(::ActiveStorage::Blob)) }
+    def image_blob; end
+
+    sig { params(value: T.nilable(::ActiveStorage::Blob)).void }
+    def image_blob=(value); end
+
     sig { returns(T.nilable(::Instrument)) }
     def instrument; end
 
@@ -236,6 +272,12 @@ class Course
 
     sig { returns(T.nilable(::Author)) }
     def reload_author; end
+
+    sig { returns(T.nilable(::ActiveStorage::Attachment)) }
+    def reload_image_attachment; end
+
+    sig { returns(T.nilable(::ActiveStorage::Blob)) }
+    def reload_image_blob; end
 
     sig { returns(T.nilable(::Instrument)) }
     def reload_instrument; end
@@ -416,6 +458,9 @@ class Course
 
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateAssociationRelationWhereChain) }
     def where(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(PrivateAssociationRelation) }
+    def with_attached_image(*args, &blk); end
 
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateAssociationRelation) }
     def without(*args, &blk); end
@@ -888,6 +933,9 @@ class Course
 
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateRelationWhereChain) }
     def where(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(PrivateRelation) }
+    def with_attached_image(*args, &blk); end
 
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateRelation) }
     def without(*args, &blk); end
