@@ -1,0 +1,16 @@
+<%%= render(Bootstrap::Page.new(title: <%= human_name.pluralize %>)) do |c| %>
+  <div id="<%= plural_table_name %>">
+    <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+      <%%= render(Bootstrap::Card.new) do |c| %>
+        <%% c.with_body do %>
+          <%%= render <%= singular_table_name %> %>
+          <%%= render(Bootstrap::Button.new(text: "Show this <%= human_name.downcase %>", to: <%= model_resource_name(singular_table_name) %>, style: :secondary)) %>
+        <%% end %>
+      <%% end %>
+    <%% end %>
+  </div>
+
+  <%%= render(Bootstrap::Form::Actions.new) do %>
+    <%%= render(Bootstrap::Button.new(text: "New <%= human_name.downcase %>", to: <%= new_helper(type: :path) %>)) %>
+  <%% end %>
+<%% end %>
