@@ -52,49 +52,14 @@ guitar = seeds.instrument("Guitar")
 seeds.instrument("Bass")
 seeds.instrument("Drums")
 
-roy_viz = seeds.author("Roy Viz")
+tobias = seeds.author("Tobias Bales")
 
-speed_builder = seeds.course(roy_viz, guitar, "Speed builder")
+warmups = seeds.course(tobias, guitar, "Warmups")
 
-seeds.exercise(speed_builder, "1 String Ascending", 1, <<~TAB)
-  \\title "1 String Ascending"
+seeds.exercise(warmups, "Chromatic", 1, <<~TAB)
+  \\title "Chromatic"
   \\tempo BPM
   \\instrument 29
   .
-  \\ro \\rc 8 :16 5.1 6.1 7.1 8.1 9.1 r.8{d} r.4 r.4 | \\rc 5
-TAB
-seeds.exercise(speed_builder, "1 String Descending", 2, <<~TAB)
-  \\title "1 String Descending"
-  \\tempo BPM
-  \\instrument 29
-  .
-  \\ro \\rc 8 :16 9.1 8.1 7.1 6.1 5.1 r.8{d} r.4 r.4 | \\rc 5
-TAB
-seeds.exercise(speed_builder, "1 String Ascending Descending", 3, <<~TAB)
-  \\title "1 String Ascending Descending"
-  \\tempo BPM
-  \\instrument 29
-  .
-  \\ro \\rc 8 :16 5.1 6.1 7.1 8.1 9.1 8.1 7.1 6.1 5.1 r.8{d} r.4 | \\rc 5
-TAB
-seeds.exercise(speed_builder, "2 String 5 Note Ascending", 4, <<~TAB)
-  \\title "2 String 5 Note Ascending"
-  \\tempo BPM
-  \\instrument 29
-  .
-  \\ro \\rc 8 :16 6.2 7.2 8.2 9.2 5.1 r.8{d} r.4 r.4 | \\rc 5
-TAB
-seeds.exercise(speed_builder, "2 String Ascending", 5, <<~TAB)
-  \\title "2 String Ascending"
-  \\tempo BPM
-  \\instrument 29
-  .
-  \\ro \\rc 8 :16 6.2 7.2 8.2 9.2 5.1 6.1 7.1 8.1 9.1 r.8{d} r.4 | \\rc 5
-TAB
-seeds.exercise(speed_builder, "2 String Ascending Descending", 6, <<~TAB)
-  \\title "2 String Ascending Descending"
-  \\tempo BPM
-  \\instrument 29
-  .
-  \\ro :16 6.2 7.2 8.2 9.2 5.1 6.1 7.1 8.1 9.1 8.1 7.1 6.1 5.1 9.2 8.2 7.2 | \\rc 8 r.1 | \\rc 5
+  \\ro :8 1.6 2.6 3.6 4.6 1.5 2.5 3.5 4.5 | 1.4 2.4 3.4 4.4 1.3 2.3 3.3 4.3 | \\rc 4 1.2 2.2 3.2 4.2 1.1 2.1 3.1 4.1
 TAB
