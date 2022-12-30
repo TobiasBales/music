@@ -6,6 +6,9 @@
         <% if title.present? %>
             <h5 class="card-title"><%= title %></h5>
         <% end %>
+        <% if subtitle.present? %>
+            <h6 class="card-subtitle mb-2 text-muted"><%= subtitle %></h6>
+        <% end %>
         <% if body? %>
             <%= body %>
         <% end %>
