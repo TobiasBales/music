@@ -557,6 +557,51 @@ class Course
     sig { void }
     def created_at_will_change!; end
 
+    sig { returns(T.nilable(::String)) }
+    def description; end
+
+    sig { params(value: T.nilable(::String)).returns(T.nilable(::String)) }
+    def description=(value); end
+
+    sig { returns(T::Boolean) }
+    def description?; end
+
+    sig { returns(T.nilable(::String)) }
+    def description_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def description_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def description_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def description_change; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def description_change_to_be_saved; end
+
+    sig { returns(T::Boolean) }
+    def description_changed?; end
+
+    sig { returns(T.nilable(::String)) }
+    def description_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def description_previous_change; end
+
+    sig { returns(T::Boolean) }
+    def description_previously_changed?; end
+
+    sig { returns(T.nilable(::String)) }
+    def description_previously_was; end
+
+    sig { returns(T.nilable(::String)) }
+    def description_was; end
+
+    sig { void }
+    def description_will_change!; end
+
     sig { returns(T.untyped) }
     def id; end
 
@@ -699,6 +744,9 @@ class Course
     def restore_created_at!; end
 
     sig { void }
+    def restore_description!; end
+
+    sig { void }
     def restore_id!; end
 
     sig { void }
@@ -721,6 +769,12 @@ class Course
 
     sig { returns(T::Boolean) }
     def saved_change_to_created_at?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def saved_change_to_description; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_description?; end
 
     sig { returns(T.nilable([T.untyped, T.untyped])) }
     def saved_change_to_id; end
@@ -796,6 +850,9 @@ class Course
 
     sig { returns(T::Boolean) }
     def will_save_change_to_created_at?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_description?; end
 
     sig { returns(T::Boolean) }
     def will_save_change_to_id?; end

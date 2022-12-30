@@ -8,7 +8,11 @@
           <div class="row">
             <% enrollments.each do |enrollment| %>
               <div class="col-md-4">
-                <%= render(Bootstrap::Card.new(title: enrollment.course.name, subtitle: enrollment.course.author.name, image: enrollment.course.image.url)) do |c|%>
+                <%= render(Bootstrap::Card.new(
+                  title: enrollment.course.name,
+                  subtitle: enrollment.course.author.name,
+                  text: enrollment.course.description,
+                  image: enrollment.course.image.url)) do |c|%>
                   <% c.with_body do %>
                     <%= render(Bootstrap::Button.new(text: "Continue", to: course_path(enrollment.course))) %>
                   <% end %>
