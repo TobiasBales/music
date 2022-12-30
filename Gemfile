@@ -52,3 +52,5 @@ end
 gem "view_component", "~> 2.80"
 
 gem "authentication-zero", "~> 2.16"
+
+gem "madmin", "~> 1.2"

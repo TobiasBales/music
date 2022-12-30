@@ -39,6 +39,45 @@ module GeneratedUrlHelpersModule
   def edit_identity_password_reset_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def edit_madmin_active_storage_attachment_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_madmin_active_storage_blob_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_madmin_active_storage_variant_record_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_madmin_author_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_madmin_course_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_madmin_email_verification_token_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_madmin_enrollment_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_madmin_exercise_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_madmin_instrument_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_madmin_password_reset_token_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_madmin_profile_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_madmin_session_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_madmin_user_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def edit_password_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -69,6 +108,87 @@ module GeneratedUrlHelpersModule
   def identity_password_reset_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def madmin_active_storage_attachment_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_active_storage_attachments_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_active_storage_blob_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_active_storage_blobs_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_active_storage_variant_record_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_active_storage_variant_records_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_author_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_authors_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_course_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_courses_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_email_verification_token_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_email_verification_tokens_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_enrollment_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_enrollments_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_exercise_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_exercises_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_instrument_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_instruments_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_password_reset_token_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_password_reset_tokens_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_profile_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_profiles_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_root_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_session_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_sessions_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_user_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_users_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def new_account_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -82,6 +202,45 @@ module GeneratedUrlHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def new_identity_password_reset_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_madmin_active_storage_attachment_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_madmin_active_storage_blob_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_madmin_active_storage_variant_record_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_madmin_author_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_madmin_course_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_madmin_email_verification_token_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_madmin_enrollment_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_madmin_exercise_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_madmin_instrument_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_madmin_password_reset_token_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_madmin_profile_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_madmin_session_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_madmin_user_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def new_profile_url(*args); end

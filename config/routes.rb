@@ -2,6 +2,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  draw :madmin
+
   get  "sign_in", to: "sessions#new"
   post "sign_in", to: "sessions#create"
   get  "sign_up", to: "registrations#new"
