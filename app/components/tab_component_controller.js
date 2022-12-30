@@ -36,6 +36,11 @@ export default class extends Controller {
     }
 
     this.updateTabBpm();
+    document.addEventListener('keypress', this.handleKeypress)
+  }
+
+  disconnect() {
+    document.removeEventListener('keypress', this.handleKeypress)
   }
 
   scoreLoaded = (score) => {
@@ -103,6 +108,12 @@ export default class extends Controller {
     }
     this.api.updateSettings();
     this.api.render();
+  }
+
+  handleKeypress = (e) => {
+    if (e.code == "Space") {
+      this.playPause();
+    }
   }
 
   updateTabBpm() {
