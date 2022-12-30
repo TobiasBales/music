@@ -3,6 +3,7 @@
 
 class Course < ApplicationRecord
   belongs_to :instrument
+  belongs_to :author
   has_many :exercises, dependent: :destroy
   has_many :enrollments, dependent: :destroy
 

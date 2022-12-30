@@ -5,6 +5,7 @@
 # Please instead update this file by running `bin/tapioca dsl Author`.
 
 class Author
+  include GeneratedAssociationMethods
   include GeneratedAttributeMethods
   extend CommonRelationMethods
   extend GeneratedRelationMethods
@@ -172,6 +173,22 @@ class Author
 
     sig { returns(::Author) }
     def third_to_last!; end
+  end
+
+  module GeneratedAssociationMethods
+    sig { returns(T::Array[T.untyped]) }
+    def course_ids; end
+
+    sig { params(ids: T::Array[T.untyped]).returns(T::Array[T.untyped]) }
+    def course_ids=(ids); end
+
+    # This method is created by ActiveRecord on the `Author` class because it declared `has_many :courses`.
+    # 🔗 [Rails guide for `has_many` association](https://guides.rubyonrails.org/association_basics.html#the-has-many-association)
+    sig { returns(::Course::PrivateCollectionProxy) }
+    def courses; end
+
+    sig { params(value: T::Enumerable[::Course]).void }
+    def courses=(value); end
   end
 
   module GeneratedAssociationRelationMethods

@@ -3,6 +3,17 @@
 
 class Seeds
   extend T::Sig
+  sig { params(name: String).returns(Author) }
+  def author(name)
+    author = Author.find_by(name: name)
+
+    return author if author.present?
+
+    author = Author.new(name: name)
+    author.save!
+    author
+  end
+
   sig { params(name: String).returns(Instrument) }
   def instrument(name)
     instrument = Instrument.find_by(name: name)
@@ -14,13 +25,13 @@ class Seeds
     instrument
   end
 
-  sig { params(instrument: Instrument, name: String).returns(Course) }
-  def course(instrument, name)
+  sig { params(author: Author, instrument: Instrument, name: String).returns(Course) }
+  def course(author, instrument, name)
     course = Course.find_by(name: name)
 
     return course if course.present?
 
-    course = Course.new(instrument: instrument, name: name)
+    course = Course.new(author: author, instrument: instrument, name: name)
     course.save!
     course
   end
@@ -36,11 +47,14 @@ class Seeds
 end
 
 seeds = Seeds.new
+
 guitar = seeds.instrument("Guitar")
 seeds.instrument("Bass")
 seeds.instrument("Drums")
 
-speed_builder = seeds.course(guitar, "Speed builder")
+roy_viz = seeds.author("Roy Viz")
+
+speed_builder = seeds.course(roy_viz, guitar, "Speed builder")
 
 seeds.exercise(speed_builder, "1 String Ascending", <<~TAB)
   \\title "1 String Ascending"
