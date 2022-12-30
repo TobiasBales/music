@@ -1,0 +1,9 @@
+<%= render(Bootstrap::Card.new(
+  title: course.name,
+  subtitle: course.author.name,
+  text: course.description,
+  image: course.image.url)) do |c|%>
+  <% c.with_body do %>
+    <%= render(Bootstrap::Button.new(text: button_text, to: course_path(course))) %>
+  <% end %>
+<% end %>
