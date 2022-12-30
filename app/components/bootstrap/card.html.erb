@@ -1,6 +1,8 @@
 <div class="card">
     <% if image.present? %>
-        <img src="<%= image %>" class="card-img-top">
+        <div class="ratio ratio-16x9">
+            <img src="<%= image %>" class="card-img-top object-fit-cover">
+        </div>
     <% end %>
     <div class="card-body">
         <% if title.present? %>
