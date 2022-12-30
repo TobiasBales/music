@@ -693,6 +693,51 @@ class Course
     def instrument_id_will_change!; end
 
     sig { returns(T.nilable(::String)) }
+    def link; end
+
+    sig { params(value: T.nilable(::String)).returns(T.nilable(::String)) }
+    def link=(value); end
+
+    sig { returns(T::Boolean) }
+    def link?; end
+
+    sig { returns(T.nilable(::String)) }
+    def link_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def link_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def link_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def link_change; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def link_change_to_be_saved; end
+
+    sig { returns(T::Boolean) }
+    def link_changed?; end
+
+    sig { returns(T.nilable(::String)) }
+    def link_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def link_previous_change; end
+
+    sig { returns(T::Boolean) }
+    def link_previously_changed?; end
+
+    sig { returns(T.nilable(::String)) }
+    def link_previously_was; end
+
+    sig { returns(T.nilable(::String)) }
+    def link_was; end
+
+    sig { void }
+    def link_will_change!; end
+
+    sig { returns(T.nilable(::String)) }
     def name; end
 
     sig { params(value: T.nilable(::String)).returns(T.nilable(::String)) }
@@ -753,6 +798,9 @@ class Course
     def restore_instrument_id!; end
 
     sig { void }
+    def restore_link!; end
+
+    sig { void }
     def restore_name!; end
 
     sig { void }
@@ -787,6 +835,12 @@ class Course
 
     sig { returns(T::Boolean) }
     def saved_change_to_instrument_id?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def saved_change_to_link; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_link?; end
 
     sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
     def saved_change_to_name; end
@@ -859,6 +913,9 @@ class Course
 
     sig { returns(T::Boolean) }
     def will_save_change_to_instrument_id?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_link?; end
 
     sig { returns(T::Boolean) }
     def will_save_change_to_name?; end
