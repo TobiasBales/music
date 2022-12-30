@@ -7,8 +7,12 @@ module Bootstrap
 
     Target = T.type_alias { T.any(String, Symbol, ActiveRecord::Base) }
 
-    sig { params(text: String, to: Target, method: Symbol, style: Symbol, confirm: T.nilable(String)).void }
-    def initialize(text:, to:, method: :get, style: :primary, confirm: nil)
+    sig do
+      params(text: String, to: Target, method: Symbol, style: Symbol, confirm: T.nilable(String),
+             params: T::Hash[T.untyped, T.untyped]).void
+    end
+    # rubocop:disable Metrics/ParameterLists
+    def initialize(text:, to:, method: :get, style: :primary, confirm: nil, params: {})
       super
 
       @text = text
@@ -16,7 +20,9 @@ module Bootstrap
       @method = method
       @style = style
       @confirm = confirm
+      @params = params
     end
+    # rubocop:enable Metrics/ParameterLists
 
     sig { returns(String) }
     attr_reader :text
@@ -32,6 +38,9 @@ module Bootstrap
 
     sig { returns(T.nilable(String)) }
     attr_reader :confirm
+
+    sig { returns(T::Hash[T.untyped, T.untyped]) }
+    attr_reader :params
 
     sig { returns(String) }
     def classes
