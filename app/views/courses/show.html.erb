@@ -2,15 +2,24 @@
   Bootstrap::Crumb.new(text: "Courses", to: courses_path),
   Bootstrap::Crumb.new(text: @course.name, to: @course)
 ])) do %>
-  <%= render(Bootstrap::List::Group.new) do %>
-    <% @course.exercises.order(:order).each do |exercise| %>
-      <%= render(Bootstrap::List::Item.new(text: exercise.name, to: exercise)) %>
-    <% end %>
+  <% if @course.description.present? %>
+    <div class="mt-3">
+      <h5>Description</h3>
+      <%= @course.description %>
+    </div>
   <% end %>
+  <div class="mt-3">
+    <h5>Exercises</h3>
+    <%= render(Bootstrap::List::Group.new) do %>
+      <% @course.exercises.order(:order).each do |exercise| %>
+        <%= render(Bootstrap::List::Item.new(text: exercise.name, to: exercise)) %>
+      <% end %>
+    <% end %>
 
-  <% if Current.user.present? %>
-    <%= render(Bootstrap::Form::Actions.new) do %>
-      <%= turbo_frame_tag @course, :enrollment, src: enrollment_path(@course) %>
+    <% if Current.user.present? %>
+      <%= render(Bootstrap::Form::Actions.new) do %>
+        <%= turbo_frame_tag @course, :enrollment, src: enrollment_path(@course) %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 <% end %>
