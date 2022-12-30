@@ -1,7 +1,9 @@
 one:
   name: 1 String Ascending
   course: speed_builder
+  order: 1
 
 two:
   name: 1 String Descending
   course: speed_builder
+  order: 2

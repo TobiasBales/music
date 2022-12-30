@@ -36,13 +36,13 @@ class Seeds
     course
   end
 
-  sig { params(course: Course, name: String, tab: String).void }
-  def exercise(course, name, tab)
+  sig { params(course: Course, name: String, order: Integer, tab: String).void }
+  def exercise(course, name, order, tab)
     exercise = Exercise.find_by(name: name)
 
     return if exercise.present?
 
-    Exercise.new(course: course, name: name, tab: tab).save!
+    Exercise.new(course: course, name: name, order: order, tab: tab).save!
   end
 end
 
@@ -56,42 +56,42 @@ roy_viz = seeds.author("Roy Viz")
 
 speed_builder = seeds.course(roy_viz, guitar, "Speed builder")
 
-seeds.exercise(speed_builder, "1 String Ascending", <<~TAB)
+seeds.exercise(speed_builder, "1 String Ascending", 1, <<~TAB)
   \\title "1 String Ascending"
   \\tempo BPM
   \\instrument 29
   .
   \\ro \\rc 8 :16 5.1 6.1 7.1 8.1 9.1 r.8{d} r.4 r.4 | \\rc 5
 TAB
-seeds.exercise(speed_builder, "1 String Descending", <<~TAB)
+seeds.exercise(speed_builder, "1 String Descending", 2, <<~TAB)
   \\title "1 String Descending"
   \\tempo BPM
   \\instrument 29
   .
   \\ro \\rc 8 :16 9.1 8.1 7.1 6.1 5.1 r.8{d} r.4 r.4 | \\rc 5
 TAB
-seeds.exercise(speed_builder, "1 String Ascending Descending", <<~TAB)
+seeds.exercise(speed_builder, "1 String Ascending Descending", 3, <<~TAB)
   \\title "1 String Ascending Descending"
   \\tempo BPM
   \\instrument 29
   .
   \\ro \\rc 8 :16 5.1 6.1 7.1 8.1 9.1 8.1 7.1 6.1 5.1 r.8{d} r.4 | \\rc 5
 TAB
-seeds.exercise(speed_builder, "2 String 5 Note Ascending", <<~TAB)
+seeds.exercise(speed_builder, "2 String 5 Note Ascending", 4, <<~TAB)
   \\title "2 String 5 Note Ascending"
   \\tempo BPM
   \\instrument 29
   .
   \\ro \\rc 8 :16 6.2 7.2 8.2 9.2 5.1 r.8{d} r.4 r.4 | \\rc 5
 TAB
-seeds.exercise(speed_builder, "2 String Ascending", <<~TAB)
+seeds.exercise(speed_builder, "2 String Ascending", 5, <<~TAB)
   \\title "2 String Ascending"
   \\tempo BPM
   \\instrument 29
   .
   \\ro \\rc 8 :16 6.2 7.2 8.2 9.2 5.1 6.1 7.1 8.1 9.1 r.8{d} r.4 | \\rc 5
 TAB
-seeds.exercise(speed_builder, "2 String Ascending Descending", <<~TAB)
+seeds.exercise(speed_builder, "2 String Ascending Descending", 6, <<~TAB)
   \\title "2 String Ascending Descending"
   \\tempo BPM
   \\instrument 29

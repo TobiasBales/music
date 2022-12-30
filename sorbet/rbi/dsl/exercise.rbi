@@ -556,6 +556,51 @@ class Exercise
     sig { void }
     def name_will_change!; end
 
+    sig { returns(::Integer) }
+    def order; end
+
+    sig { params(value: ::Integer).returns(::Integer) }
+    def order=(value); end
+
+    sig { returns(T::Boolean) }
+    def order?; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def order_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def order_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def order_came_from_user?; end
+
+    sig { returns(T.nilable([::Integer, ::Integer])) }
+    def order_change; end
+
+    sig { returns(T.nilable([::Integer, ::Integer])) }
+    def order_change_to_be_saved; end
+
+    sig { returns(T::Boolean) }
+    def order_changed?; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def order_in_database; end
+
+    sig { returns(T.nilable([::Integer, ::Integer])) }
+    def order_previous_change; end
+
+    sig { returns(T::Boolean) }
+    def order_previously_changed?; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def order_previously_was; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def order_was; end
+
+    sig { void }
+    def order_will_change!; end
+
     sig { void }
     def restore_course_id!; end
 
@@ -567,6 +612,9 @@ class Exercise
 
     sig { void }
     def restore_name!; end
+
+    sig { void }
+    def restore_order!; end
 
     sig { void }
     def restore_tab!; end
@@ -597,6 +645,12 @@ class Exercise
 
     sig { returns(T::Boolean) }
     def saved_change_to_name?; end
+
+    sig { returns(T.nilable([::Integer, ::Integer])) }
+    def saved_change_to_order; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_order?; end
 
     sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
     def saved_change_to_tab; end
@@ -711,6 +765,9 @@ class Exercise
 
     sig { returns(T::Boolean) }
     def will_save_change_to_name?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_order?; end
 
     sig { returns(T::Boolean) }
     def will_save_change_to_tab?; end

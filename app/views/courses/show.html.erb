@@ -3,7 +3,7 @@
   Bootstrap::Crumb.new(text: @course.name, to: @course)
 ])) do %>
   <%= render(Bootstrap::List::Group.new) do %>
-    <% @course.exercises.each do |exercise| %>
+    <% @course.exercises.order(:order).each do |exercise| %>
       <%= render(Bootstrap::List::Item.new(text: exercise.name, to: exercise)) %>
     <% end %>
   <% end %>
