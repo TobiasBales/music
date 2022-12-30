@@ -3,25 +3,7 @@
     <% if @enrollments.empty? %>
       Check out the available <%= render(Bootstrap::Link.new(text: "courses", to: courses_path)) %>
     <% else %>
-      <div class="container">
-        <% @enrollments.each_slice(3) do |enrollments| %>
-          <div class="row">
-            <% enrollments.each do |enrollment| %>
-              <div class="col-md-4">
-                <%= render(Bootstrap::Card.new(
-                  title: enrollment.course.name,
-                  subtitle: enrollment.course.author.name,
-                  text: enrollment.course.description,
-                  image: enrollment.course.image.url)) do |c|%>
-                  <% c.with_body do %>
-                    <%= render(Bootstrap::Button.new(text: "Continue", to: course_path(enrollment.course))) %>
-                  <% end %>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
+      <%= render(Components::Courses.new(courses: @enrollments.map(&:course), button_text: "Details")) %>
     <% end %>
   <% end %>
 <% end %>
