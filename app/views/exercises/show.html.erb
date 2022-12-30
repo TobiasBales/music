@@ -3,5 +3,5 @@
   Bootstrap::Crumb.new(text: @exercise.course.name, to: @exercise.course),
   Bootstrap::Crumb.new(text: @exercise.name, to: @exercise)
 ])) do %>
-  <%= render(TabComponent.new(tab: @exercise.tab, bpm: @bpm)) %>
+  <%= render(TabComponent.new(tab: @exercise.tab, bpm: @bpm, count_in: Current.profile.count_in)) %>
 <% end %>
