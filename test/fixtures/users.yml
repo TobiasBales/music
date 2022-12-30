@@ -1,4 +1,4 @@
-lazaro_nixon:
-  email: lazaronixon@hotmail.com
+default:
+  email: user@bales.systems
   password_digest: <%= BCrypt::Password.create("Secret1*3*5*") %>
   verified: true
