@@ -2,6 +2,8 @@
 # frozen_string_literal: true
 
 class InstrumentResource < Madmin::Resource
+  extend T::Sig
+
   # Attributes
   attribute :id, form: false
   attribute :name
@@ -11,10 +13,10 @@ class InstrumentResource < Madmin::Resource
   # Associations
   attribute :courses
 
-  # Uncomment this to customize the display name of records in the admin area.
-  # def self.display_name(record)
-  #   record.name
-  # end
+  sig { params(record: Instrument).returns(String) }
+  def self.display_name(record)
+    record.name || super(record)
+  end
 
   # Uncomment this to customize the default sort column and direction.
   # def self.default_sort_column

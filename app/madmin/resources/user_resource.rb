@@ -2,6 +2,8 @@
 # frozen_string_literal: true
 
 class UserResource < Madmin::Resource
+  extend T::Sig
+
   # Attributes
   attribute :id, form: false
   attribute :email
@@ -18,6 +20,11 @@ class UserResource < Madmin::Resource
   attribute :sessions
   attribute :profile
   attribute :enrollments
+
+  sig { params(record: User).returns(String) }
+  def self.display_name(record)
+    record.email
+  end
 
   # Uncomment this to customize the display name of records in the admin area.
   # def self.display_name(record)

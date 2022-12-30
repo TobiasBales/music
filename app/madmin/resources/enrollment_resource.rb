@@ -2,6 +2,8 @@
 # frozen_string_literal: true
 
 class EnrollmentResource < Madmin::Resource
+  extend T::Sig
+
   # Attributes
   attribute :id, form: false
   attribute :created_at, form: false
@@ -11,10 +13,10 @@ class EnrollmentResource < Madmin::Resource
   attribute :user
   attribute :course
 
-  # Uncomment this to customize the display name of records in the admin area.
-  # def self.display_name(record)
-  #   record.name
-  # end
+  sig { params(record: Enrollment).returns(String) }
+  def self.display_name(record)
+    "Enrollment #{record.user&.email} -> #{record.course&.name}"
+  end
 
   # Uncomment this to customize the default sort column and direction.
   # def self.default_sort_column

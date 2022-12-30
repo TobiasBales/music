@@ -2,6 +2,8 @@
 # frozen_string_literal: true
 
 class ExerciseResource < Madmin::Resource
+  extend T::Sig
+
   # Attributes
   attribute :id, form: false
   attribute :name
@@ -14,9 +16,10 @@ class ExerciseResource < Madmin::Resource
   attribute :course
 
   # Uncomment this to customize the display name of records in the admin area.
-  # def self.display_name(record)
-  #   record.name
-  # end
+  sig { params(record: Exercise).returns(String) }
+  def self.display_name(record)
+    record.name || super(record)
+  end
 
   # Uncomment this to customize the default sort column and direction.
   # def self.default_sort_column
