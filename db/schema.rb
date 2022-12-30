@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_29_223735) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_30_114044) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,6 +53,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_29_223735) do
   create_table "email_verification_tokens", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.index ["user_id"], name: "index_email_verification_tokens_on_user_id"
+  end
+
+  create_table "enrollments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.uuid "course_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_enrollments_on_course_id"
+    t.index ["user_id"], name: "index_enrollments_on_user_id"
   end
 
   create_table "exercises", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -113,6 +122,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_29_223735) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "courses", "instruments"
   add_foreign_key "email_verification_tokens", "users"
+  add_foreign_key "enrollments", "courses"
+  add_foreign_key "enrollments", "users"
   add_foreign_key "exercises", "courses"
   add_foreign_key "password_reset_tokens", "users"
   add_foreign_key "profiles", "users"
