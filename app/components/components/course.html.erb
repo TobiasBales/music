@@ -2,7 +2,7 @@
   title: course.name,
   subtitle: course.author.name,
   text: course.description,
-  image: course.image.url)) do |c|%>
+  image: course.image.url || "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png")) do |c|%>
   <% c.with_body do %>
     <%= render(Bootstrap::Button.new(text: button_text, to: course_path(course))) %>
   <% end %>
