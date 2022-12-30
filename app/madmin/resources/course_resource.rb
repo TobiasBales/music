@@ -7,6 +7,7 @@ class CourseResource < Madmin::Resource
   # Attributes
   attribute :id, form: false
   attribute :name
+  attribute :description, index: false
   attribute :created_at, form: false, index: false
   attribute :updated_at, form: false, index: false
   attribute :image, index: false
