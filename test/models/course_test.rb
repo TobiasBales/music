@@ -9,6 +9,7 @@ class CourseTest < ActiveSupport::TestCase
     user = users(:default)
 
     assert course.can_access?(user)
+    assert course.can_access?(nil)
   end
 
   test "#can_access? works when the user is staff" do
@@ -27,5 +28,6 @@ class CourseTest < ActiveSupport::TestCase
 
     assert course.can_access?(user_with_access)
     assert_not course.can_access?(user_without_access)
+    assert_not course.can_access?(nil)
   end
 end
