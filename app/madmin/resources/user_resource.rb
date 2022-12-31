@@ -9,6 +9,7 @@ class UserResource < Madmin::Resource
   attribute :email
   attribute :verified
   attribute :admin
+  attribute :staff
   attribute :created_at, form: false
   attribute :updated_at, form: false
   attribute :password, index: false, show: false
