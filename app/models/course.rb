@@ -14,4 +14,15 @@ class Course < ApplicationRecord
   validates :name, presence: true
 
   has_many :permissions, class_name: "CoursePermission", dependent: :destroy
+
+  sig { params(user: User).returns(T::Boolean) }
+  def can_access?(user)
+    return true if permissions.empty?
+
+    return true if user.staff
+
+    return true if permissions.find { |p| p.users.include?(user) }.present?
+
+    false
+  end
 end
