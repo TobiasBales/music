@@ -54,6 +54,9 @@ module GeneratedPathHelpersModule
   def edit_madmin_course_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def edit_madmin_course_permission_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def edit_madmin_email_verification_token_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -133,6 +136,12 @@ module GeneratedPathHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def madmin_course_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_course_permission_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_course_permissions_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def madmin_courses_path(*args); end
@@ -217,6 +226,9 @@ module GeneratedPathHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def new_madmin_course_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_madmin_course_permission_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def new_madmin_email_verification_token_path(*args); end

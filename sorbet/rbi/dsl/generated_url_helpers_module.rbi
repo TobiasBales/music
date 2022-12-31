@@ -51,6 +51,9 @@ module GeneratedUrlHelpersModule
   def edit_madmin_author_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def edit_madmin_course_permission_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def edit_madmin_course_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -130,6 +133,12 @@ module GeneratedUrlHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def madmin_authors_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_course_permission_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_course_permissions_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def madmin_course_url(*args); end
@@ -214,6 +223,9 @@ module GeneratedUrlHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def new_madmin_author_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_madmin_course_permission_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def new_madmin_course_url(*args); end
