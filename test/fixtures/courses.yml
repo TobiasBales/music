@@ -2,3 +2,8 @@ warmups:
   name: Warmups
   instrument: guitar
   author: tobias
+
+with_permission:
+  name: With Permission
+  instrument: guitar
+  author: tobias
