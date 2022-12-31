@@ -2,7 +2,9 @@
 # frozen_string_literal: true
 
 class EnrollmentsController < ApplicationController
-  before_action :authenticate
+  extend T::Sig
+
+  before_action :authenticate, except: :show
   before_action :set_course_and_enrollment
 
   def show; end
@@ -28,6 +30,16 @@ class EnrollmentsController < ApplicationController
 
   def set_course_and_enrollment
     @course = Course.find(params[:id])
-    @enrollment = Current.user.enrollment(@course) || Current.user.enrollments.build(course: @course)
+    @enrollment = build_enrollment(Current.user, @course)
+  end
+
+  sig { params(user: T.nilable(User), course: Course).returns(Enrollment) }
+  def build_enrollment(user, course)
+    return Enrollment.new(course: course) if user.nil?
+
+    existing_enrollment = user.enrollment(course)
+    return existing_enrollment if existing_enrollment.present?
+
+    user.enrollments.build(course: course)
   end
 end

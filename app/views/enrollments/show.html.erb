@@ -1,5 +1,9 @@
 <%= turbo_frame_tag @course, :enrollment do %>
-  <% if @enrollment.new_record? %>
+  <% if Current.user.nil? %>
+    <p>You must be logged in to enroll into this course.</p>
+    <%= render(Bootstrap::Button.new(text: "Sign in", to: sign_in_path)) %>
+    <%= render(Bootstrap::Button.new(text: "Sign up", to: sign_up_path, style: :secondary)) %>
+  <% elsif @enrollment.new_record? %>
     <%= render(Bootstrap::Button.new(text: "Enroll", to: enrollment_path(@course), method: :patch)) %>
   <% else %>
     <%= render(Bootstrap::Button.new(text: "Leave", to: enrollment_path(@course), method: :delete, confirm: "Are you sure?", style: :danger)) %>

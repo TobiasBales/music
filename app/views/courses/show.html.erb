@@ -16,10 +16,8 @@
       <% end %>
     <% end %>
 
-    <% if Current.user.present? %>
-      <%= render(Bootstrap::Form::Actions.new) do %>
-        <%= turbo_frame_tag @course, :enrollment, src: enrollment_path(@course) %>
-      <% end %>
+    <%= render(Bootstrap::Form::Actions.new) do %>
+      <%= turbo_frame_tag @course, :enrollment, src: enrollment_path(@course) %>
     <% end %>
   </div>
 <% end %>
