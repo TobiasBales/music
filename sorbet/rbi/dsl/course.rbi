@@ -270,6 +270,20 @@ class Course
     sig { params(value: T.nilable(::Instrument)).void }
     def instrument=(value); end
 
+    sig { returns(T::Array[T.untyped]) }
+    def permission_ids; end
+
+    sig { params(ids: T::Array[T.untyped]).returns(T::Array[T.untyped]) }
+    def permission_ids=(ids); end
+
+    # This method is created by ActiveRecord on the `Course` class because it declared `has_many :permissions`.
+    # 🔗 [Rails guide for `has_many` association](https://guides.rubyonrails.org/association_basics.html#the-has-many-association)
+    sig { returns(::CoursePermission::PrivateCollectionProxy) }
+    def permissions; end
+
+    sig { params(value: T::Enumerable[::CoursePermission]).void }
+    def permissions=(value); end
+
     sig { returns(T.nilable(::Author)) }
     def reload_author; end
 

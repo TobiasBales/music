@@ -14,6 +14,10 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   has_many :enrollments, dependent: :destroy
 
+  # rubocop:disable Rails/HasAndBelongsToMany
+  has_and_belongs_to_many :course_permissions
+  # rubocop:enable Rails/HasAndBelongsToMany
+
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, allow_nil: true, length: { minimum: 12 }, format: { with: /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/ }
 
