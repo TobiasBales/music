@@ -7,10 +7,10 @@ module Madmin
 
     def authenticate_admin_user
       session = Session.find_by(id: cookies.signed[:session_token])
-      redirect_to "/" if session.blank?
+      raise ActionController::RoutingError, "Not Found" if session.blank?
 
       Current.session = session
-      redirect_to "/" unless Current.user.admin
+      raise ActionController::RoutingError, "Not Found" unless Current.user.admin
     end
   end
 end
