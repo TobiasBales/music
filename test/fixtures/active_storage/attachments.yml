@@ -1,0 +1,4 @@
+tab_attachment:
+  name: tab
+  record: one (Tab)
+  blob: tab_blob

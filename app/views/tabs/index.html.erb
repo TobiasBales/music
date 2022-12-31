@@ -1,0 +1,18 @@
+<%= render(Bootstrap::Page.new(title: "Tabs")) do |c| %>
+  <div id="tabs">
+    <% @tabs.each do |tab| %>
+      <%= render(Bootstrap::Card.new) do |c| %>
+        <% c.with_body do %>
+          <%= render tab %>
+          <%= render(Bootstrap::Button.new(text: "Show this tab", to: tab, style: :secondary)) %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% if Current.user.admin %>
+    <%= render(Bootstrap::Form::Actions.new) do %>
+      <%= render(Bootstrap::Button.new(text: "New tab", to: new_tab_path)) %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -90,6 +90,9 @@ module GeneratedUrlHelpersModule
   def edit_rails_conductor_inbound_email_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def edit_tab_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def enrollment_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -264,6 +267,9 @@ module GeneratedUrlHelpersModule
   def new_rails_conductor_inbound_email_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def new_tab_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def password_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -364,6 +370,12 @@ module GeneratedUrlHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def sign_up_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def tab_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def tabs_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def turbo_recede_historical_location_url(*args); end

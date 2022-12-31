@@ -18,6 +18,9 @@
       <%= render(Bootstrap::Navigation.new) do |c| %>
         <%= render(Bootstrap::Navigation::Item.new(text: "Home", to: root_path)) %>
         <%= render(Bootstrap::Navigation::Item.new(text: "Courses", to: courses_path)) %>
+        <% if Current.user&.staff %>
+          <%= render(Bootstrap::Navigation::Item.new(text: "Tabs", to: tabs_path)) %>
+        <% end %>
         <% if Current.user.present? %>
           <% c.with_right_item do  %>
             <%= render(Bootstrap::Navigation::Dropdown.new(text: Current.user.email)) do %>

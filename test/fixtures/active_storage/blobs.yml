@@ -1,0 +1,1 @@
+tab_blob: <%= ActiveStorage::FixtureSet.blob filename: "tab.gp" %>

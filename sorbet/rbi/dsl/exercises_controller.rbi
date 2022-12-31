@@ -22,6 +22,7 @@ class ExercisesController
     include ::ActionController::Base::HelperMethods
     include ::ApplicationHelper
     include ::ProfilesHelper
+    include ::TabsHelper
     include ::PreviewHelper
   end
 
