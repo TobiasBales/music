@@ -15,9 +15,11 @@ class Course < ApplicationRecord
 
   has_many :permissions, class_name: "CoursePermission", dependent: :destroy
 
-  sig { params(user: User).returns(T::Boolean) }
+  sig { params(user: T.nilable(User)).returns(T::Boolean) }
   def can_access?(user)
     return true if permissions.empty?
+
+    return false if user.nil?
 
     return true if user.staff
 
