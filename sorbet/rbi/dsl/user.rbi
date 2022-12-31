@@ -688,6 +688,9 @@ class User
     def restore_password_digest!; end
 
     sig { void }
+    def restore_staff!; end
+
+    sig { void }
     def restore_updated_at!; end
 
     sig { void }
@@ -723,6 +726,12 @@ class User
     sig { returns(T::Boolean) }
     def saved_change_to_password_digest?; end
 
+    sig { returns(T.nilable([T::Boolean, T::Boolean])) }
+    def saved_change_to_staff; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_staff?; end
+
     sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
     def saved_change_to_updated_at; end
 
@@ -734,6 +743,51 @@ class User
 
     sig { returns(T::Boolean) }
     def saved_change_to_verified?; end
+
+    sig { returns(T::Boolean) }
+    def staff; end
+
+    sig { params(value: T::Boolean).returns(T::Boolean) }
+    def staff=(value); end
+
+    sig { returns(T::Boolean) }
+    def staff?; end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def staff_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def staff_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def staff_came_from_user?; end
+
+    sig { returns(T.nilable([T::Boolean, T::Boolean])) }
+    def staff_change; end
+
+    sig { returns(T.nilable([T::Boolean, T::Boolean])) }
+    def staff_change_to_be_saved; end
+
+    sig { returns(T::Boolean) }
+    def staff_changed?; end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def staff_in_database; end
+
+    sig { returns(T.nilable([T::Boolean, T::Boolean])) }
+    def staff_previous_change; end
+
+    sig { returns(T::Boolean) }
+    def staff_previously_changed?; end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def staff_previously_was; end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def staff_was; end
+
+    sig { void }
+    def staff_will_change!; end
 
     sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
     def updated_at; end
@@ -839,6 +893,9 @@ class User
 
     sig { returns(T::Boolean) }
     def will_save_change_to_password_digest?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_staff?; end
 
     sig { returns(T::Boolean) }
     def will_save_change_to_updated_at?; end
