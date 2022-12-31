@@ -9,10 +9,11 @@
     </div>
   <% end %>
   <div class="mt-3">
+    <% disabled = !@course.can_access?(Current.user) %>
     <h5>Exercises</h3>
     <%= render(Bootstrap::List::Group.new) do %>
       <% @course.exercises.order(:order).each do |exercise| %>
-        <%= render(Bootstrap::List::Item.new(text: exercise.name, to: exercise)) %>
+        <%= render(Bootstrap::List::Item.new(text: exercise.name, to: exercise, disabled: disabled)) %>
       <% end %>
     <% end %>
 
