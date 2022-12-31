@@ -1,9 +1,12 @@
 <%= render(Bootstrap::Page.new) do %>
+  <% if @enrollments.empty? %>
+    Check out the available <%= render(Bootstrap::Link.new(text: "courses", to: courses_path)) %>
+  <% end %>
   <% if Current.user.present? %>
-    <% if @enrollments.empty? %>
-      Check out the available <%= render(Bootstrap::Link.new(text: "courses", to: courses_path)) %>
-    <% else %>
-      <%= render(Components::Courses.new(courses: @enrollments.map(&:course), button_text: "Details")) %>
-    <% end %>
+    <%= render(Components::Courses.new(courses: @enrollments.map(&:course), button_text: "Details")) %>
+  <% else %>
+    <p>You can log in to have more features.</p>
+    <%= render(Bootstrap::Button.new(text: "Sign in", to: sign_in_path)) %>
+    <%= render(Bootstrap::Button.new(text: "Sign up", to: sign_up_path, style: :secondary)) %>
   <% end %>
 <% end %>
