@@ -6,6 +6,8 @@ export default class extends Controller {
     countIn: Boolean,
     metronome: Boolean,
     tab: String,
+    type: String,
+    file: String,
   };
 
   static targets = ["viewport", "wrap", "main", "overlay", "trackTemplate", "trackList", "songArtist", "songTitle", "countIn", "metronome", "loop", "print", "zoom", "layout", "playerProgress", "playPause", "stop", "playPauseIcon", "songPosition", "tab"];
@@ -35,7 +37,9 @@ export default class extends Controller {
       this.toggleCountIn();
     }
 
-    this.updateTabBpm();
+    if (this.isTex()) {
+      this.updateTabBpm();
+    }
     document.addEventListener('keypress', this.handleKeypress)
   }
 
@@ -121,11 +125,19 @@ export default class extends Controller {
   }
 
   increaseBpm() {
+    if (this.isFile()) {
+      return;
+    }
+
     this.bpmValue += 5;
     this.updateTabBpm();
   }
 
   decreaseBpm() {
+    if (this.isFile()) {
+      return;
+    }
+
     this.bpmValue -= 5;
     this.updateTabBpm();
   }
@@ -234,8 +246,18 @@ export default class extends Controller {
     return trackItem;
   }
 
+  isTex() {
+    return this.typeValue == "tex"
+  }
+
+  isFile() {
+    return this.typeValue == "file"
+  }
+
   get settings() {
+    const file = this.isFile() ? { file: this.fileValue } : {};
     return {
+      ...file,
       display: {
         staveProfile: "Tab",
       },
