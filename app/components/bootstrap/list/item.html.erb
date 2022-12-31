@@ -1,5 +1,5 @@
 <% if to.present? %>
-    <%= link_to to, class: "list-group-item list-group-item-action" do %>
+    <%= link_to to, class: "list-group-item list-group-item-action #{classes}" do %>
         <% if icon.present? %>
             <%= render Icon.new(icon: icon) %>
         <% end %>
@@ -7,7 +7,7 @@
         <%= content %>
     <% end %>
 <% else %>
-    <li class="list-group-item">
+    <li class="list-group-item <%= classes %>">
         <% if icon.present? %>
             <%= render Bootstrap::Icon.new(icon: icon) %>
         <% end %>
