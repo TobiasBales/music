@@ -21,6 +21,7 @@ class UserResource < Madmin::Resource
   attribute :sessions
   attribute :profile
   attribute :enrollments
+  attribute :course_permissions
 
   sig { params(record: User).returns(String) }
   def self.display_name(record)

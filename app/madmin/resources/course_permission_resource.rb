@@ -9,6 +9,7 @@ class CoursePermissionResource < Madmin::Resource
 
   # Associations
   attribute :course
+  attribute :users
 
   # Uncomment this to customize the display name of records in the admin area.
   # def self.display_name(record)
