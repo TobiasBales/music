@@ -11,7 +11,7 @@ class TabsTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit tabs_url
-    assert_selector "h1", text: "Tabs"
+    assert_selector "li", text: "Tabs"
   end
 
   test "should create tab" do

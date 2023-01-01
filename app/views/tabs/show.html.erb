@@ -1,4 +1,7 @@
-<%= render(Bootstrap::Page.new) do |c| %>
+<%= render(Bootstrap::Page.new(crumbs: [
+  Bootstrap::Crumb.new(text: "Tabs", to: tabs_path),
+  Bootstrap::Crumb.new(text: @tab.display_name, to: @tab)
+])) do |c| %>
   <%= render @tab %>
   <%= render(TabComponent.new(tab: @tab.tab.url, count_in: Current.profile.count_in, type: :file)) %>
 

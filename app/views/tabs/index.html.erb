@@ -1,4 +1,6 @@
-<%= render(Bootstrap::Page.new(title: "Tabs")) do |c| %>
+<%= render(Bootstrap::Page.new(crumbs: [
+  Bootstrap::Crumb.new(text: "Tabs", to: tabs_path)
+])) do |c| %>
   <div id="tabs">
     <% @tabs.each do |artist, tabs| %>
       <div class="mt-3">
