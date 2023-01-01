@@ -1,10 +1,13 @@
 <%= render(Bootstrap::Page.new(title: "Tabs")) do |c| %>
   <div id="tabs">
-    <% @tabs.each do |tab| %>
-      <%= render(Bootstrap::Card.new) do |c| %>
+    <% @tabs.each do |artist, tabs| %>
+      <%= render(Bootstrap::Card.new(title: artist)) do |c| %>
         <% c.with_body do %>
-          <%= render tab %>
-          <%= render(Bootstrap::Button.new(text: "Show this tab", to: tab, style: :secondary)) %>
+          <%= render(Bootstrap::List::Group.new) do %>
+            <% tabs.sort_by(&:song).each do |tab| %>
+              <%= render(Bootstrap::List::Item.new(text: tab.song, to: tab)) %>
+            <% end %>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>

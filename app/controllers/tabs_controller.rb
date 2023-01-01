@@ -8,7 +8,7 @@ class TabsController < ApplicationController
   before_action :set_tab, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tabs = Tab.all
+    @tabs = Tab.all.group_by(&:artist).sort
   end
 
   def show; end
