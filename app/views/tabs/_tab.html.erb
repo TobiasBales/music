@@ -2,7 +2,7 @@
   <p>
   <%= tab.artist %> - <%= tab.song %>
   </p>
-  <% if tab.album %>
+  <% if tab.album.present? %>
     <p>(<%= tab.album %>)</p>
   <% end %>
 </div>
