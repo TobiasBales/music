@@ -1,15 +1,17 @@
 <%= render(Bootstrap::Page.new(title: "Tabs")) do |c| %>
   <div id="tabs">
     <% @tabs.each do |artist, tabs| %>
-      <%= render(Bootstrap::Card.new(title: artist)) do |c| %>
-        <% c.with_body do %>
-          <%= render(Bootstrap::List::Group.new) do %>
-            <% tabs.sort_by(&:song).each do |tab| %>
-              <%= render(Bootstrap::List::Item.new(text: tab.song, to: tab)) %>
+      <div class="mt-3">
+        <%= render(Bootstrap::Card.new(title: artist)) do |c| %>
+          <% c.with_body do %>
+            <%= render(Bootstrap::List::Group.new) do %>
+              <% tabs.sort_by(&:song).each do |tab| %>
+                <%= render(Bootstrap::List::Item.new(text: tab.song, to: tab)) %>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
-      <% end %>
+      </div>
     <% end %>
   </div>
 
