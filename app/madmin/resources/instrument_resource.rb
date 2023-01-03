@@ -15,7 +15,7 @@ class InstrumentResource < Madmin::Resource
 
   sig { params(record: Instrument).returns(String) }
   def self.display_name(record)
-    record.name || super(record)
+    record.name
   end
 
   # Uncomment this to customize the default sort column and direction.

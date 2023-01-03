@@ -18,7 +18,7 @@ class ExerciseResource < Madmin::Resource
   # Uncomment this to customize the display name of records in the admin area.
   sig { params(record: Exercise).returns(String) }
   def self.display_name(record)
-    record.name || super(record)
+    record.name
   end
 
   # Uncomment this to customize the default sort column and direction.

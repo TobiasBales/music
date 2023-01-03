@@ -21,7 +21,7 @@ class CourseResource < Madmin::Resource
 
   sig { params(record: Course).returns(String) }
   def self.display_name(record)
-    record.name || super(record)
+    record.name
   end
 
   sig { returns(String) }

@@ -376,10 +376,10 @@ class Profile
   end
 
   module GeneratedAttributeMethods
-    sig { returns(T.nilable(T::Boolean)) }
+    sig { returns(T::Boolean) }
     def count_in; end
 
-    sig { params(value: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+    sig { params(value: T::Boolean).returns(T::Boolean) }
     def count_in=(value); end
 
     sig { returns(T::Boolean) }
@@ -394,10 +394,10 @@ class Profile
     sig { returns(T::Boolean) }
     def count_in_came_from_user?; end
 
-    sig { returns(T.nilable([T.nilable(T::Boolean), T.nilable(T::Boolean)])) }
+    sig { returns(T.nilable([T::Boolean, T::Boolean])) }
     def count_in_change; end
 
-    sig { returns(T.nilable([T.nilable(T::Boolean), T.nilable(T::Boolean)])) }
+    sig { returns(T.nilable([T::Boolean, T::Boolean])) }
     def count_in_change_to_be_saved; end
 
     sig { returns(T::Boolean) }
@@ -406,7 +406,7 @@ class Profile
     sig { returns(T.nilable(T::Boolean)) }
     def count_in_in_database; end
 
-    sig { returns(T.nilable([T.nilable(T::Boolean), T.nilable(T::Boolean)])) }
+    sig { returns(T.nilable([T::Boolean, T::Boolean])) }
     def count_in_previous_change; end
 
     sig { returns(T::Boolean) }
@@ -526,7 +526,7 @@ class Profile
     sig { void }
     def restore_user_id!; end
 
-    sig { returns(T.nilable([T.nilable(T::Boolean), T.nilable(T::Boolean)])) }
+    sig { returns(T.nilable([T::Boolean, T::Boolean])) }
     def saved_change_to_count_in; end
 
     sig { returns(T::Boolean) }
