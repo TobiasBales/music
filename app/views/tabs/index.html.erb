@@ -17,7 +17,7 @@
     <% end %>
   </div>
 
-  <% if Current.user.admin %>
+  <% if TabPolicy.new(Current.user, Tab.new).new? %>
     <%= render(Bootstrap::Form::Actions.new) do %>
       <%= render(Bootstrap::Button.new(text: "New tab", to: new_tab_path)) %>
     <% end %>

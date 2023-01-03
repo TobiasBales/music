@@ -3,24 +3,30 @@
 
 class TabsController < ApplicationController
   before_action :authenticate
-  before_action :only_staff
 
   before_action :set_tab, only: [:show, :edit, :update, :destroy]
 
   def index
+    authorize Tab.new, :index?
     @tabs = Tab.all.group_by(&:artist).sort
   end
 
-  def show; end
+  def show
+    authorize @tab
+  end
 
   def new
     @tab = Tab.new
+    authorize @tab
   end
 
-  def edit; end
+  def edit
+    authorize @tab
+  end
 
   def create
     @tab = Tab.new(tab_params)
+    authorize @tab
 
     if @tab.save
       redirect_to tab_url(@tab), notice: "Tab was successfully created."
@@ -30,6 +36,8 @@ class TabsController < ApplicationController
   end
 
   def update
+    authorize @tab
+
     if @tab.update(tab_params)
       redirect_to tab_url(@tab), notice: "Tab was successfully updated."
     else
@@ -38,6 +46,8 @@ class TabsController < ApplicationController
   end
 
   def destroy
+    authorize @tab
+
     @tab.destroy
 
     redirect_to tabs_url, notice: "Tab was successfully destroyed."
@@ -54,9 +64,5 @@ class TabsController < ApplicationController
   def tab_params
     tabs_params = T.cast(params.require(:tab), ActionController::Parameters)
     tabs_params.permit(:artist, :album, :song, :tab)
-  end
-
-  def only_staff
-    raise ActionController::RoutingError, "Not Found" unless Current.user.staff || Current.user.admin
   end
 end

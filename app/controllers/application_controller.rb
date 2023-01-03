@@ -2,6 +2,10 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  extend T::Sig
+
+  include Pundit::Authorization
+
   before_action :set_current_request_details
   before_action :load_current_session
 
@@ -24,5 +28,10 @@ class ApplicationController < ActionController::Base
   def set_current_request_details
     Current.user_agent = request.user_agent
     Current.ip_address = request.ip
+  end
+
+  sig { returns(T.nilable(User)) }
+  def current_user
+    Current.user
   end
 end
