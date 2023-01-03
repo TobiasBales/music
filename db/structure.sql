@@ -393,7 +393,8 @@ CREATE TABLE public.profiles (
     count_in boolean NOT NULL,
     user_id uuid NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    mute_exercises boolean DEFAULT false NOT NULL
 );
 
 
@@ -1004,6 +1005,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20221231212335'),
 ('20221231231117'),
 ('20230103204915'),
-('20230103211349');
+('20230103211349'),
+('20230103222838');
 
 
