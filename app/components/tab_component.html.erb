@@ -31,10 +31,10 @@
          <div class="at-controls">
            <div class="at-controls-left">
              <a data-action="click->tab-component#stop" data-tab-component-target="stop" class="btn at-player-stop disabled">
-               <i class="fas fa-step-backward"></i>
+               <i class="bi bi-skip-backward"></i>
              </a>
              <a data-action="click->tab-component#playPause" data-tab-component-target="playPause" class="btn at-player-play-pause disabled">
-               <i data-tab-component-target="playPauseIcon" class="fas fa-play"></i>
+               <i data-tab-component-target="playPauseIcon" class="bi bi-play"></i>
              </a>
              <span data-tab-component-target="playerProgress" class="at-player-progress">0%</span>
              <div class="at-song-info">
@@ -46,26 +46,26 @@
            <div class="at-controls-right">
              <% if type == :tex %>
                <a data-action="click->tab-component#increaseBpm" class="btn">
-                 <i class="fas fa-plus"></i>
+                 <i class="bi bi-plus"></i>
                </a>
                <a data-action="click->tab-component#decreaseBpm" class="btn">
-                 <i class="fas fa-minus"></i>
+                 <i class="bi bi-dash"></i>
                </a>
              <% end %>
              <a data-action="click->tab-component#toggleCountIn" data-tab-component-target="countIn" class="btn toggle at-count-in">
-               <i class="fas fa-hourglass-half"></i>
+               <i class="bi bi-hourglass-bottom"></i>
              </a>  
              <a data-action="click->tab-component#toggleMetronome" data-tab-component-target="metronome" class="btn at-metronome">
-               <i class="fas fa-edit"></i>
+               <i class="bi bi-pencil-square"></i>
              </a>
              <a data-action="click->tab-component#toggleLoop" data-tab-component-target="loop" class="btn at-loop">
-               <i class="fas fa-retweet"></i>
+               <i class="bi bi-repeat"></i>
              </a>
              <a data-action="click->tab-component#print" data-tab-component-target="print" class="btn at-print">
-               <i class="fas fa-print"></i>
+               <i class="bi bi-printer"></i>
              </a>
              <div data-tab-component-target="zoom" class="at-zoom">
-               <i class="fas fa-tab-component"></i>
+               <i class="bi bi-tab-component"></i>
                <select>
                  <option value="25">25%</option>
                  <option value="50">50%</option>
@@ -91,7 +91,7 @@
        <template data-tab-component-target="trackTemplate" id="at-track-template">
          <div class="at-track">
            <div class="at-track-icon">
-             <i class="fas fa-guitar"></i>
+             <i class="bi bi-guitar"></i>
            </div>
            <div class="at-track-details">
              <div class="at-track-name"></div>
