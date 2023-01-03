@@ -11,7 +11,7 @@ module Identity
 
     test "updating the email" do
       click_on @user.email
-      click_on "Account"
+      click_on "Profile"
       click_on "Change email address"
 
       fill_in "New email", with: "new_email@hey.com"
@@ -24,7 +24,7 @@ module Identity
       @user.update! verified: false
 
       click_on @user.email
-      click_on "Account"
+      click_on "Profile"
       click_on "Change email address"
       click_on "Re-send verification email"
 

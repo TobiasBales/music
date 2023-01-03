@@ -12,7 +12,7 @@ class SessionsTest < ApplicationSystemTestCase
     sign_in_as @user
 
     click_on @user.email
-    click_on "Account"
+    click_on "Profile"
     click_on "Devices & Sessions"
 
     assert_selector "h1", text: "Sessions"

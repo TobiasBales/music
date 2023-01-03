@@ -4,4 +4,11 @@
   <%= render(Bootstrap::Form::Actions.new) do %>
     <%= render(Bootstrap::Button.new(text: "Edit your profile", to: edit_profile_path, style: :secondary)) %>
   <% end %>
+  
+  <br/> 
+  <%= render(Bootstrap::Link.new(text: "Change email address", to: edit_identity_email_path)) %>
+  <br/>
+  <%= render(Bootstrap::Link.new(text: "Change password", to: edit_password_path)) %>
+  <br/>
+  <%= render(Bootstrap::Link.new(text: "Devices & Sessions", to: sessions_path)) %>
 <% end %>
