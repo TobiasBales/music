@@ -13,6 +13,7 @@
 
 
   <%= render(Bootstrap::Form::Checkbox.new(form: form, field: :count_in)) %>
+  <%= render(Bootstrap::Form::Checkbox.new(form: form, field: :mute_exercises)) %>
 
   <%= render(Bootstrap::Form::Actions.new) do %>
     <%= render(Bootstrap::Form::Button.new(form: form, label: "Save", type: :submit)) %>

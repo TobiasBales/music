@@ -8,6 +8,7 @@ export default class extends Controller {
     tab: String,
     type: String,
     file: String,
+    muted: Boolean,
   };
 
   static targets = ["viewport", "wrap", "main", "overlay", "trackTemplate", "trackList", "songArtist", "songTitle", "countIn", "metronome", "loop", "print", "zoom", "layout", "playerProgress", "playPause", "stop", "playPauseIcon", "songPosition", "tab", "muteIcon", "mute"];
@@ -15,7 +16,6 @@ export default class extends Controller {
   connect() {
     this.previousTime = -1;
     this.bpm = this.bpmValue;
-    this.muted = false;
     this.wakeLock = false;
 
     this.api = new alphaTab.AlphaTabApi(this.mainTarget, this.settings);
@@ -37,6 +37,10 @@ export default class extends Controller {
 
     if (this.countInValue) {
       this.toggleCountIn();
+    }
+
+    if (this.mutedValue) {
+      this.toggleMute();
     }
 
     if (this.isTex()) {

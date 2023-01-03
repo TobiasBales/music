@@ -25,6 +25,6 @@ class ProfilesController < ApplicationController
 
   def profile_params
     profile_params = T.cast(params.require(:profile), ActionController::Parameters)
-    profile_params.permit(:count_in)
+    profile_params.permit(:count_in, :mute_exercises)
   end
 end
