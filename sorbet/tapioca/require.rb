@@ -4,5 +4,6 @@
 require "active_support/core_ext/integer/time"
 require "bootsnap/setup"
 require "bundler/setup"
+require "ffi"
 require "rails/all"
 require "rails/test_help"

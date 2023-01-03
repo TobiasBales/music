@@ -1171,6 +1171,13 @@ class Mail::Configuration
 
   # source://mail//lib/mail/configuration.rb#52
   def retriever_method(method = T.unsafe(nil), settings = T.unsafe(nil)); end
+
+  class << self
+    private
+
+    def allocate; end
+    def new(*_arg0); end
+  end
 end
 
 # source://mail//lib/mail/constants.rb#4
@@ -7072,7 +7079,7 @@ class Mail::Parsers::ReceivedParser::ReceivedStruct < ::Struct
   end
 end
 
-# source://mail//lib/mail/part.rb#13
+# source://mail//lib/mail/part.rb#7
 class Mail::Part < ::Mail::Message
   # Either returns the action if the message has just a single report, or an
   # array of all the actions, one for each report

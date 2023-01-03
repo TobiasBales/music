@@ -17074,7 +17074,7 @@ class Aws::S3::Encryption::Client
   # source://aws-sdk-core/3.168.4/lib/aws-sdk-core/deprecations.rb#65
   def initialize(*args, &block); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def build_request(*args, **_arg1, &block); end
 
   # @return [S3::Client]
@@ -17082,10 +17082,10 @@ class Aws::S3::Encryption::Client
   # source://aws-sdk-s3//lib/aws-sdk-s3/encryption/client.rb#245
   def client; end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def config(*args, **_arg1, &block); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def delete_object(*args, **_arg1, &block); end
 
   # @return [Symbol<:metadata, :instruction_file>]
@@ -17167,7 +17167,7 @@ class Aws::S3::Encryption::Client
   # source://aws-sdk-s3//lib/aws-sdk-s3/encryption/client.rb#289
   def get_object(params = T.unsafe(nil), &block); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def head_object(*args, **_arg1, &block); end
 
   # @return [String] When {#envelope_location} is `:instruction_file`,
@@ -18066,7 +18066,7 @@ class Aws::S3::EncryptionV2::Client
   # source://aws-sdk-s3//lib/aws-sdk-s3/encryptionV2/client.rb#310
   def initialize(options = T.unsafe(nil)); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def build_request(*args, **_arg1, &block); end
 
   # @return [S3::Client]
@@ -18074,10 +18074,10 @@ class Aws::S3::EncryptionV2::Client
   # source://aws-sdk-s3//lib/aws-sdk-s3/encryptionV2/client.rb#322
   def client; end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def config(*args, **_arg1, &block); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def delete_object(*args, **_arg1, &block); end
 
   # @return [Symbol<:metadata, :instruction_file>]
@@ -18166,7 +18166,7 @@ class Aws::S3::EncryptionV2::Client
   # source://aws-sdk-s3//lib/aws-sdk-s3/encryptionV2/client.rb#398
   def get_object(params = T.unsafe(nil), &block); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def head_object(*args, **_arg1, &block); end
 
   # @return [String] When {#envelope_location} is `:instruction_file`,
@@ -24515,7 +24515,7 @@ end
 #
 # @api private
 #
-# source://aws-sdk-s3//lib/aws-sdk-s3/plugins/md5s.rb#13
+# source://aws-sdk-s3//lib/aws-sdk-s3/plugins/md5s.rb#11
 class Aws::S3::Plugins::Md5s < ::Seahorse::Client::Plugin
   # @api private
   #
@@ -24605,7 +24605,7 @@ class Aws::S3::Plugins::RetryableBlockIO
   # source://aws-sdk-s3//lib/aws-sdk-s3/plugins/streaming_retry.rb#15
   def initialize(block_io); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def read(*args, **_arg1, &block); end
 
   # @api private
@@ -24613,7 +24613,7 @@ class Aws::S3::Plugins::RetryableBlockIO
   # source://aws-sdk-s3//lib/aws-sdk-s3/plugins/streaming_retry.rb#21
   def rewind; end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def size(*args, **_arg1, &block); end
 
   # @api private
@@ -24621,7 +24621,7 @@ class Aws::S3::Plugins::RetryableBlockIO
   # source://aws-sdk-s3//lib/aws-sdk-s3/plugins/streaming_retry.rb#19
   def truncate(_integer); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def write(*args, **_arg1, &block); end
 end
 
@@ -24639,13 +24639,13 @@ class Aws::S3::Plugins::RetryableManagedFile
   # source://aws-sdk-s3//lib/aws-sdk-s3/plugins/streaming_retry.rb#30
   def initialize(managed_file); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def close(*args, **_arg1, &block); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def open?(*args, **_arg1, &block); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def read(*args, **_arg1, &block); end
 
   # @api private
@@ -24653,7 +24653,7 @@ class Aws::S3::Plugins::RetryableManagedFile
   # source://aws-sdk-s3//lib/aws-sdk-s3/plugins/streaming_retry.rb#36
   def rewind; end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def size(*args, **_arg1, &block); end
 
   # @api private
@@ -24661,7 +24661,7 @@ class Aws::S3::Plugins::RetryableManagedFile
   # source://aws-sdk-s3//lib/aws-sdk-s3/plugins/streaming_retry.rb#34
   def truncate(_integer); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def write(*args, **_arg1, &block); end
 end
 

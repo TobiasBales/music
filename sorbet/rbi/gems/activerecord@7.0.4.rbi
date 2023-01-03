@@ -6483,19 +6483,19 @@ end
 class ActiveRecord::AttributeMethods::GeneratedAttributeMethods < ::Module
   include ::Mutex_m
 
-  # source://mutex_m/0.1.1/mutex_m.rb#93
+  # source://mutex_m/0.1.2/mutex_m.rb#93
   def lock; end
 
-  # source://mutex_m/0.1.1/mutex_m.rb#83
+  # source://mutex_m/0.1.2/mutex_m.rb#83
   def locked?; end
 
-  # source://mutex_m/0.1.1/mutex_m.rb#78
+  # source://mutex_m/0.1.2/mutex_m.rb#78
   def synchronize(&block); end
 
-  # source://mutex_m/0.1.1/mutex_m.rb#88
+  # source://mutex_m/0.1.2/mutex_m.rb#88
   def try_lock; end
 
-  # source://mutex_m/0.1.1/mutex_m.rb#98
+  # source://mutex_m/0.1.2/mutex_m.rb#98
   def unlock; end
 end
 
@@ -12525,10 +12525,10 @@ class ActiveRecord::ConnectionAdapters::PoolConfig
   # source://activerecord//lib/active_record/connection_adapters/pool_config.rb#38
   def disconnect!; end
 
-  # source://mutex_m/0.1.1/mutex_m.rb#93
+  # source://mutex_m/0.1.2/mutex_m.rb#93
   def lock; end
 
-  # source://mutex_m/0.1.1/mutex_m.rb#83
+  # source://mutex_m/0.1.2/mutex_m.rb#83
   def locked?; end
 
   # source://activerecord//lib/active_record/connection_adapters/pool_config.rb#53
@@ -12556,13 +12556,13 @@ class ActiveRecord::ConnectionAdapters::PoolConfig
   # source://activerecord//lib/active_record/connection_adapters/pool_config.rb#8
   def shard; end
 
-  # source://mutex_m/0.1.1/mutex_m.rb#78
+  # source://mutex_m/0.1.2/mutex_m.rb#78
   def synchronize(&block); end
 
-  # source://mutex_m/0.1.1/mutex_m.rb#88
+  # source://mutex_m/0.1.2/mutex_m.rb#88
   def try_lock; end
 
-  # source://mutex_m/0.1.1/mutex_m.rb#98
+  # source://mutex_m/0.1.2/mutex_m.rb#98
   def unlock; end
 
   class << self
@@ -17243,19 +17243,19 @@ class ActiveRecord::Delegation::GeneratedRelationMethods < ::Module
   # source://activerecord//lib/active_record/relation/delegation.rb#60
   def generate_method(method); end
 
-  # source://mutex_m/0.1.1/mutex_m.rb#93
+  # source://mutex_m/0.1.2/mutex_m.rb#93
   def lock; end
 
-  # source://mutex_m/0.1.1/mutex_m.rb#83
+  # source://mutex_m/0.1.2/mutex_m.rb#83
   def locked?; end
 
-  # source://mutex_m/0.1.1/mutex_m.rb#78
+  # source://mutex_m/0.1.2/mutex_m.rb#78
   def synchronize(&block); end
 
-  # source://mutex_m/0.1.1/mutex_m.rb#88
+  # source://mutex_m/0.1.2/mutex_m.rb#88
   def try_lock; end
 
-  # source://mutex_m/0.1.1/mutex_m.rb#98
+  # source://mutex_m/0.1.2/mutex_m.rb#98
   def unlock; end
 end
 
@@ -22475,6 +22475,8 @@ end
 #
 # source://activerecord//lib/active_record/migration.rb#547
 class ActiveRecord::Migration
+  include ::StrongMigrations::Migration
+
   # @return [Migration] a new instance of Migration
   #
   # source://activerecord//lib/active_record/migration.rb#684
@@ -22498,12 +22500,12 @@ class ActiveRecord::Migration
   # source://activerecord//lib/active_record/migration.rb#864
   def exec_migration(conn, direction); end
 
-  # source://activerecord//lib/active_record/migration.rb#918
-  def method_missing(method, *arguments, **_arg2, &block); end
+  # source://strong_migrations/1.4.0/lib/strong_migrations/migration.rb#9
+  def method_missing(method, *args, **_arg2); end
 
   # Execute this migration in the named direction
   #
-  # source://activerecord//lib/active_record/migration.rb#843
+  # source://strong_migrations/1.4.0/lib/strong_migrations/migration.rb#3
   def migrate(direction); end
 
   # Returns the value of attribute name.
@@ -23596,6 +23598,8 @@ end
 
 # source://activerecord//lib/active_record/migration.rb#1238
 class ActiveRecord::Migrator
+  include ::StrongMigrations::Migrator
+
   # @return [Migrator] a new instance of Migrator
   #
   # source://activerecord//lib/active_record/migration.rb#1250
@@ -23609,6 +23613,11 @@ class ActiveRecord::Migrator
 
   # source://activerecord//lib/active_record/migration.rb#1263
   def current_version; end
+
+  # Wrap the migration in a transaction only if supported by the adapter.
+  #
+  # source://strong_migrations/1.4.0/lib/strong_migrations/migrator.rb#3
+  def ddl_transaction(migration, *args); end
 
   # source://activerecord//lib/active_record/migration.rb#1312
   def load_migrated; end
@@ -23632,11 +23641,6 @@ class ActiveRecord::Migrator
   def runnable; end
 
   private
-
-  # Wrap the migration in a transaction only if supported by the adapter.
-  #
-  # source://activerecord//lib/active_record/migration.rb#1409
-  def ddl_transaction(migration, &block); end
 
   # @return [Boolean]
   #
@@ -28594,7 +28598,7 @@ end
 # Base class for AggregateReflection and AssociationReflection. Objects of
 # AggregateReflection and AssociationReflection are returned by the Reflection::ClassMethods.
 #
-# source://activerecord//lib/active_record/reflection.rb#333
+# source://activerecord//lib/active_record/reflection.rb#329
 class ActiveRecord::Reflection::MacroReflection < ::ActiveRecord::Reflection::AbstractReflection
   # @return [MacroReflection] a new instance of MacroReflection
   #
@@ -30549,6 +30553,8 @@ class ActiveRecord::SchemaDumper
 
     # source://activerecord//lib/active_record/schema_dumper.rb#39
     def generate_options(config); end
+
+    def new(*_arg0); end
   end
 end
 
@@ -31916,6 +31922,7 @@ class ActiveRecord::Tasks::DatabaseNotSupported < ::StandardError; end
 # source://activerecord//lib/active_record/tasks/database_tasks.rb#38
 module ActiveRecord::Tasks::DatabaseTasks
   extend ::ActiveRecord::Tasks::DatabaseTasks
+  extend ::StrongMigrations::DatabaseTasks
 
   # source://activerecord//lib/active_record/tasks/database_tasks.rb#470
   def cache_dump_filename(db_config_name, schema_cache_path: T.unsafe(nil)); end

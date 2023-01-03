@@ -9,6 +9,7 @@ gem "aws-sdk-s3", require: false
 gem "bcrypt"
 gem "bootsnap", require: false
 gem "cssbundling-rails"
+gem "image_processing"
 gem "jbuilder"
 gem "jsbundling-rails"
 gem "pg", "~> 1.1"

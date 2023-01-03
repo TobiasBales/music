@@ -4765,7 +4765,7 @@ end
 
 # @api private
 #
-# source://aws-sdk-core//lib/aws-sdk-core/plugins/http_checksum.rb#9
+# source://aws-sdk-core//lib/aws-sdk-core/plugins/http_checksum.rb#8
 class Aws::Plugins::HttpChecksum < ::Seahorse::Client::Plugin
   # @api private
   #
@@ -5392,7 +5392,7 @@ Aws::Plugins::Retries::RetryQuota::TIMEOUT_RETRY_COST = T.let(T.unsafe(nil), Int
 
 # @api private
 #
-# source://aws-sdk-core//lib/aws-sdk-core/plugins/retry_errors.rb#13
+# source://aws-sdk-core//lib/aws-sdk-core/plugins/retry_errors.rb#12
 class Aws::Plugins::RetryErrors < ::Seahorse::Client::Plugin
   # @api private
   #
@@ -5441,7 +5441,7 @@ Aws::Plugins::RetryErrors::FULL_JITTER = T.let(T.unsafe(nil), Proc)
 
 # @api private
 #
-# source://aws-sdk-core//lib/aws-sdk-core/plugins/retry_errors.rb#227
+# source://aws-sdk-core//lib/aws-sdk-core/plugins/retry_errors.rb#226
 class Aws::Plugins::RetryErrors::Handler < ::Seahorse::Client::Handler
   # @api private
   #
@@ -5565,7 +5565,7 @@ Aws::Plugins::RetryErrors::NO_JITTER = T.let(T.unsafe(nil), Proc)
 
 # @api private
 #
-# source://aws-sdk-core//lib/aws-sdk-core/plugins/sign.rb#10
+# source://aws-sdk-core//lib/aws-sdk-core/plugins/sign.rb#8
 class Aws::Plugins::Sign < ::Seahorse::Client::Plugin
   # @api private
   #
@@ -7608,16 +7608,16 @@ class Aws::S3::Encryption::Client
   # source://aws-sdk-core//lib/aws-sdk-core/deprecations.rb#65
   def initialize(*args, &block); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def build_request(*args, **_arg1, &block); end
 
   # source://aws-sdk-s3/1.117.2/lib/aws-sdk-s3/encryption/client.rb#245
   def client; end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def config(*args, **_arg1, &block); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def delete_object(*args, **_arg1, &block); end
 
   # source://aws-sdk-s3/1.117.2/lib/aws-sdk-s3/encryption/client.rb#252
@@ -7626,7 +7626,7 @@ class Aws::S3::Encryption::Client
   # source://aws-sdk-s3/1.117.2/lib/aws-sdk-s3/encryption/client.rb#289
   def get_object(params = T.unsafe(nil), &block); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def head_object(*args, **_arg1, &block); end
 
   # source://aws-sdk-s3/1.117.2/lib/aws-sdk-s3/encryption/client.rb#257
@@ -16683,7 +16683,7 @@ class Seahorse::Client::Plugins::ContentLength < ::Seahorse::Client::Plugin; end
 
 # @api private
 #
-# source://aws-sdk-core//lib/seahorse/client/plugins/content_length.rb#12
+# source://aws-sdk-core//lib/seahorse/client/plugins/content_length.rb#9
 class Seahorse::Client::Plugins::ContentLength::Handler < ::Seahorse::Client::Handler
   # @api private
   #
@@ -16780,7 +16780,7 @@ class Seahorse::Client::Plugins::ReadCallbackIO
   # source://aws-sdk-core//lib/seahorse/client/plugins/request_callback.rb#34
   def read(*args); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def size(*args, **_arg1, &block); end
 
   private
@@ -17053,7 +17053,7 @@ class Seahorse::Client::RequestContext
   def retries=(_arg0); end
 end
 
-# source://aws-sdk-core//lib/seahorse/client/response.rb#11
+# source://aws-sdk-core//lib/seahorse/client/response.rb#7
 class Seahorse::Client::Response
   # @option options
   # @option options

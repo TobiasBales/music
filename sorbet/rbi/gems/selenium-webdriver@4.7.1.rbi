@@ -4076,13 +4076,13 @@ class Selenium::WebDriver::Logger
   # source://selenium-webdriver//lib/selenium/webdriver/common/logger.rb#51
   def initialize(progname = T.unsafe(nil)); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def close(*args, **_arg1, &block); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def debug(*args, **_arg1, &block); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def debug?(*args, **_arg1, &block); end
 
   # Marks code as deprecated with/without replacement.
@@ -4096,16 +4096,16 @@ class Selenium::WebDriver::Logger
   # source://selenium-webdriver//lib/selenium/webdriver/common/logger.rb#115
   def deprecate(old, new = T.unsafe(nil), id: T.unsafe(nil), reference: T.unsafe(nil), &block); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def error(*args, **_arg1, &block); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def error?(*args, **_arg1, &block); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def fatal(*args, **_arg1, &block); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def fatal?(*args, **_arg1, &block); end
 
   # Will not log the provided ID.
@@ -4115,10 +4115,10 @@ class Selenium::WebDriver::Logger
   # source://selenium-webdriver//lib/selenium/webdriver/common/logger.rb#85
   def ignore(id); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def info(*args, **_arg1, &block); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def info?(*args, **_arg1, &block); end
 
   # Returns IO object used by logger internally.
@@ -4134,10 +4134,10 @@ class Selenium::WebDriver::Logger
   # source://selenium-webdriver//lib/selenium/webdriver/common/logger.rb#76
   def io; end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def level(*args, **_arg1, &block); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def level=(*args, **_arg1, &block); end
 
   # Changes logger output to a new IO.
@@ -4156,7 +4156,7 @@ class Selenium::WebDriver::Logger
   # source://selenium-webdriver//lib/selenium/webdriver/common/logger.rb#96
   def warn(message, id: T.unsafe(nil)); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def warn?(*args, **_arg1, &block); end
 
   private

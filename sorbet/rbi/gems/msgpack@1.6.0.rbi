@@ -18,8 +18,6 @@ end
 # source://activesupport/7.0.4/lib/active_support/core_ext/array/deprecated_conversions.rb#4
 Array::NOT_SET = T.let(T.unsafe(nil), Object)
 
-Bignum = Integer
-
 # source://msgpack//lib/msgpack/core_ext.rb#37
 class FalseClass
   include ::MessagePack::CoreExt
@@ -60,6 +58,8 @@ class Integer < ::Numeric
   # source://msgpack//lib/msgpack/core_ext.rb#102
   def to_msgpack_with_packer(packer); end
 end
+
+Integer::GMP_VERSION = T.let(T.unsafe(nil), String)
 
 # MessagePack extention packer and unpacker for built-in Time class
 #

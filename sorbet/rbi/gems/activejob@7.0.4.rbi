@@ -1434,6 +1434,41 @@ class ActiveJob::QueueAdapters::InlineAdapter
   def enqueue_at(*_arg0); end
 end
 
+# == Que adapter for Active Job
+#
+# Que is a high-performance alternative to DelayedJob or QueueClassic that
+# improves the reliability of your application by protecting your jobs with
+# the same ACID guarantees as the rest of your data. Que is a queue for
+# Ruby and PostgreSQL that manages jobs using advisory locks.
+#
+# Read more about Que {here}[https://github.com/chanks/que].
+#
+# To use Que set the queue_adapter config to +:que+.
+#
+#   Rails.application.config.active_job.queue_adapter = :que
+#
+# source://activejob//lib/active_job/queue_adapters/que_adapter.rb#19
+class ActiveJob::QueueAdapters::QueAdapter
+  # source://activejob//lib/active_job/queue_adapters/que_adapter.rb#20
+  def enqueue(job); end
+
+  # source://activejob//lib/active_job/queue_adapters/que_adapter.rb#34
+  def enqueue_at(job, timestamp); end
+
+  private
+
+  # @return [Boolean]
+  #
+  # source://activejob//lib/active_job/queue_adapters/que_adapter.rb#49
+  def require_job_options_kwarg?; end
+end
+
+# source://activejob//lib/active_job/queue_adapters/que_adapter.rb#54
+class ActiveJob::QueueAdapters::QueAdapter::JobWrapper < ::Que::Job
+  # source://que/2.2.0/lib/que/active_job/extensions.rb#78
+  def run(args); end
+end
+
 # == Test adapter for Active Job
 #
 # The test adapter should be used only in testing. Along with
@@ -1908,6 +1943,11 @@ class ActiveJob::Serializers::ObjectSerializer
 
     # source://activejob//lib/active_job/serializers/object_serializer.rb#28
     def serialize?(*_arg0, **_arg1, &_arg2); end
+
+    private
+
+    def allocate; end
+    def new(*_arg0); end
   end
 end
 

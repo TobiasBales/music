@@ -824,6 +824,7 @@ end
 # source://view_component//lib/view_component/deprecation.rb#6
 ViewComponent::DEPRECATION_HORIZON = T.let(T.unsafe(nil), String)
 
+# source://view_component//lib/view_component/deprecation.rb#7
 ViewComponent::Deprecation = T.let(T.unsafe(nil), ActiveSupport::Deprecation)
 
 # source://view_component//lib/view_component/engine.rb#7

@@ -119,7 +119,7 @@ end
 # object you create, sibling notifiers can be initialized with
 # #def_notifier.
 #
-# source://irb//lib/irb/notifier.rb#122
+# source://irb//lib/irb/notifier.rb#120
 class IRB::Notifier::CompositeNotifier < ::IRB::Notifier::AbstractNotifier
   # Create a new composite notifier object with the given +prefix+, and
   # +base_notifier+ to use for output.
@@ -254,7 +254,7 @@ end
 # This notifier is used as the +zero+ index, or level +0+, for
 # CompositeNotifier#notifiers, and will not output messages of any sort.
 #
-# source://irb//lib/irb/notifier.rb#220
+# source://irb//lib/irb/notifier.rb#219
 class IRB::Notifier::NoMsgNotifier < ::IRB::Notifier::LeveledNotifier
   # Creates a new notifier that should not be used to output messages.
   #

@@ -851,6 +851,7 @@ class ActionView::ActionViewError < ::StandardError; end
 # source://actionview//lib/action_view/base.rb#141
 class ActionView::Base
   include ::ActionView::Context
+  include ::ERB::Escape
   include ::ERB::Util
   include ::ActiveSupport::Benchmarkable
   include ::ActionView::Helpers::ActiveModelHelper
@@ -9385,55 +9386,55 @@ module ActionView::Helpers::SanitizeHelper::ClassMethods
   # source://actionview//lib/action_view/helpers/sanitize_helper.rb#135
   def sanitized_allowed_attributes; end
 
-  # source://rails-html-sanitizer/1.4.3/lib/rails-html-sanitizer.rb#50
+  # source://rails-html-sanitizer/1.4.4/lib/rails-html-sanitizer.rb#50
   def sanitized_allowed_attributes=(attributes); end
 
-  # source://rails-html-sanitizer/1.4.3/lib/rails-html-sanitizer.rb#63
+  # source://rails-html-sanitizer/1.4.4/lib/rails-html-sanitizer.rb#63
   def sanitized_allowed_css_keywords; end
 
-  # source://rails-html-sanitizer/1.4.3/lib/rails-html-sanitizer.rb#64
+  # source://rails-html-sanitizer/1.4.4/lib/rails-html-sanitizer.rb#64
   def sanitized_allowed_css_keywords=(_); end
 
-  # source://rails-html-sanitizer/1.4.3/lib/rails-html-sanitizer.rb#63
+  # source://rails-html-sanitizer/1.4.4/lib/rails-html-sanitizer.rb#63
   def sanitized_allowed_css_properties; end
 
-  # source://rails-html-sanitizer/1.4.3/lib/rails-html-sanitizer.rb#64
+  # source://rails-html-sanitizer/1.4.4/lib/rails-html-sanitizer.rb#64
   def sanitized_allowed_css_properties=(_); end
 
-  # source://rails-html-sanitizer/1.4.3/lib/rails-html-sanitizer.rb#63
+  # source://rails-html-sanitizer/1.4.4/lib/rails-html-sanitizer.rb#63
   def sanitized_allowed_protocols; end
 
-  # source://rails-html-sanitizer/1.4.3/lib/rails-html-sanitizer.rb#64
+  # source://rails-html-sanitizer/1.4.4/lib/rails-html-sanitizer.rb#64
   def sanitized_allowed_protocols=(_); end
 
   # source://actionview//lib/action_view/helpers/sanitize_helper.rb#131
   def sanitized_allowed_tags; end
 
-  # source://rails-html-sanitizer/1.4.3/lib/rails-html-sanitizer.rb#40
+  # source://rails-html-sanitizer/1.4.4/lib/rails-html-sanitizer.rb#40
   def sanitized_allowed_tags=(tags); end
 
-  # source://rails-html-sanitizer/1.4.3/lib/rails-html-sanitizer.rb#63
+  # source://rails-html-sanitizer/1.4.4/lib/rails-html-sanitizer.rb#63
   def sanitized_bad_tags; end
 
-  # source://rails-html-sanitizer/1.4.3/lib/rails-html-sanitizer.rb#64
+  # source://rails-html-sanitizer/1.4.4/lib/rails-html-sanitizer.rb#64
   def sanitized_bad_tags=(_); end
 
-  # source://rails-html-sanitizer/1.4.3/lib/rails-html-sanitizer.rb#63
+  # source://rails-html-sanitizer/1.4.4/lib/rails-html-sanitizer.rb#63
   def sanitized_protocol_separator; end
 
-  # source://rails-html-sanitizer/1.4.3/lib/rails-html-sanitizer.rb#64
+  # source://rails-html-sanitizer/1.4.4/lib/rails-html-sanitizer.rb#64
   def sanitized_protocol_separator=(_); end
 
-  # source://rails-html-sanitizer/1.4.3/lib/rails-html-sanitizer.rb#63
+  # source://rails-html-sanitizer/1.4.4/lib/rails-html-sanitizer.rb#63
   def sanitized_shorthand_css_properties; end
 
-  # source://rails-html-sanitizer/1.4.3/lib/rails-html-sanitizer.rb#64
+  # source://rails-html-sanitizer/1.4.4/lib/rails-html-sanitizer.rb#64
   def sanitized_shorthand_css_properties=(_); end
 
-  # source://rails-html-sanitizer/1.4.3/lib/rails-html-sanitizer.rb#63
+  # source://rails-html-sanitizer/1.4.4/lib/rails-html-sanitizer.rb#63
   def sanitized_uri_attributes; end
 
-  # source://rails-html-sanitizer/1.4.3/lib/rails-html-sanitizer.rb#64
+  # source://rails-html-sanitizer/1.4.4/lib/rails-html-sanitizer.rb#64
   def sanitized_uri_attributes=(_); end
 
   # source://actionview//lib/action_view/helpers/sanitize_helper.rb#127
@@ -9441,7 +9442,7 @@ module ActionView::Helpers::SanitizeHelper::ClassMethods
 
   private
 
-  # source://rails-html-sanitizer/1.4.3/lib/rails-html-sanitizer.rb#68
+  # source://rails-html-sanitizer/1.4.4/lib/rails-html-sanitizer.rb#68
   def deprecate_option(name); end
 end
 
@@ -14442,7 +14443,7 @@ end
 # source://actionview//lib/action_view/template/handlers/erb.rb#22
 ActionView::Template::Handlers::ERB::ENCODING_TAG = T.let(T.unsafe(nil), Regexp)
 
-# source://actionview//lib/action_view/template/handlers/erb/erubi.rb#10
+# source://actionview//lib/action_view/template/handlers/erb/erubi.rb#9
 class ActionView::Template::Handlers::ERB::Erubi < ::Erubi::Engine
   # @return [Erubi] a new instance of Erubi
   #
@@ -15461,4 +15462,14 @@ class ActionView::WrongEncodingError < ::ActionView::EncodingError
 
   # source://actionview//lib/action_view/template/error.rb#18
   def message; end
+end
+
+module ERB::Escape
+  private
+
+  def html_escape(_arg0); end
+
+  class << self
+    def html_escape(_arg0); end
+  end
 end

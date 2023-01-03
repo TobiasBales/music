@@ -178,7 +178,7 @@ class ActiveSupport::ActionableError::NonActionable < ::StandardError; end
 #   variants.tablet?   # => true
 #   variants.desktop?  # => false
 #
-# source://activesupport//lib/active_support/array_inquirer.rb#24
+# source://activesupport//lib/active_support/array_inquirer.rb#12
 class ActiveSupport::ArrayInquirer < ::Array
   # Passes each element of +candidates+ collection to ArrayInquirer collection.
   # The method returns true if any element from the ArrayInquirer collection
@@ -958,7 +958,7 @@ ActiveSupport::Cache::OPTION_ALIASES = T.let(T.unsafe(nil), Hash)
 #   4.0.1+ for distributed mget support.
 # * +delete_matched+ support for Redis KEYS globs.
 #
-# source://activesupport//lib/active_support/cache/redis_cache_store.rb#52
+# source://activesupport//lib/active_support/cache/redis_cache_store.rb#51
 class ActiveSupport::Cache::RedisCacheStore < ::ActiveSupport::Cache::Store
   include ::ActiveSupport::Cache::Strategy::LocalCache
 
@@ -3572,6 +3572,8 @@ class ActiveSupport::Deprecation
     # source://activesupport//lib/active_support/deprecation/instance_delegator.rb#21
     def gem_name=(arg); end
 
+    def new(*_arg0); end
+
     # source://activesupport//lib/active_support/deprecation/instance_delegator.rb#21
     def silence(*_arg0, **_arg1, &_arg2); end
 
@@ -3583,6 +3585,10 @@ class ActiveSupport::Deprecation
 
     # source://activesupport//lib/active_support/deprecation/instance_delegator.rb#26
     def warn(message = T.unsafe(nil), callstack = T.unsafe(nil)); end
+
+    private
+
+    def allocate; end
   end
 end
 
@@ -5028,6 +5034,100 @@ end
 # source://activesupport//lib/active_support/error_reporter.rb#42
 ActiveSupport::ErrorReporter::SEVERITIES = T.let(T.unsafe(nil), Array)
 
+# Allows you to "listen" to changes in a file system.
+# The evented file updater does not hit disk when checking for updates.
+# Instead, it uses platform-specific file system events to trigger a change
+# in state.
+#
+# The file checker takes an array of files to watch or a hash specifying directories
+# and file extensions to watch. It also takes a block that is called when
+# EventedFileUpdateChecker#execute is run or when EventedFileUpdateChecker#execute_if_updated
+# is run and there have been changes to the file system.
+#
+# Example:
+#
+#     checker = ActiveSupport::EventedFileUpdateChecker.new(["/tmp/foo"]) { puts "changed" }
+#     checker.updated?
+#     # => false
+#     checker.execute_if_updated
+#     # => nil
+#
+#     FileUtils.touch("/tmp/foo")
+#
+#     checker.updated?
+#     # => true
+#     checker.execute_if_updated
+#     # => "changed"
+#
+# source://activesupport//lib/active_support/evented_file_update_checker.rb#35
+class ActiveSupport::EventedFileUpdateChecker
+  # @return [EventedFileUpdateChecker] a new instance of EventedFileUpdateChecker
+  #
+  # source://activesupport//lib/active_support/evented_file_update_checker.rb#36
+  def initialize(files, dirs = T.unsafe(nil), &block); end
+
+  # source://activesupport//lib/active_support/evented_file_update_checker.rb#55
+  def execute; end
+
+  # source://activesupport//lib/active_support/evented_file_update_checker.rb#60
+  def execute_if_updated; end
+
+  # @return [Boolean]
+  #
+  # source://activesupport//lib/active_support/evented_file_update_checker.rb#46
+  def updated?; end
+end
+
+# source://activesupport//lib/active_support/evented_file_update_checker.rb#68
+class ActiveSupport::EventedFileUpdateChecker::Core
+  # @return [Core] a new instance of Core
+  #
+  # source://activesupport//lib/active_support/evented_file_update_checker.rb#71
+  def initialize(files, dirs); end
+
+  # source://activesupport//lib/active_support/evented_file_update_checker.rb#129
+  def changed(modified, added, removed); end
+
+  # source://activesupport//lib/active_support/evented_file_update_checker.rb#163
+  def common_path(paths); end
+
+  # source://activesupport//lib/active_support/evented_file_update_checker.rb#157
+  def directories_to_watch; end
+
+  # source://activesupport//lib/active_support/evented_file_update_checker.rb#90
+  def finalizer; end
+
+  # source://activesupport//lib/active_support/evented_file_update_checker.rb#123
+  def normalize_dirs!; end
+
+  # source://activesupport//lib/active_support/evented_file_update_checker.rb#114
+  def restart; end
+
+  # @return [Boolean]
+  #
+  # source://activesupport//lib/active_support/evented_file_update_checker.rb#119
+  def restart?; end
+
+  # source://activesupport//lib/active_support/evented_file_update_checker.rb#103
+  def start; end
+
+  # source://activesupport//lib/active_support/evented_file_update_checker.rb#110
+  def stop; end
+
+  # source://activesupport//lib/active_support/evented_file_update_checker.rb#97
+  def thread_safely; end
+
+  # Returns the value of attribute updated.
+  #
+  # source://activesupport//lib/active_support/evented_file_update_checker.rb#69
+  def updated; end
+
+  # @return [Boolean]
+  #
+  # source://activesupport//lib/active_support/evented_file_update_checker.rb#135
+  def watching?(file); end
+end
+
 # source://activesupport//lib/active_support/execution_context.rb#4
 module ActiveSupport::ExecutionContext
   class << self
@@ -5351,6 +5451,11 @@ end
 # source://activesupport//lib/active_support/fork_tracker.rb#31
 module ActiveSupport::ForkTracker::CoreExtPrivate
   include ::ActiveSupport::ForkTracker::CoreExt
+
+  private
+
+  # source://activesupport//lib/active_support/fork_tracker.rb#16
+  def fork(*_arg0, **_arg1, &_arg2); end
 end
 
 # source://activesupport//lib/active_support/fork_tracker.rb#5
@@ -5439,7 +5544,7 @@ end
 #
 # which will, in turn, require this file.
 #
-# source://activesupport//lib/active_support/hash_with_indifferent_access.rb#55
+# source://activesupport//lib/active_support/hash_with_indifferent_access.rb#53
 class ActiveSupport::HashWithIndifferentAccess < ::Hash
   # @return [HashWithIndifferentAccess] a new instance of HashWithIndifferentAccess
   #
@@ -6885,7 +6990,7 @@ end
 # flushes all logs when the request finishes
 # (via <tt>action_dispatch.callback</tt> notification) in a Rails environment.
 #
-# source://activesupport//lib/active_support/log_subscriber.rb#66
+# source://activesupport//lib/active_support/log_subscriber.rb#65
 class ActiveSupport::LogSubscriber < ::ActiveSupport::Subscriber
   # source://activesupport//lib/active_support/log_subscriber.rb#80
   def colorize_logging; end
@@ -7045,7 +7150,7 @@ end
 
 # Simple formatter which only displays the message.
 #
-# source://activesupport//lib/active_support/logger.rb#87
+# source://activesupport//lib/active_support/logger.rb#86
 class ActiveSupport::Logger::SimpleFormatter < ::Logger::Formatter
   # This method is invoked when a log event occurs
   #
@@ -8268,10 +8373,10 @@ class ActiveSupport::Notifications::Fanout
   # source://activesupport//lib/active_support/notifications/fanout.rb#117
   def listening?(name); end
 
-  # source://mutex_m/0.1.1/mutex_m.rb#93
+  # source://mutex_m/0.1.2/mutex_m.rb#93
   def lock; end
 
-  # source://mutex_m/0.1.1/mutex_m.rb#83
+  # source://mutex_m/0.1.2/mutex_m.rb#83
   def locked?; end
 
   # source://activesupport//lib/active_support/notifications/fanout.rb#79
@@ -8286,13 +8391,13 @@ class ActiveSupport::Notifications::Fanout
   # source://activesupport//lib/active_support/notifications/fanout.rb#34
   def subscribe(pattern = T.unsafe(nil), callable = T.unsafe(nil), monotonic: T.unsafe(nil), &block); end
 
-  # source://mutex_m/0.1.1/mutex_m.rb#78
+  # source://mutex_m/0.1.2/mutex_m.rb#78
   def synchronize(&block); end
 
-  # source://mutex_m/0.1.1/mutex_m.rb#88
+  # source://mutex_m/0.1.2/mutex_m.rb#88
   def try_lock; end
 
-  # source://mutex_m/0.1.1/mutex_m.rb#98
+  # source://mutex_m/0.1.2/mutex_m.rb#98
   def unlock; end
 
   # source://activesupport//lib/active_support/notifications/fanout.rb#51
@@ -10440,6 +10545,8 @@ end
 #
 # source://activesupport//lib/active_support/tagged_logging.rb#28
 module ActiveSupport::TaggedLogging
+  extend ::Lumberjack::TaggedLogging::ClassMethods
+
   # source://activesupport//lib/active_support/tagged_logging.rb#95
   def clear_tags!(*_arg0, **_arg1, &_arg2); end
 
@@ -10456,7 +10563,7 @@ module ActiveSupport::TaggedLogging
   def tagged(*tags); end
 
   class << self
-    # source://activesupport//lib/active_support/tagged_logging.rb#81
+    # source://lumberjack/1.2.8/lib/lumberjack/tagged_logging.rb#15
     def new(logger); end
   end
 end
@@ -10541,48 +10648,48 @@ class ActiveSupport::TestCase < ::Minitest::Test
   # source://activesupport//lib/active_support/callbacks.rb#940
   def _teardown_callbacks; end
 
-  # source://minitest/5.16.3/lib/minitest/assertions.rb#709
+  # source://minitest/5.17.0/lib/minitest/assertions.rb#709
   def assert_no_match(matcher, obj, msg = T.unsafe(nil)); end
 
-  # source://minitest/5.16.3/lib/minitest/assertions.rb#638
+  # source://minitest/5.17.0/lib/minitest/assertions.rb#638
   def assert_not_empty(obj, msg = T.unsafe(nil)); end
 
-  # source://minitest/5.16.3/lib/minitest/assertions.rb#649
+  # source://minitest/5.17.0/lib/minitest/assertions.rb#649
   def assert_not_equal(exp, act, msg = T.unsafe(nil)); end
 
-  # source://minitest/5.16.3/lib/minitest/assertions.rb#661
+  # source://minitest/5.17.0/lib/minitest/assertions.rb#661
   def assert_not_in_delta(exp, act, delta = T.unsafe(nil), msg = T.unsafe(nil)); end
 
-  # source://minitest/5.16.3/lib/minitest/assertions.rb#673
+  # source://minitest/5.17.0/lib/minitest/assertions.rb#673
   def assert_not_in_epsilon(a, b, epsilon = T.unsafe(nil), msg = T.unsafe(nil)); end
 
-  # source://minitest/5.16.3/lib/minitest/assertions.rb#680
+  # source://minitest/5.17.0/lib/minitest/assertions.rb#680
   def assert_not_includes(collection, obj, msg = T.unsafe(nil)); end
 
-  # source://minitest/5.16.3/lib/minitest/assertions.rb#691
+  # source://minitest/5.17.0/lib/minitest/assertions.rb#691
   def assert_not_instance_of(cls, obj, msg = T.unsafe(nil)); end
 
-  # source://minitest/5.16.3/lib/minitest/assertions.rb#701
+  # source://minitest/5.17.0/lib/minitest/assertions.rb#701
   def assert_not_kind_of(cls, obj, msg = T.unsafe(nil)); end
 
-  # source://minitest/5.16.3/lib/minitest/assertions.rb#719
+  # source://minitest/5.17.0/lib/minitest/assertions.rb#719
   def assert_not_nil(obj, msg = T.unsafe(nil)); end
 
-  # source://minitest/5.16.3/lib/minitest/assertions.rb#730
+  # source://minitest/5.17.0/lib/minitest/assertions.rb#730
   def assert_not_operator(o1, op, o2 = T.unsafe(nil), msg = T.unsafe(nil)); end
 
-  # source://minitest/5.16.3/lib/minitest/assertions.rb#753
+  # source://minitest/5.17.0/lib/minitest/assertions.rb#753
   def assert_not_predicate(o1, op, msg = T.unsafe(nil)); end
 
-  # source://minitest/5.16.3/lib/minitest/assertions.rb#761
+  # source://minitest/5.17.0/lib/minitest/assertions.rb#761
   def assert_not_respond_to(obj, meth, msg = T.unsafe(nil)); end
 
-  # source://minitest/5.16.3/lib/minitest/assertions.rb#770
+  # source://minitest/5.17.0/lib/minitest/assertions.rb#770
   def assert_not_same(exp, act, msg = T.unsafe(nil)); end
 
   # test/unit backwards compatibility methods
   #
-  # source://minitest/5.16.3/lib/minitest/assertions.rb#396
+  # source://minitest/5.17.0/lib/minitest/assertions.rb#396
   def assert_raise(*exp); end
 
   # source://activesupport//lib/active_support/testing/file_fixtures.rb#20
@@ -10627,7 +10734,7 @@ class ActiveSupport::TestCase < ::Minitest::Test
   # source://activerecord/7.0.4/lib/active_record/test_fixtures.rb#26
   def lock_threads?; end
 
-  # source://minitest/5.16.3/lib/minitest.rb#304
+  # source://minitest/5.17.0/lib/minitest.rb#304
   def method_name; end
 
   # source://activerecord/7.0.4/lib/active_record/test_fixtures.rb#25
@@ -13916,7 +14023,7 @@ Date::DATE_FORMATS = T.let(T.unsafe(nil), Hash)
 # source://activesupport//lib/active_support/core_ext/date/deprecated_conversions.rb#6
 Date::NOT_SET = T.let(T.unsafe(nil), Object)
 
-# source://date/3.3.1/lib/date.rb#7
+# source://date/3.3.3/date.rb#7
 Date::VERSION = T.let(T.unsafe(nil), String)
 
 # source://activesupport//lib/active_support/core_ext/date_and_time/compatibility.rb#5
@@ -15976,38 +16083,57 @@ class IO::Buffer
 
   def initialize(*_arg0); end
 
+  def &(_arg0); end
   def <=>(_arg0); end
+  def ^(_arg0); end
+  def and!(_arg0); end
   def clear(*_arg0); end
   def copy(*_arg0); end
+  def each(*_arg0); end
+  def each_byte(*_arg0); end
   def empty?; end
   def external?; end
   def free; end
   def get_string(*_arg0); end
   def get_value(_arg0, _arg1); end
+  def get_values(_arg0, _arg1); end
   def hexdump; end
   def inspect; end
   def internal?; end
   def locked; end
   def locked?; end
   def mapped?; end
+  def not!; end
   def null?; end
-  def pread(_arg0, _arg1, _arg2); end
-  def pwrite(_arg0, _arg1, _arg2); end
-  def read(_arg0, _arg1); end
+  def or!(_arg0); end
+  def pread(*_arg0); end
+  def pwrite(*_arg0); end
+  def read(*_arg0); end
   def readonly?; end
   def resize(_arg0); end
   def set_string(*_arg0); end
   def set_value(_arg0, _arg1, _arg2); end
+  def set_values(_arg0, _arg1, _arg2); end
+  def shared?; end
   def size; end
-  def slice(_arg0, _arg1); end
+  def slice(*_arg0); end
   def to_s; end
   def transfer; end
   def valid?; end
-  def write(_arg0, _arg1); end
+  def values(*_arg0); end
+  def write(*_arg0); end
+  def xor!(_arg0); end
+  def |(_arg0); end
+  def ~; end
+
+  private
+
+  def initialize_copy(_arg0); end
 
   class << self
     def for(_arg0); end
     def map(*_arg0); end
+    def size_of(_arg0); end
   end
 end
 
@@ -16023,10 +16149,12 @@ IO::Buffer::LITTLE_ENDIAN = T.let(T.unsafe(nil), Integer)
 IO::Buffer::LOCKED = T.let(T.unsafe(nil), Integer)
 class IO::Buffer::LockedError < ::RuntimeError; end
 IO::Buffer::MAPPED = T.let(T.unsafe(nil), Integer)
+class IO::Buffer::MaskError < ::ArgumentError; end
 IO::Buffer::NETWORK_ENDIAN = T.let(T.unsafe(nil), Integer)
 IO::Buffer::PAGE_SIZE = T.let(T.unsafe(nil), Integer)
 IO::Buffer::PRIVATE = T.let(T.unsafe(nil), Integer)
 IO::Buffer::READONLY = T.let(T.unsafe(nil), Integer)
+IO::Buffer::SHARED = T.let(T.unsafe(nil), Integer)
 
 class IO::ConsoleMode
   def echo=(_arg0); end
@@ -16058,6 +16186,7 @@ IO::EWOULDBLOCKWaitReadable = IO::EAGAINWaitReadable
 IO::EWOULDBLOCKWaitWritable = IO::EAGAINWaitWritable
 IO::PRIORITY = T.let(T.unsafe(nil), Integer)
 IO::READABLE = T.let(T.unsafe(nil), Integer)
+class IO::TimeoutError < ::IOError; end
 IO::WRITABLE = T.let(T.unsafe(nil), Integer)
 
 # source://activesupport//lib/active_support/core_ext/object/json.rb#228
@@ -16066,7 +16195,7 @@ class IPAddr
   def as_json(options = T.unsafe(nil)); end
 end
 
-# source://ipaddr/1.2.4/ipaddr.rb#43
+# source://ipaddr/1.2.5/ipaddr.rb#43
 IPAddr::VERSION = T.let(T.unsafe(nil), String)
 
 # source://activesupport//lib/active_support/core_ext/integer/time.rb#6
@@ -16105,6 +16234,8 @@ class Integer < ::Numeric
   # source://activesupport//lib/active_support/core_ext/integer/time.rb#18
   def years; end
 end
+
+Integer::GMP_VERSION = T.let(T.unsafe(nil), String)
 
 # source://activesupport//lib/active_support/core_ext/kernel/reporting.rb#3
 module Kernel
@@ -18011,6 +18142,8 @@ end
 # source://regexp_parser/2.6.1/lib/regexp_parser/token.rb#2
 Regexp::TOKEN_KEYS = T.let(T.unsafe(nil), Array)
 
+class Regexp::TimeoutError < ::RegexpError; end
+
 # source://activesupport//lib/active_support/core_ext/object/duplicable.rb#53
 module Singleton
   mixes_in_class_methods ::Singleton::SingletonClassMethods
@@ -18742,12 +18875,11 @@ class Struct
   def as_json(options = T.unsafe(nil)); end
 end
 
-Struct::Group = Etc::Group
+# source://aws-sdk-core/3.168.4/lib/aws-sdk-core/structure.rb#88
+Struct::AwsEmptyStructure = Struct
 
 # source://nokogiri/1.13.10/lib/nokogiri/html4/element_description_defaults.rb#11
 Struct::HTMLElementDescription = Struct
-
-Struct::Passwd = Etc::Passwd
 
 # source://activesupport//lib/active_support/core_ext/object/json.rb#98
 class Symbol

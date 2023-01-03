@@ -2064,6 +2064,13 @@ class Zip::NullCompressor < ::Zip::Compressor
   #
   # source://rubyzip//lib/zip/null_compressor.rb#9
   def size; end
+
+  class << self
+    private
+
+    def allocate; end
+    def new(*_arg0); end
+  end
 end
 
 # source://rubyzip//lib/zip/null_decompressor.rb#2

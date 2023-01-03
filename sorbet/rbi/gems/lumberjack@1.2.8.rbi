@@ -153,7 +153,7 @@ end
 # and ".YYYY-MM" for monthly. It is not guaranteed that log messages will break exactly on the
 # roll period as buffered entries will always be written to the same file.
 #
-# source://lumberjack//lib/lumberjack/device/date_rolling_log_file.rb#15
+# source://lumberjack//lib/lumberjack/device/date_rolling_log_file.rb#12
 class Lumberjack::Device::DateRollingLogFile < ::Lumberjack::Device::RollingLogFile
   # Create a new logging device to the specified file. The period to roll the file is specified
   # with the :roll option which may contain a value of :daily, :weekly,
@@ -1381,19 +1381,19 @@ class Lumberjack::TaggedLoggerSupport::Formatter
   # source://lumberjack//lib/lumberjack/tagged_logger_support.rb#35
   def __formatter; end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def clear_tags!(*args, **_arg1, &block); end
 
   # source://lumberjack//lib/lumberjack/tagged_logger_support.rb#19
   def current_tags; end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def pop_tags(*args, **_arg1, &block); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def push_tags(*args, **_arg1, &block); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def tagged(*args, **_arg1, &block); end
 
   # source://lumberjack//lib/lumberjack/tagged_logger_support.rb#28
