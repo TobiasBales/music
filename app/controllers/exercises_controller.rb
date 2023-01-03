@@ -9,7 +9,7 @@ class ExercisesController < ApplicationController
   end
 
   def show
-    @exercise = Exercise.find(params[:id])
+    @exercise = Exercise.includes(:course).find(params[:id])
     @bpm = 120
   end
 end

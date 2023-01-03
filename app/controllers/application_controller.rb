@@ -12,15 +12,11 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate
-    if (session = Session.find_by(id: cookies.signed[:session_token]))
-      Current.session = session
-    else
-      redirect_to sign_in_path
-    end
+    redirect_to sign_in_path if Current.session.nil?
   end
 
   def load_current_session
-    session = Session.find_by(id: cookies.signed[:session_token])
+    session = Session.includes(user: :profile).find_by(id: cookies.signed[:session_token])
 
     Current.session = session if session.present?
   end

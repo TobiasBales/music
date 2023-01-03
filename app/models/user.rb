@@ -6,16 +6,16 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  has_many :email_verification_tokens, dependent: :destroy
-  has_many :password_reset_tokens, dependent: :destroy
+  has_many :email_verification_tokens, dependent: :destroy, strict_loading: false
+  has_many :password_reset_tokens, dependent: :destroy, strict_loading: false
 
   has_many :sessions, dependent: :destroy
 
   has_one :profile, dependent: :destroy
-  has_many :enrollments, dependent: :destroy
+  has_many :enrollments, dependent: :destroy, strict_loading: false
 
   # rubocop:disable Rails/HasAndBelongsToMany
-  has_and_belongs_to_many :course_permissions
+  has_and_belongs_to_many :course_permissions, strict_loading: false
   # rubocop:enable Rails/HasAndBelongsToMany
 
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
