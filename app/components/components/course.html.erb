@@ -1,6 +1,6 @@
 <%= render(Bootstrap::Card.new(
   title: course.name,
-  image: course.image.url || "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png")) do |c|%>
+  image: course.thumbnail)) do |c|%>
   <% c.with_body do %>
     <%= render(Bootstrap::Button.new(text: button_text, to: course_path(course))) %>
   <% end %>

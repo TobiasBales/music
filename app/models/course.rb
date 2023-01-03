@@ -27,4 +27,9 @@ class Course < ApplicationRecord
 
     false
   end
+
+  sig { returns(T.any(String, ActiveStorage::VariantWithRecord)) }
+  def thumbnail
+    image.representation({ resize_to_limit: [350, 350] }) || "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
+  end
 end
