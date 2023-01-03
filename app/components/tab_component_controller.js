@@ -16,6 +16,7 @@ export default class extends Controller {
     this.previousTime = -1;
     this.bpm = this.bpmValue;
     this.muted = false;
+    this.wakeLock = false;
 
     this.api = new alphaTab.AlphaTabApi(this.mainTarget, this.settings);
 
@@ -283,6 +284,24 @@ export default class extends Controller {
         soundFont: "https://cdn.jsdelivr.net/npm/@coderline/alphatab@latest/dist/soundfont/sonivox.sf2",
         scrollElement: this.viewportTarget,
       },
+    }
+  }
+
+  async toggleWakeLog() {
+    if (!navigator.wakeLock) {
+      return;
+    }
+
+
+    this.wakeLock = !this.wakeLock;
+    if (this.wakeLock) {
+      try {
+        await navigator.wakeLock.request('screen');
+      } catch (err) {
+        console.log(`Error aquiring wake lock: ${err.name}, ${err.message}`);
+      }
+    } else {
+      navigator.wakeLock.release('screen');
     }
   }
 }
