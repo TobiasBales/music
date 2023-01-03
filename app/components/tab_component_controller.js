@@ -10,7 +10,7 @@ export default class extends Controller {
     file: String,
   };
 
-  static targets = ["viewport", "wrap", "main", "overlay", "trackTemplate", "trackList", "songArtist", "songTitle", "countIn", "metronome", "loop", "print", "zoom", "layout", "playerProgress", "playPause", "stop", "playPauseIcon", "songPosition", "tab", "muteIcon"];
+  static targets = ["viewport", "wrap", "main", "overlay", "trackTemplate", "trackList", "songArtist", "songTitle", "countIn", "metronome", "loop", "print", "zoom", "layout", "playerProgress", "playPause", "stop", "playPauseIcon", "songPosition", "tab", "muteIcon", "mute"];
 
   connect() {
     this.previousTime = -1;
@@ -222,16 +222,13 @@ export default class extends Controller {
   }
 
   toggleMute() {
-    this.mute = !this.mute;
-    console.log(this.mute);
     this.api.changeTrackMute(this.api.tracks, this.mute);
-    if (this.mute) {
-      this.muteIconTarget.classList.remove("bi-volume-down");
-      this.muteIconTarget.classList.add("bi-volume-mute");
-    } else {
-      this.muteIconTarget.classList.remove("bi-volume-mute");
-      this.muteIconTarget.classList.add("bi-volume-down");
-    }
+
+    this.muteTarget.classList.toggle("active");
+
+    const muted = this.muteTarget.classList.contains("active")
+    this.muteIconTarget.classList.toggle("bi-volume-down", !muted);
+    this.muteIconTarget.classList.toggle("bi-volume-mute", muted);
   }
 
   print() {
