@@ -44,6 +44,9 @@
              <div data-tab-component-target="songPosition" class="at-song-position">00:00 / 00:00</div>
            </div>
            <div class="at-controls-right">
+             <a data-action="click->tab-component#toggleMute" class="btn">
+               <i class="bi bi-volume-down" data-tab-component-target="muteIcon"></i>
+             </a>
              <% if type == :tex %>
                <a data-action="click->tab-component#increaseBpm" class="btn">
                  <i class="bi bi-plus"></i>

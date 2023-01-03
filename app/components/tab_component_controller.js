@@ -10,11 +10,12 @@ export default class extends Controller {
     file: String,
   };
 
-  static targets = ["viewport", "wrap", "main", "overlay", "trackTemplate", "trackList", "songArtist", "songTitle", "countIn", "metronome", "loop", "print", "zoom", "layout", "playerProgress", "playPause", "stop", "playPauseIcon", "songPosition", "tab"];
+  static targets = ["viewport", "wrap", "main", "overlay", "trackTemplate", "trackList", "songArtist", "songTitle", "countIn", "metronome", "loop", "print", "zoom", "layout", "playerProgress", "playPause", "stop", "playPauseIcon", "songPosition", "tab", "muteIcon"];
 
   connect() {
     this.previousTime = -1;
     this.bpm = this.bpmValue;
+    this.muted = false;
 
     this.api = new alphaTab.AlphaTabApi(this.mainTarget, this.settings);
 
@@ -217,6 +218,19 @@ export default class extends Controller {
   toggleLoop() {
     this.loopTarget.classList.toggle("active");
     this.api.isLooping = this.loopTarget.classList.contains("active");
+  }
+
+  toggleMute() {
+    this.mute = !this.mute;
+    console.log(this.mute);
+    this.api.changeTrackMute(this.api.tracks, this.mute);
+    if (this.mute) {
+      this.muteIconTarget.classList.remove("bi-volume-down");
+      this.muteIconTarget.classList.add("bi-volume-mute");
+    } else {
+      this.muteIconTarget.classList.remove("bi-volume-mute");
+      this.muteIconTarget.classList.add("bi-volume-down");
+    }
   }
 
   print() {
