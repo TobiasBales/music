@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
   extend T::Sig
 
   def index
-    @courses = Course.all
+    @courses = Course.all.order(:name)
   end
 
   def show
