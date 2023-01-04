@@ -9,11 +9,11 @@ pre-push:
   parallel: true
   commands:
     rubocop:
-      run: bundle exec rubocop
+      run: bin/rubocop
     sorbet:
-      run: bundle exec srb tc
+      run: bin/srb tc
     spoom_verify:
-      run: bundle exec spoom bump --dry --from false --to true && bundle exec spoom bump --dry --from true --to strict
+      run: bin/spoom bump --dry --from false --to true && bin/spoom bump --dry --from true --to strict
     system_tests:
       run: bin/rails test:system
     tapioca_dsl:
@@ -28,12 +28,12 @@ pre-commit:
   commands:
     rubocop:
       glob: "*.rb"
-      run: bundle exec rubocop --force-exclusion {all_files}
+      run: bin/rubocop --force-exclusion {all_files}
     sorbet:
       glob: "*.rb"
-      run: bundle exec srb tc
+      run: bin/srb tc
     spoom_verify:
-      run: bundle exec spoom bump --dry --from false --to true && bundle exec spoom bump --dry --from true --to strict
+      run: bin/spoom bump --dry --from false --to true && bin/spoom bump --dry --from true --to strict
     tapioca_dsl:
       files: git diff --name-only --staged
       glob: "{*.rb,Gemfile,Gemfile.lock}"
