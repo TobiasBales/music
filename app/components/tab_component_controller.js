@@ -243,7 +243,7 @@ export default class extends Controller {
     this.muteTarget.classList.toggle("active");
     const muted = this.muteTarget.classList.contains("active")
 
-    this.api.changeTrackMute(this.api.tracks, muteed);
+    this.api.changeTrackMute(this.api.tracks, muted);
 
     this.muteIconTarget.classList.toggle("bi-volume-down", !muted);
     this.muteIconTarget.classList.toggle("bi-volume-mute", muted);
