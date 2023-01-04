@@ -60,6 +60,9 @@ module GeneratedPathHelpersModule
   def edit_madmin_enrollment_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def edit_madmin_exercise_log_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def edit_madmin_exercise_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -168,6 +171,12 @@ module GeneratedPathHelpersModule
   def madmin_enrollments_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def madmin_exercise_log_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_exercise_logs_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def madmin_exercise_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -250,6 +259,9 @@ module GeneratedPathHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def new_madmin_enrollment_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_madmin_exercise_log_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def new_madmin_exercise_path(*args); end
