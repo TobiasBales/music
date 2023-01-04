@@ -6,6 +6,9 @@
 
 class ActiveSupport::TestCase
   sig { params(fixture_names: T.any(String, Symbol)).returns(T.untyped) }
+  def action_text_rich_texts(*fixture_names); end
+
+  sig { params(fixture_names: T.any(String, Symbol)).returns(T.untyped) }
   def active_storage_attachments(*fixture_names); end
 
   sig { params(fixture_names: T.any(String, Symbol)).returns(T.untyped) }
