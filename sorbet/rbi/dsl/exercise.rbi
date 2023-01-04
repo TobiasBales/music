@@ -376,6 +376,51 @@ class Exercise
   end
 
   module GeneratedAttributeMethods
+    sig { returns(T.nilable(::Integer)) }
+    def bpm; end
+
+    sig { params(value: T.nilable(::Integer)).returns(T.nilable(::Integer)) }
+    def bpm=(value); end
+
+    sig { returns(T::Boolean) }
+    def bpm?; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def bpm_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def bpm_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def bpm_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def bpm_change; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def bpm_change_to_be_saved; end
+
+    sig { returns(T::Boolean) }
+    def bpm_changed?; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def bpm_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def bpm_previous_change; end
+
+    sig { returns(T::Boolean) }
+    def bpm_previously_changed?; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def bpm_previously_was; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def bpm_was; end
+
+    sig { void }
+    def bpm_will_change!; end
+
     sig { returns(T.untyped) }
     def course_id; end
 
@@ -602,6 +647,9 @@ class Exercise
     def order_will_change!; end
 
     sig { void }
+    def restore_bpm!; end
+
+    sig { void }
     def restore_course_id!; end
 
     sig { void }
@@ -621,6 +669,12 @@ class Exercise
 
     sig { void }
     def restore_updated_at!; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def saved_change_to_bpm; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_bpm?; end
 
     sig { returns(T.nilable([T.untyped, T.untyped])) }
     def saved_change_to_course_id; end
@@ -753,6 +807,9 @@ class Exercise
 
     sig { void }
     def updated_at_will_change!; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_bpm?; end
 
     sig { returns(T::Boolean) }
     def will_save_change_to_course_id?; end
