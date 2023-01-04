@@ -9,12 +9,14 @@ class ExerciseLogsController < ApplicationController
 
   def show
     authorize @exercise_log
+    @exercise_logs = load_exercise_logs
   end
 
   def update
     authorize @exercise_log
     @exercise_log.bpm = bpm_param.to_i
     @exercise_log.time = DateTime.now.utc
+    @exercise_logs = load_exercise_logs
     if @exercise_log.save
       render :show
     else
@@ -34,6 +36,13 @@ class ExerciseLogsController < ApplicationController
     return if user.nil?
 
     user.exercise_logs.build(exercise: exercise)
+  end
+
+  sig { returns(T.nilable(ActiveRecord::Relation)) }
+  def load_exercise_logs
+    return if Current.user.nil?
+
+    Current.user.exercise_logs.where(exercise: @exercise).order(created_at: :desc).limit(30)
   end
 
   def bpm_param

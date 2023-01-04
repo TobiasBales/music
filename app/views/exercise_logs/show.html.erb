@@ -8,5 +8,14 @@
         </div>
       <% end %>
     </div>
+    <div class="mt-3">
+      <%= render(Bootstrap::Card.new(title: "Log")) do |c| %>
+        <%= render(Bootstrap::List::Group.new(flush: true)) do %>
+          <% @exercise_logs.each do |exercise_log| %>
+            <%= render(Bootstrap::List::Item.new(text: "#{exercise_log.bpm.to_s}bpm - #{time_ago_in_words(exercise_log.time)} ago")) %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
   <% end %>
 <% end %>
