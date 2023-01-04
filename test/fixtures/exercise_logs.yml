@@ -1,0 +1,9 @@
+one:
+  user: default
+  exercise: one
+  bpm: 110
+
+two:
+  user: default
+  exercise: one
+  bpm: 115
