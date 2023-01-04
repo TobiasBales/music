@@ -9,6 +9,7 @@ AllCops:
   NewCops: enable
   Exclude:
     - bundle/vendor/**/*
+    - vendor/**/*
     - bin/*
     - db/migrate/*
     - db/schema.rb
