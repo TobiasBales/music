@@ -12,7 +12,7 @@ class ExercisesController < ApplicationController
   def show
     @exercise = Exercise.includes(:course).find(params[:id])
     authorize @exercise
-    @bpm = 120
+    @bpm = @exercise.bpm || 120
 
     return if Current.user.nil?
 
