@@ -841,6 +841,13 @@ CREATE INDEX index_exercises_on_course_id ON public.exercises USING btree (cours
 
 
 --
+-- Name: index_exercises_on_course_id_and_order; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_exercises_on_course_id_and_order ON public.exercises USING btree (course_id, "order");
+
+
+--
 -- Name: index_password_reset_tokens_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1093,6 +1100,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20230103222838'),
 ('20230104141438'),
 ('20230104173150'),
-('20230104200235');
+('20230104200235'),
+('20230104212747');
 
 
