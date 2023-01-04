@@ -95,7 +95,10 @@ export default class extends Controller {
 
   playerFinished = (_e) => {
     this.dispatch("finished", {
-      detail: { bpm: this.bpmValue },
+      detail: {
+        bpm: this.bpmValue,
+        duration: this.duration,
+      },
       bubbles: true,
       cancelable: false,
     })
@@ -111,6 +114,7 @@ export default class extends Controller {
 
     this.songPositionTarget.innerText =
       this.formatDuration(e.currentTime) + " / " + this.formatDuration(e.endTime);
+    this.duration = parseInt(e.endTime / 2000, 10);
   }
 
   handleZoomChanged = () => {

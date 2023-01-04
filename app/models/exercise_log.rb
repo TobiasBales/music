@@ -7,4 +7,5 @@ class ExerciseLog < ApplicationRecord
 
   validates :bpm, presence: true, numericality: { greater_than: 0 }
   validates :time, presence: true
+  validates :duration, presence: true, numericality: { greater_than: 0 }
 end

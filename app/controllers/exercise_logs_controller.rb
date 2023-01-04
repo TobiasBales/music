@@ -15,6 +15,7 @@ class ExerciseLogsController < ApplicationController
   def update
     authorize @exercise_log
     @exercise_log.bpm = bpm_param.to_i
+    @exercise_log.duration = duration_param.to_i
     @exercise_log.time = DateTime.now.utc
     @exercise_logs = load_exercise_logs
     if @exercise_log.save
@@ -47,5 +48,9 @@ class ExerciseLogsController < ApplicationController
 
   def bpm_param
     T.cast(params[:bpm], String)
+  end
+
+  def duration_param
+    T.cast(params[:duration], String)
   end
 end
