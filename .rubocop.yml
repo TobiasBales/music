@@ -1,5 +1,6 @@
 ---
 require:
+  - rubocop-minitest
   - rubocop-performance
   - rubocop-rails
   - rubocop-sorbet
@@ -9,6 +10,7 @@ AllCops:
   NewCops: enable
   Exclude:
     - bundle/vendor/**/*
+    - vendor/**/*
     - bin/*
     - db/migrate/*
     - db/schema.rb

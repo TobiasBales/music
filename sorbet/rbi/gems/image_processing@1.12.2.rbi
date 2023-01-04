@@ -406,3 +406,170 @@ end
 
 # source://image_processing//lib/image_processing/version.rb#2
 ImageProcessing::VERSION = T.let(T.unsafe(nil), String)
+
+# source://image_processing//lib/image_processing/vips.rb#7
+module ImageProcessing::Vips
+  extend ::ImageProcessing::Chainable
+
+  class << self
+    # Returns whether the given image file is processable.
+    #
+    # @return [Boolean]
+    #
+    # source://image_processing//lib/image_processing/vips.rb#11
+    def valid_image?(file); end
+  end
+end
+
+# source://image_processing//lib/image_processing/vips.rb#18
+class ImageProcessing::Vips::Processor < ::ImageProcessing::Processor
+  # Overlays the specified image over the current one. Supports specifying
+  # composite mode, direction or offset of the overlay image.
+  #
+  # source://image_processing//lib/image_processing/vips.rb#100
+  def composite(overlay, _mode = T.unsafe(nil), mode: T.unsafe(nil), gravity: T.unsafe(nil), offset: T.unsafe(nil), **options); end
+
+  # source://image_processing//lib/image_processing/vips.rb#130
+  def remove(*args); end
+
+  # Resizes the image to fit within the specified dimensions and fills
+  # the remaining area with the specified background color.
+  #
+  # source://image_processing//lib/image_processing/vips.rb#87
+  def resize_and_pad(width, height, gravity: T.unsafe(nil), extend: T.unsafe(nil), background: T.unsafe(nil), alpha: T.unsafe(nil), **options); end
+
+  # Resizes the image to fill the specified dimensions, applying any
+  # necessary cropping.
+  #
+  # source://image_processing//lib/image_processing/vips.rb#81
+  def resize_to_fill(width, height, **options); end
+
+  # Resizes the image to fit within the specified dimensions.
+  #
+  # source://image_processing//lib/image_processing/vips.rb#74
+  def resize_to_fit(width, height, **options); end
+
+  # Resizes the image to not be larger than the specified dimensions.
+  #
+  # source://image_processing//lib/image_processing/vips.rb#68
+  def resize_to_limit(width, height, **options); end
+
+  # Rotates the image by an arbitrary angle.
+  #
+  # source://image_processing//lib/image_processing/vips.rb#94
+  def rotate(degrees, **options); end
+
+  # make metadata setter methods chainable
+  #
+  # source://image_processing//lib/image_processing/vips.rb#127
+  def set(*args); end
+
+  # source://image_processing//lib/image_processing/vips.rb#128
+  def set_type(*args); end
+
+  # source://image_processing//lib/image_processing/vips.rb#129
+  def set_value(*args); end
+
+  protected
+
+  # source://image_processing//lib/image_processing/processor.rb#32
+  def image; end
+
+  private
+
+  # Converts the image on disk in various forms into a Vips::Image object.
+  #
+  # source://image_processing//lib/image_processing/vips.rb#160
+  def convert_to_image(object, name); end
+
+  # Hack to allow omitting one dimension.
+  #
+  # @raise [Error]
+  #
+  # source://image_processing//lib/image_processing/vips.rb#153
+  def default_dimensions(width, height); end
+
+  # Resizes the image according to the specified parameters, and sharpens
+  # the resulting thumbnail.
+  #
+  # source://image_processing//lib/image_processing/vips.rb#136
+  def thumbnail(width, height, sharpen: T.unsafe(nil), **options); end
+
+  class << self
+    # Loads the image on disk into a Vips::Image object. Accepts additional
+    # loader-specific options (e.g. interlacing). Afterwards auto-rotates the
+    # image to be upright.
+    #
+    # source://image_processing//lib/image_processing/vips.rb#30
+    def load_image(path_or_image, loader: T.unsafe(nil), autorot: T.unsafe(nil), **options); end
+
+    # Writes the Vips::Image object to disk. This starts the processing
+    # pipeline defined in the Vips::Image object. Accepts additional
+    # saver-specific options (e.g. quality).
+    #
+    # source://image_processing//lib/image_processing/vips.rb#56
+    def save_image(image, path, saver: T.unsafe(nil), quality: T.unsafe(nil), **options); end
+
+    # See #thumbnail.
+    #
+    # @return [Boolean]
+    #
+    # source://image_processing//lib/image_processing/vips.rb#49
+    def supports_resize_on_load?; end
+  end
+end
+
+# source://image_processing//lib/image_processing/processor.rb#34
+ImageProcessing::Vips::Processor::ACCUMULATOR_CLASS = Vips::Image
+
+# Default sharpening mask that provides a fast and mild sharpen.
+#
+# source://image_processing//lib/image_processing/vips.rb#22
+ImageProcessing::Vips::Processor::SHARPEN_MASK = T.let(T.unsafe(nil), Vips::Image)
+
+# source://image_processing//lib/image_processing/vips.rb#176
+module ImageProcessing::Vips::Processor::Utils
+  private
+
+  # libvips uses various loaders depending on the input format.
+  #
+  # source://image_processing//lib/image_processing/vips.rb#180
+  def select_valid_loader_options(source_path, options); end
+
+  # libvips uses various loaders and savers depending on the input and
+  # output image format. Each of these loaders and savers accept slightly
+  # different options, so to allow the user to be able to specify options
+  # for a specific loader/saver and have it ignored for other
+  # loaders/savers, we do some introspection and filter out options that
+  # don't exist for a particular loader or saver.
+  #
+  # source://image_processing//lib/image_processing/vips.rb#197
+  def select_valid_options(operation_name, options); end
+
+  # Filters out unknown options for saving images.
+  #
+  # source://image_processing//lib/image_processing/vips.rb#186
+  def select_valid_saver_options(destination_path, options); end
+
+  class << self
+    # libvips uses various loaders depending on the input format.
+    #
+    # source://image_processing//lib/image_processing/vips.rb#180
+    def select_valid_loader_options(source_path, options); end
+
+    # libvips uses various loaders and savers depending on the input and
+    # output image format. Each of these loaders and savers accept slightly
+    # different options, so to allow the user to be able to specify options
+    # for a specific loader/saver and have it ignored for other
+    # loaders/savers, we do some introspection and filter out options that
+    # don't exist for a particular loader or saver.
+    #
+    # source://image_processing//lib/image_processing/vips.rb#197
+    def select_valid_options(operation_name, options); end
+
+    # Filters out unknown options for saving images.
+    #
+    # source://image_processing//lib/image_processing/vips.rb#186
+    def select_valid_saver_options(destination_path, options); end
+  end
+end

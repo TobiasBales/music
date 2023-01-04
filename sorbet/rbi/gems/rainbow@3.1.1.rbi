@@ -10,6 +10,7 @@
 # source://yard/0.9.28/lib/yard.rb#62
 ::RUBY19 = T.let(T.unsafe(nil), TrueClass)
 
+# Same as above, except in Object.
 class Object < ::BasicObject
   include ::Kernel
 

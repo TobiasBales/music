@@ -11,6 +11,7 @@ class ProfilesTest < ApplicationSystemTestCase
 
   test "visiting show" do
     visit profile_url
+
     assert_selector "a", text: "Edit your profile"
   end
 

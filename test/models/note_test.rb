@@ -6,6 +6,7 @@ require "test_helper"
 class NoteTest < ActiveSupport::TestCase
   extend T::Sig
 
+  # rubocop:disable Minitest/MultipleAssertions
   test "deserialize works for valid inputs" do
     assert_not_nil note("abb")
     assert_equal LetterName::A, note("abb").name
@@ -149,19 +150,19 @@ class NoteTest < ActiveSupport::TestCase
   end
 
   test "deserialize works for invalid inputs" do
-    assert_raises do
+    assert_raises RuntimeError do
       note("")
     end
 
-    assert_raises do
+    assert_raises KeyError do
       assert_not note("i")
     end
 
-    assert_raises do
+    assert_raises KeyError do
       assert_not note("abcd")
     end
 
-    assert_raises do
+    assert_raises KeyError do
       assert_not note("a#b")
     end
   end
@@ -280,4 +281,5 @@ class NoteTest < ActiveSupport::TestCase
 
     assert_equal note("c#"), note("c#").add(I::PerfectOctave)
   end
+  # rubocop:enable Minitest/MultipleAssertions
 end
