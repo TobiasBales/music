@@ -373,7 +373,8 @@ CREATE TABLE public.exercise_logs (
     bpm integer NOT NULL,
     "time" timestamp(6) without time zone NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    duration integer
 );
 
 
@@ -1091,6 +1092,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20230103211349'),
 ('20230103222838'),
 ('20230104141438'),
-('20230104173150');
+('20230104173150'),
+('20230104200235');
 
 
