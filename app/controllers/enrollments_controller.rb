@@ -7,9 +7,12 @@ class EnrollmentsController < ApplicationController
   before_action :authenticate, except: :show
   before_action :set_course_and_enrollment
 
-  def show; end
+  def show
+    authorize @enrollment
+  end
 
   def update
+    authorize @enrollment
     if @enrollment.save
       render :show
     else
@@ -18,6 +21,7 @@ class EnrollmentsController < ApplicationController
   end
 
   def destroy
+    authorize @enrollment
     if @enrollment.destroy
       @enrollment = Current.user.enrollments.build(course: @course)
       render :show
