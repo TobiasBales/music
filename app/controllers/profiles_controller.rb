@@ -5,11 +5,16 @@ class ProfilesController < ApplicationController
   before_action :authenticate
   before_action :set_profile, only: [:show, :edit, :update]
 
-  def show; end
+  def show
+    authorize @profile
+  end
 
-  def edit; end
+  def edit
+    authorize @profile
+  end
 
   def update
+    authorize @profile
     if @profile.update(profile_params)
       redirect_to profile_url, notice: "Profile was successfully updated."
     else
