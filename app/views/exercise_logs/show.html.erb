@@ -9,7 +9,7 @@
         </div>
       <% end %>
     </div>
-    <%= if @exercise_logs.present? %>
+    <% if @exercise_logs.present? %>
       <div class="mt-3">
         <%= render(Bootstrap::Card.new(title: "Log")) do |c| %>
           <%= render(Bootstrap::List::Group.new(flush: true)) do %>
@@ -18,7 +18,7 @@
             <% end %>
           <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   <% end %>
 <% end %>
