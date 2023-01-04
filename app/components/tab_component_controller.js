@@ -44,13 +44,10 @@ export default class extends Controller {
       this.toggleCountIn();
     }
 
-    if (this.mutedValue) {
-      this.toggleMute();
-    }
-
     if (this.isTex()) {
       this.updateTabBpm();
     }
+
     document.addEventListener('keypress', this.handleKeypress)
   }
 
@@ -61,6 +58,9 @@ export default class extends Controller {
   scoreLoaded = (score) => {
     this.updateTrackList(score);
     this.updateTitle(score);
+    if (this.mutedValue) {
+      this.toggleMute();
+    }
   }
 
   renderStarted = () => {
