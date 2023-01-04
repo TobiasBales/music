@@ -4,7 +4,5 @@
 
 import { application } from "./application";
 
-import HelloController from "./hello_controller";
 import TabComponentController from "../../components/tab_component_controller";
-application.register("hello", HelloController);
 application.register("tab-component", TabComponentController);
