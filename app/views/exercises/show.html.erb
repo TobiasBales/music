@@ -4,5 +4,13 @@
   Bootstrap::Crumb.new(text: @exercise.name, to: @exercise)
 ])) do %>
   <%= render(TabComponent.new(tab: @exercise.tab, bpm: @bpm, count_in: Current.profile.count_in, type: :tex, muted: Current.user&.profile&.mute_exercises || false)) %>
+  <div>
+    <% if @previous.present? %>
+      <%= render(Bootstrap::Button.new(text: "Previous", to: @previous, style: :secondary)) %>
+    <% end %>
+    <% if @next.present? %>
+      <%= render(Bootstrap::Button.new(text: "Next", to: @next, style: :secondary)) %>
+    <% end %>
+  </div>
   <%= turbo_frame_tag @exercise, :exercise_log, src: exercise_log_path(@exercise) %>
 <% end %>

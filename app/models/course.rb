@@ -28,6 +28,19 @@ class Course < ApplicationRecord
     false
   end
 
+  sig { params(exercise: Exercise).returns([T.nilable(Exercise), T.nilable(Exercise)]) }
+  def previous_and_next(exercise)
+    previous_exercise = T.let(nil, T.nilable(Exercise))
+    next_exercise = T.let(nil, T.nilable(Exercise))
+
+    exercises.to_a.each_cons(2) do |a, b|
+      previous_exercise = a if b == exercise
+      next_exercise = b if a == exercise
+    end
+
+    [previous_exercise, next_exercise]
+  end
+
   sig { returns(T.any(String, ActiveStorage::VariantWithRecord)) }
   def thumbnail
     image.representation({ resize_to_limit: [350, 350] }) || "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
