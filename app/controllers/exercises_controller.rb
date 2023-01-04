@@ -13,5 +13,10 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.includes(:course).find(params[:id])
     authorize @exercise
     @bpm = 120
+
+    return if Current.user.nil?
+
+    last_log = Current.user.exercise_logs.where(exercise: @exercise).order(:created_at).last
+    @bpm = last_log.bpm if last_log.present?
   end
 end
