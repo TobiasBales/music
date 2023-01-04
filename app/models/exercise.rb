@@ -6,4 +6,5 @@ class Exercise < ApplicationRecord
 
   validates :name, presence: true
   validates :tab, presence: true
+  validates :order, presence: true
 end
