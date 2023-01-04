@@ -632,6 +632,9 @@ class ExerciseLog
     def restore_id!; end
 
     sig { void }
+    def restore_time!; end
+
+    sig { void }
     def restore_updated_at!; end
 
     sig { void }
@@ -661,6 +664,12 @@ class ExerciseLog
     sig { returns(T::Boolean) }
     def saved_change_to_id?; end
 
+    sig { returns(T.nilable([::ActiveSupport::TimeWithZone, ::ActiveSupport::TimeWithZone])) }
+    def saved_change_to_time; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_time?; end
+
     sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
     def saved_change_to_updated_at; end
 
@@ -672,6 +681,51 @@ class ExerciseLog
 
     sig { returns(T::Boolean) }
     def saved_change_to_user_id?; end
+
+    sig { returns(::ActiveSupport::TimeWithZone) }
+    def time; end
+
+    sig { params(value: ::ActiveSupport::TimeWithZone).returns(::ActiveSupport::TimeWithZone) }
+    def time=(value); end
+
+    sig { returns(T::Boolean) }
+    def time?; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def time_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def time_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def time_came_from_user?; end
+
+    sig { returns(T.nilable([::ActiveSupport::TimeWithZone, ::ActiveSupport::TimeWithZone])) }
+    def time_change; end
+
+    sig { returns(T.nilable([::ActiveSupport::TimeWithZone, ::ActiveSupport::TimeWithZone])) }
+    def time_change_to_be_saved; end
+
+    sig { returns(T::Boolean) }
+    def time_changed?; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def time_in_database; end
+
+    sig { returns(T.nilable([::ActiveSupport::TimeWithZone, ::ActiveSupport::TimeWithZone])) }
+    def time_previous_change; end
+
+    sig { returns(T::Boolean) }
+    def time_previously_changed?; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def time_previously_was; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def time_was; end
+
+    sig { void }
+    def time_will_change!; end
 
     sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
     def updated_at; end
@@ -774,6 +828,9 @@ class ExerciseLog
 
     sig { returns(T::Boolean) }
     def will_save_change_to_id?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_time?; end
 
     sig { returns(T::Boolean) }
     def will_save_change_to_updated_at?; end

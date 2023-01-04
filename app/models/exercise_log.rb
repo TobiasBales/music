@@ -5,5 +5,6 @@ class ExerciseLog < ApplicationRecord
   belongs_to :user
   belongs_to :exercise
 
-  validates :bpm, presence: true
+  validates :bpm, presence: true, numericality: { greater_than: 0 }
+  validates :time, presence: true
 end

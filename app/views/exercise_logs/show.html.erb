@@ -1,0 +1,12 @@
+<%= turbo_frame_tag @exercise, :exercise_log do %>
+  <% if Current.user.present? %>
+    <div data-controller="form" data-action="tab-component:finished@window->form#submit">
+      <%= form_with(url: exercise_log_path(@exercise), method: :patch) do |form| %>
+        <%= form.hidden_field :bpm, value: 0 %>
+        <div class="d-none">
+          <%= render(Bootstrap::Form::Button.new(form: form, label: "Save", type: :submit)) %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

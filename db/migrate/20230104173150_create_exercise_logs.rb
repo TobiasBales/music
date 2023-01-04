@@ -4,6 +4,7 @@ class CreateExerciseLogs < ActiveRecord::Migration[7.0]
       t.references :user, null: false, foreign_key: true, type: :uuid
       t.references :exercise, null: false, foreign_key: true, type: :uuid
       t.integer :bpm, null: false
+      t.datetime :time, null: false
 
       t.timestamps
     end
