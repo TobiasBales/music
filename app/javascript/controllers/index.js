@@ -4,5 +4,7 @@
 
 import { application } from "./application";
 
+import FormController from "./form_controller";
 import TabComponentController from "../../components/tab_component_controller";
+application.register("form", FormController);
 application.register("tab-component", TabComponentController);
