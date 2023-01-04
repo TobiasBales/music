@@ -3,9 +3,11 @@ one:
   exercise: one
   bpm: 110
   time: <%= 1.day.ago.to_fs(:db) %>
+  duration: 20
 
 two:
   user: default
   exercise: one
   bpm: 115
   time: <%= 1.day.ago.to_fs(:db) %>
+  duration: 18
