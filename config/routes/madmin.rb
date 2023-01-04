@@ -3,6 +3,7 @@
 
 # Below are the routes for madmin
 namespace :madmin do
+  resources :exercise_logs
   resources :tabs
   resources :course_permissions
   namespace :active_storage do

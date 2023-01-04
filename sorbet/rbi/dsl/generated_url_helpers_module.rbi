@@ -60,6 +60,9 @@ module GeneratedUrlHelpersModule
   def edit_madmin_enrollment_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def edit_madmin_exercise_log_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def edit_madmin_exercise_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -168,6 +171,12 @@ module GeneratedUrlHelpersModule
   def madmin_enrollments_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def madmin_exercise_log_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def madmin_exercise_logs_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def madmin_exercise_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -250,6 +259,9 @@ module GeneratedUrlHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def new_madmin_enrollment_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_madmin_exercise_log_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def new_madmin_exercise_url(*args); end
