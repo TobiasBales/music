@@ -363,6 +363,21 @@ CREATE TABLE public.enrollments (
 
 
 --
+-- Name: exercise_logs; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.exercise_logs (
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    user_id uuid NOT NULL,
+    exercise_id uuid NOT NULL,
+    bpm integer NOT NULL,
+    "time" timestamp(6) without time zone NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
 -- Name: exercises; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -616,6 +631,14 @@ ALTER TABLE ONLY public.enrollments
 
 
 --
+-- Name: exercise_logs exercise_logs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.exercise_logs
+    ADD CONSTRAINT exercise_logs_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: exercises exercises_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -796,6 +819,20 @@ CREATE INDEX index_enrollments_on_user_id ON public.enrollments USING btree (use
 
 
 --
+-- Name: index_exercise_logs_on_exercise_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_exercise_logs_on_exercise_id ON public.exercise_logs USING btree (exercise_id);
+
+
+--
+-- Name: index_exercise_logs_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_exercise_logs_on_user_id ON public.exercise_logs USING btree (user_id);
+
+
+--
 -- Name: index_exercises_on_course_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -896,6 +933,14 @@ ALTER TABLE ONLY public.password_reset_tokens
 
 
 --
+-- Name: exercise_logs fk_rails_2d20b50904; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.exercise_logs
+    ADD CONSTRAINT fk_rails_2d20b50904 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
 -- Name: enrollments fk_rails_2e119501f4; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -976,6 +1021,14 @@ ALTER TABLE ONLY public.active_storage_variant_records
 
 
 --
+-- Name: exercise_logs fk_rails_c1aea2d8c9; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.exercise_logs
+    ADD CONSTRAINT fk_rails_c1aea2d8c9 FOREIGN KEY (exercise_id) REFERENCES public.exercises(id);
+
+
+--
 -- Name: active_storage_attachments fk_rails_c3b3935057; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1037,6 +1090,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20230103204915'),
 ('20230103211349'),
 ('20230103222838'),
-('20230104141438');
+('20230104141438'),
+('20230104173150');
 
 

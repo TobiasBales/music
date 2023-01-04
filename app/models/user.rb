@@ -13,6 +13,7 @@ class User < ApplicationRecord
 
   has_one :profile, dependent: :destroy
   has_many :enrollments, dependent: :destroy, strict_loading: false
+  has_many :exercise_logs, dependent: :destroy, strict_loading: false
 
   # rubocop:disable Rails/HasAndBelongsToMany
   has_and_belongs_to_many :course_permissions, strict_loading: false

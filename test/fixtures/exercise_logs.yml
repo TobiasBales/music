@@ -1,0 +1,11 @@
+one:
+  user: default
+  exercise: one
+  bpm: 110
+  time: <%= 1.day.ago.to_s(:db) %>
+
+two:
+  user: default
+  exercise: one
+  bpm: 115
+  time: <%= 1.day.ago.to_s(:db) %>

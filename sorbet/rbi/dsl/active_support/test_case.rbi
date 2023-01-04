@@ -27,6 +27,9 @@ class ActiveSupport::TestCase
   def enrollments(*fixture_names); end
 
   sig { params(fixture_names: T.any(String, Symbol)).returns(T.untyped) }
+  def exercise_logs(*fixture_names); end
+
+  sig { params(fixture_names: T.any(String, Symbol)).returns(T.untyped) }
   def exercises(*fixture_names); end
 
   sig { params(fixture_names: T.any(String, Symbol)).returns(T.untyped) }
