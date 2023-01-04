@@ -15,7 +15,6 @@ export default class extends Controller {
 
   connect() {
     this.previousTime = -1;
-    this.bpm = this.bpmValue;
     this.wakeLock = false;
 
     this.api = new alphaTab.AlphaTabApi(this.mainTarget, this.settings);
@@ -27,6 +26,7 @@ export default class extends Controller {
     this.api.renderStarted.on(this.renderStarted);
     this.api.scoreLoaded.on(this.scoreLoaded);
     this.api.soundFontLoad.on(this.soundFontLoad);
+    this.api.playerFinished.on(this.playerFinished);
 
     this.layoutTarget.onchange = this.handleLayoutChanged;
     this.zoomTarget.onchange = this.handleZoomChanged;
@@ -86,6 +86,14 @@ export default class extends Controller {
   soundFontLoad = (e) => {
     const percentage = Math.floor((e.loaded / e.total) * 100);
     this.playerProgressTarget.innerText = percentage + "%";
+  }
+
+  playerFinished = (_e) => {
+    this.dispatch("finished", {
+      detail: { bpm: this.bpmValue },
+      bubbles: true,
+      cancelable: false,
+    })
   }
 
   playerPositionChanged = (e) => {
