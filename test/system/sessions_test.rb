@@ -33,6 +33,7 @@ class SessionsTest < ApplicationSystemTestCase
     click_on @user.email
 
     click_on "Log out"
+
     assert_text "That session has been logged out"
   end
 end

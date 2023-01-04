@@ -4,6 +4,7 @@
 require "test_helper"
 
 class LetterNameTest < ActiveSupport::TestCase
+  # rubocop:disable Minitest/MultipleAssertions
   test "#add_generic_interval(0) is equal the original letter" do
     LetterName.each_value do |letter_name|
       assert_equal letter_name, letter_name.add_generic_interval(0)
@@ -28,12 +29,13 @@ class LetterNameTest < ActiveSupport::TestCase
   end
 
   test "#specific_interval works for C" do
-    assert_equal LetterName::C.specific_interval(to: LetterName::C), 0
-    assert_equal LetterName::C.specific_interval(to: LetterName::D), 2
-    assert_equal LetterName::C.specific_interval(to: LetterName::E), 4
-    assert_equal LetterName::C.specific_interval(to: LetterName::F), 5
-    assert_equal LetterName::C.specific_interval(to: LetterName::G), 7
-    assert_equal LetterName::C.specific_interval(to: LetterName::A), 9
-    assert_equal LetterName::C.specific_interval(to: LetterName::B), 11
+    assert_equal(0, LetterName::C.specific_interval(to: LetterName::C))
+    assert_equal(2, LetterName::C.specific_interval(to: LetterName::D))
+    assert_equal(4, LetterName::C.specific_interval(to: LetterName::E))
+    assert_equal(5, LetterName::C.specific_interval(to: LetterName::F))
+    assert_equal(7, LetterName::C.specific_interval(to: LetterName::G))
+    assert_equal(9, LetterName::C.specific_interval(to: LetterName::A))
+    assert_equal(11, LetterName::C.specific_interval(to: LetterName::B))
   end
+  # rubocop:enable Minitest/MultipleAssertions
 end
