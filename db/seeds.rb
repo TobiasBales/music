@@ -36,13 +36,13 @@ class Seeds
     course
   end
 
-  sig { params(course: Course, name: String, order: Integer, tab: String).void }
-  def exercise(course, name, order, tab)
+  sig { params(course: Course, name: String, order: Integer, tab: String, bpm: Integer).void }
+  def exercise(course, name, order, tab, bpm)
     exercise = Exercise.find_by(name: name)
 
     return if exercise.present?
 
-    Exercise.new(course: course, name: name, order: order, tab: tab).save!
+    Exercise.new(course: course, name: name, order: order, tab: tab, bpm: bpm).save!
   end
 end
 
@@ -56,7 +56,7 @@ tobias = seeds.author("Tobias Bales")
 
 warmups = seeds.course(tobias, guitar, "Warmups")
 
-seeds.exercise(warmups, "Chromatic", 1, <<~TAB)
+seeds.exercise(warmups, "Chromatic", 1, <<~TAB, 80)
   \\title "Chromatic"
   \\tempo BPM
   \\instrument 29
