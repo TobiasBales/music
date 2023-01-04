@@ -11,7 +11,12 @@ export default class extends Controller {
     muted: Boolean,
   };
 
-  static targets = ["viewport", "wrap", "main", "overlay", "trackTemplate", "trackList", "songArtist", "songTitle", "countIn", "metronome", "loop", "print", "zoom", "layout", "playerProgress", "playPause", "stop", "playPauseIcon", "songPosition", "tab", "muteIcon", "mute"];
+  static targets = [
+    "viewport", "wrap", "main", "overlay", "trackTemplate", "trackList",
+    "songArtist", "songTitle", "countIn", "metronome", "loop", "print",
+    "zoom", "layout", "playerProgress", "playPause", "stop", "playPauseIcon",
+    "songPosition", "tab", "muteIcon", "mute", "bpm"
+  ];
 
   connect() {
     this.previousTime = -1;
@@ -136,6 +141,7 @@ export default class extends Controller {
 
   updateTabBpm() {
     this.api.tex(this.tabTarget.innerHTML.replace("BPM", this.bpmValue));
+    this.bpmTarget.innerHTML = this.bpmValue;
   }
 
   increaseBpm() {
