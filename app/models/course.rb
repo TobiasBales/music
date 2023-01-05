@@ -28,17 +28,18 @@ class Course < ApplicationRecord
     false
   end
 
-  sig { params(exercise: Exercise).returns([T.nilable(Exercise), T.nilable(Exercise)]) }
-  def previous_and_next(exercise)
-    previous_exercise = T.let(nil, T.nilable(Exercise))
-    next_exercise = T.let(nil, T.nilable(Exercise))
-
+  sig { params(exercise: Exercise).returns(T.nilable(Exercise)) }
+  def previous(exercise)
     exercises.to_a.each_cons(2) do |a, b|
-      previous_exercise = a if b == exercise
-      next_exercise = b if a == exercise
+      return a if b == exercise
     end
+  end
 
-    [previous_exercise, next_exercise]
+  sig { params(exercise: Exercise).returns(T.nilable(Exercise)) }
+  def next(exercise)
+    exercises.to_a.each_cons(2) do |a, b|
+      return b if a == exercise
+    end
   end
 
   sig { returns(T.any(String, ActiveStorage::VariantWithRecord)) }
