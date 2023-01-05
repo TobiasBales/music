@@ -13,7 +13,7 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.includes(:course).find(params[:id])
     authorize @exercise
     @bpm = @exercise.bpm || 120
-    @previous, @next = @exercise.course.previous_and_next(@exercise)
+    @next = @exercise.course.next(@exercise)
 
     return if Current.user.nil?
 
