@@ -32,7 +32,7 @@ class Course < ApplicationRecord
   def previous(exercise)
     return nil if exercises.size <= 1
 
-    exercises.to_a.each_cons(2) do |a, b|
+    exercises.order(:order).to_a.each_cons(2) do |a, b|
       return a if b == exercise
     end
 
@@ -43,7 +43,7 @@ class Course < ApplicationRecord
   def next(exercise)
     return nil if exercises.size <= 1
 
-    exercises.to_a.each_cons(2) do |a, b|
+    exercises.order(:order).to_a.each_cons(2) do |a, b|
       return b if a == exercise
     end
 
