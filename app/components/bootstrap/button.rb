@@ -9,10 +9,10 @@ module Bootstrap
 
     sig do
       params(text: String, to: Target, method: Symbol, style: Symbol, confirm: T.nilable(String),
-             params: T::Hash[T.untyped, T.untyped]).void
+             params: T::Hash[T.untyped, T.untyped], dropdown: T::Boolean).void
     end
     # rubocop:disable Metrics/ParameterLists
-    def initialize(text:, to:, method: :get, style: :primary, confirm: nil, params: {})
+    def initialize(text:, to:, method: :get, style: :primary, confirm: nil, params: {}, dropdown: false)
       super
 
       @text = text
@@ -21,6 +21,7 @@ module Bootstrap
       @style = style
       @confirm = confirm
       @params = params
+      @dropdown = dropdown
     end
     # rubocop:enable Metrics/ParameterLists
 
@@ -42,9 +43,15 @@ module Bootstrap
     sig { returns(T::Hash[T.untyped, T.untyped]) }
     attr_reader :params
 
+    sig { returns(T::Boolean) }
+    attr_reader :dropdown
+
     sig { returns(String) }
     def classes
-      ["btn-#{@style}"].join(" ")
+      classes = ["btn-#{@style}"]
+      classes << "dropdown-toggle" if dropdown
+
+      classes.join(" ")
     end
   end
 end
