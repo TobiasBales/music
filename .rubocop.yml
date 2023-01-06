@@ -31,6 +31,9 @@ Metrics/AbcSize:
 Metrics/CyclomaticComplexity:
   Max: 10
 
+Rails/Delegate:
+  Enabled: false
+
 Rails/I18nLocaleTexts:
   Enabled: false
 
