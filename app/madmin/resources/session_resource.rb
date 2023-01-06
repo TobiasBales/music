@@ -2,27 +2,27 @@
 # frozen_string_literal: true
 
 class SessionResource < Madmin::Resource
-  # Attributes
-  attribute :id, form: false
+  extend T::Sig
+
+  attribute :user
   attribute :user_agent
   attribute :ip_address
-  attribute :created_at, form: false
-  attribute :updated_at, form: false
+  attribute :id, form: false
+  attribute :created_at, form: false, index: false
+  attribute :updated_at, form: false, index: false
 
-  # Associations
-  attribute :user
+  sig { params(record: Session).returns(String) }
+  def self.display_name(record)
+    "Session for #{record.user&.email}"
+  end
 
-  # Uncomment this to customize the display name of records in the admin area.
-  # def self.display_name(record)
-  #   record.name
-  # end
+  sig { returns(String) }
+  def self.default_sort_column
+    "created_at"
+  end
 
-  # Uncomment this to customize the default sort column and direction.
-  # def self.default_sort_column
-  #   "created_at"
-  # end
-  #
-  # def self.default_sort_direction
-  #   "desc"
-  # end
+  sig { returns(String) }
+  def self.default_sort_direction
+    "desc"
+  end
 end

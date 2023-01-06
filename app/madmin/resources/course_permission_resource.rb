@@ -2,26 +2,26 @@
 # frozen_string_literal: true
 
 class CoursePermissionResource < Madmin::Resource
-  # Attributes
-  attribute :id, form: false
-  attribute :created_at, form: false
-  attribute :updated_at, form: false
+  extend T::Sig
 
-  # Associations
   attribute :course
   attribute :users
+  attribute :id, form: false
+  attribute :created_at, form: false, index: false
+  attribute :updated_at, form: false, index: false
 
-  # Uncomment this to customize the display name of records in the admin area.
-  # def self.display_name(record)
-  #   record.name
-  # end
+  sig { params(record: CoursePermission).returns(String) }
+  def self.display_name(record)
+    "Permissions for #{record.course&.name}"
+  end
 
-  # Uncomment this to customize the default sort column and direction.
+  # sig { returns(String) }
   # def self.default_sort_column
-  #   "created_at"
+  #   "name"
   # end
-  #
-  # def self.default_sort_direction
-  #   "desc"
-  # end
+
+  sig { returns(String) }
+  def self.default_sort_direction
+    "asc"
+  end
 end

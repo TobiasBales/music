@@ -2,29 +2,30 @@
 # frozen_string_literal: true
 
 class ExerciseLogResource < Madmin::Resource
-  # Attributes
-  attribute :id, form: false
+  extend T::Sig
+
+  attribute :exercise
+  attribute :user
   attribute :bpm
   attribute :time
-  attribute :created_at, form: false
-  attribute :updated_at, form: false
   attribute :duration
+  attribute :id, form: false
+  attribute :created_at, form: false, index: false
+  attribute :updated_at, form: false, index: false
 
-  # Associations
-  attribute :user
-  attribute :exercise
+  sig { params(record: ExerciseLog).returns(String) }
+  def self.display_name(record)
+    "Exercise log for #{record.exercise&.name}  #{record.user&.email} on #{record.time}"
+  end
 
-  # Uncomment this to customize the display name of records in the admin area.
-  # def self.display_name(record)
-  #   record.name
-  # end
+  sig { returns(String) }
+  def self.default_sort_column
+    "created_at"
+  end
 
-  # Uncomment this to customize the default sort column and direction.
-  # def self.default_sort_column
-  #   "created_at"
-  # end
-  #
-  # def self.default_sort_direction
-  #   "desc"
-  # end
+  sig { returns(String) }
+
+  def self.default_sort_direction
+    "desc"
+  end
 end

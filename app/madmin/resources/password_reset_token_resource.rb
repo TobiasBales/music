@@ -2,23 +2,23 @@
 # frozen_string_literal: true
 
 class PasswordResetTokenResource < Madmin::Resource
-  # Attributes
+  extend T::Sig
+
+  attribute :user
   attribute :id, form: false
 
-  # Associations
-  attribute :user
+  sig { params(record: PasswordResetToken).returns(String) }
+  def self.display_name(record)
+    "PasswordResetToken for #{record.user&.email}"
+  end
 
-  # Uncomment this to customize the display name of records in the admin area.
-  # def self.display_name(record)
-  #   record.name
-  # end
+  sig { returns(String) }
+  def self.default_sort_column
+    "user_id"
+  end
 
-  # Uncomment this to customize the default sort column and direction.
-  # def self.default_sort_column
-  #   "created_at"
-  # end
-  #
-  # def self.default_sort_direction
-  #   "desc"
-  # end
+  sig { returns(String) }
+  def self.default_sort_direction
+    "asc"
+  end
 end

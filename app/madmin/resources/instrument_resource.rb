@@ -4,26 +4,24 @@
 class InstrumentResource < Madmin::Resource
   extend T::Sig
 
-  # Attributes
-  attribute :id, form: false
   attribute :name
-  attribute :created_at, form: false
-  attribute :updated_at, form: false
-
-  # Associations
   attribute :courses
+  attribute :id, form: false
+  attribute :created_at, form: false, index: false
+  attribute :updated_at, form: false, index: false
 
   sig { params(record: Instrument).returns(String) }
   def self.display_name(record)
     record.name
   end
 
-  # Uncomment this to customize the default sort column and direction.
-  # def self.default_sort_column
-  #   "created_at"
-  # end
-  #
-  # def self.default_sort_direction
-  #   "desc"
-  # end
+  sig { returns(String) }
+  def self.default_sort_column
+    "name"
+  end
+
+  sig { returns(String) }
+  def self.default_sort_direction
+    "asc"
+  end
 end
