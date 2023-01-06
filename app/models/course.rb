@@ -30,16 +30,24 @@ class Course < ApplicationRecord
 
   sig { params(exercise: Exercise).returns(T.nilable(Exercise)) }
   def previous(exercise)
+    return nil if exercises.size <= 1
+
     exercises.to_a.each_cons(2) do |a, b|
       return a if b == exercise
     end
+
+    nil
   end
 
   sig { params(exercise: Exercise).returns(T.nilable(Exercise)) }
   def next(exercise)
+    return nil if exercises.size <= 1
+
     exercises.to_a.each_cons(2) do |a, b|
       return b if a == exercise
     end
+
+    nil
   end
 
   sig { returns(T.any(String, ActiveStorage::VariantWithRecord)) }

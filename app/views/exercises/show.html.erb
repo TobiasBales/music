@@ -2,12 +2,7 @@
   Bootstrap::Crumb.new(text: "Courses", to: courses_path),
   Bootstrap::Crumb.new(text: @exercise.course.name, to: @exercise.course),
   Bootstrap::Crumb.new(text: @exercise.name, to: @exercise)
-])) do %>
+], actions: @actions)) do %>
   <%= render(TabComponent.new(tab: @exercise.tab, bpm: @bpm, count_in: Current.profile.count_in, type: :tex, muted: Current.user&.profile&.mute_exercises || false)) %>
-    <% if @next.present? %>
-      <div class="mt-3 d-flex justify-content-around">
-        <%= render(Bootstrap::Button.new(text: "Next", to: @next, style: :secondary)) %>
-      </div>
-    <% end %>
     <%= turbo_frame_tag @exercise, :exercise_log, src: exercise_log_path(@exercise) %>
   <% end %>
