@@ -5,9 +5,9 @@ module Bootstrap
   class Action
     extend T::Sig
     Target = T.type_alias { T.any(String, Symbol, ActiveRecord::Base) }
-    sig { params(label: String, to: Target, icon: String, method: Symbol, confirm: T.nilable(String)).void }
-    def initialize(label:, to:, icon:, method: :get, confirm: nil)
-      @label = label
+    sig { params(text: String, to: Target, icon: T.nilable(String), method: Symbol, confirm: T.nilable(String)).void }
+    def initialize(text:, to:, icon: nil, method: :get, confirm: nil)
+      @text = text
       @to = to
       @icon = icon
       @method = method
@@ -15,12 +15,12 @@ module Bootstrap
     end
 
     sig { returns(String) }
-    attr_reader :label
+    attr_reader :text
 
     sig { returns(Target) }
     attr_reader :to
 
-    sig { returns(String) }
+    sig { returns(T.nilable(String)) }
     attr_reader :icon
 
     sig { returns(Symbol) }
