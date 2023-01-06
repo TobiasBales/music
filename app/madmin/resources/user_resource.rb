@@ -4,24 +4,21 @@
 class UserResource < Madmin::Resource
   extend T::Sig
 
-  # Attributes
-  attribute :id, form: false
   attribute :email
   attribute :verified
   attribute :admin
   attribute :staff
-  attribute :created_at, form: false
-  attribute :updated_at, form: false
-  attribute :password, index: false, show: false
-  attribute :password_confirmation, index: false, show: false
-
-  # Associations
+  attribute :profile
   attribute :email_verification_tokens
   attribute :password_reset_tokens
   attribute :sessions
-  attribute :profile
   attribute :enrollments
   attribute :course_permissions
+  attribute :id, form: false
+  attribute :password, index: false, show: false
+  attribute :password_confirmation, index: false, show: false
+  attribute :created_at, form: false
+  attribute :updated_at, form: false
 
   sig { params(record: User).returns(String) }
   def self.display_name(record)

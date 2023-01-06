@@ -4,20 +4,17 @@
 class CourseResource < Madmin::Resource
   extend T::Sig
 
-  # Attributes
-  attribute :id, form: false
   attribute :name
   attribute :description, index: false
+  attribute :author
   attribute :link, index: false
+  attribute :exercises
+  attribute :enrollments
+  attribute :instrument
+  attribute :id, form: false
   attribute :created_at, form: false, index: false
   attribute :updated_at, form: false, index: false
   attribute :image, index: false
-
-  # Associations
-  attribute :instrument
-  attribute :author
-  attribute :exercises
-  attribute :enrollments
 
   sig { params(record: Course).returns(String) }
   def self.display_name(record)

@@ -2,28 +2,28 @@
 # frozen_string_literal: true
 
 class TabResource < Madmin::Resource
-  # Attributes
-  attribute :id, form: false
+  extend T::Sig
+
   attribute :artist
   attribute :album
   attribute :song
-  attribute :created_at, form: false
-  attribute :updated_at, form: false
   attribute :tab, index: false
+  attribute :id, form: false
+  attribute :created_at, form: false, index: false
+  attribute :updated_at, form: false, index: false
 
-  # Associations
+  sig { params(record: Tab).returns(String) }
+  def self.display_name(record)
+    "#{record.artist} - #{record.song}"
+  end
 
-  # Uncomment this to customize the display name of records in the admin area.
-  # def self.display_name(record)
-  #   record.name
-  # end
+  sig { returns(String) }
+  def self.default_sort_column
+    "artist"
+  end
 
-  # Uncomment this to customize the default sort column and direction.
-  # def self.default_sort_column
-  #   "created_at"
-  # end
-  #
-  # def self.default_sort_direction
-  #   "desc"
-  # end
+  sig { returns(String) }
+  def self.default_sort_direction
+    "desc"
+  end
 end
