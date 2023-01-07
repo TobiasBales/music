@@ -140,6 +140,7 @@ export default class extends Controller {
   handleKeypress = (e) => {
     if (e.code == "Space") {
       this.playPause();
+      e.preventDefault();
     }
   }
 
