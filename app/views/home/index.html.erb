@@ -1,6 +1,8 @@
 <% page_title "Home" %>
 
-<%= render(Bootstrap::Page.new) do %>
+<%= render(Bootstrap::Page.new(crumbs: [
+  Bootstrap::Crumb.new(text: "Home", to: root_path)
+])) do %>
   <% if @enrollments.empty? %>
     Check out the available <%= render(Bootstrap::Link.new(text: "courses", to: courses_path)) %>
   <% end %>
