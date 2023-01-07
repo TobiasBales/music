@@ -39,11 +39,13 @@ class ExerciseLogsController < ApplicationController
     user.exercise_logs.build(exercise: exercise)
   end
 
-  sig { returns(T.nilable(ActiveRecord::Relation)) }
+  sig { returns(T.nilable(T::Hash[Date, T::Array[ExerciseLog]])) }
   def load_exercise_logs
     return if Current.user.nil?
 
-    Current.user.exercise_logs.where(exercise: @exercise).order(created_at: :desc).limit(30)
+    Current.user.exercise_logs.where(exercise: @exercise).order(created_at: :desc).limit(30).group_by do |el|
+      el.time.to_date
+    end
   end
 
   def bpm_param
