@@ -1,3 +1,5 @@
+<% page_title "Home" %>
+
 <%= render(Bootstrap::Page.new) do %>
   <% if @enrollments.empty? %>
     Check out the available <%= render(Bootstrap::Link.new(text: "courses", to: courses_path)) %>
