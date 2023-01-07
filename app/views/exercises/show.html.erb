@@ -1,3 +1,5 @@
+<% page_title "#{@exercise.course.name} - #{@exercise.name}" %>
+
 <%= render(Bootstrap::Page.new(crumbs: [
   Bootstrap::Crumb.new(text: "Courses", to: courses_path),
   Bootstrap::Crumb.new(text: @exercise.course.name, to: @exercise.course),
