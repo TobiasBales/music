@@ -79,13 +79,9 @@ export default class extends Controller {
   }
 
   playerStateChanged = (e) => {
-    if (e.state === alphaTab.synth.PlayerState.Playing) {
-      this.playPauseIconTarget.classList.remove("fa-play");
-      this.playPauseIconTarget.classList.add("fa-pause");
-    } else {
-      this.playPauseIconTarget.classList.remove("fa-pause");
-      this.playPauseIconTarget.classList.add("fa-play");
-    }
+    const playing = e.state === alphaTab.synth.PlayerState.Playing
+    this.playPauseIconTarget.classList.toggle("bi-play", !playing);
+    this.playPauseIconTarget.classList.toggle("bi-pause", playing);
   }
 
   soundFontLoad = (e) => {
@@ -140,6 +136,7 @@ export default class extends Controller {
   handleKeypress = (e) => {
     if (e.code == "Space") {
       this.playPause();
+      e.preventDefault();
     }
   }
 
