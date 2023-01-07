@@ -30,6 +30,11 @@ class ExercisesController < ApplicationController
 
     next_exercise = @exercise.course.next(@exercise)
     actions << Bootstrap::Action.new(text: "Next", to: next_exercise) if next_exercise.present?
+    actions << Bootstrap::Action.new(text: "View in madmin", to: madmin_exercise_path(@exercise)) if Current.user.admin
+    if Current.user.admin
+      actions << Bootstrap::Action.new(text: "Edit in madmin",
+                                       to: edit_madmin_exercise_path(@exercise))
+    end
 
     actions
   end

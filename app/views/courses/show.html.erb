@@ -1,7 +1,7 @@
 <%= render(Bootstrap::Page.new(crumbs: [
   Bootstrap::Crumb.new(text: "Courses", to: courses_path),
   Bootstrap::Crumb.new(text: @course.name, to: @course)
-])) do %>
+], actions: @actions)) do %>
   <% if @course.description.present? %>
     <div class="mt-3">
       <h5>Description</h3>
