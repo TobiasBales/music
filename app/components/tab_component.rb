@@ -5,10 +5,11 @@ class TabComponent < ViewComponent::Base
   extend T::Sig
 
   sig do
-    params(tab: String, type: Symbol, bpm: Integer, metronome: T::Boolean, count_in: T::Boolean, muted: T::Boolean).void
+    params(tab: String, type: Symbol, bpm: T.nilable(Integer), metronome: T::Boolean, count_in: T::Boolean,
+           muted: T::Boolean).void
   end
   # rubocop:disable Metrics/ParameterLists
-  def initialize(tab:, type:, bpm: 120, metronome: true, count_in: true, muted: false)
+  def initialize(tab:, type:, bpm: nil, metronome: true, count_in: true, muted: false)
     super()
 
     raise "Type can only be :file or :tex" unless [:file, :tex].include?(type)
@@ -25,7 +26,7 @@ class TabComponent < ViewComponent::Base
   sig { returns(String) }
   attr_reader :tab
 
-  sig { returns(Integer) }
+  sig { returns(T.nilable(Integer)) }
   attr_reader :bpm
 
   sig { returns(T::Boolean) }
