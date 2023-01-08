@@ -63,7 +63,9 @@ export default class extends Controller {
       this.toggleMute();
     }
 
-    this.updateTabBpm();
+    if (this.bpmValue) {
+      this.updateTabBpm();
+    }
   }
 
   renderStarted = () => {

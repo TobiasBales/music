@@ -49,16 +49,18 @@
              <a data-action="click->tab-component#toggleMute" data-tab-component-target="mute" class="btn">
                <i class="bi bi-volume-down" data-tab-component-target="muteIcon"></i>
              </a>
-             <a data-action="click->tab-component#increaseBpm" class="btn">
-               <i class="bi bi-plus"></i>
-             </a>
-             <p>
+             <% if bpm.present? %>
+               <a data-action="click->tab-component#increaseBpm" class="btn">
+                 <i class="bi bi-plus"></i>
+               </a>
+               <p>
                <span data-tab-component-target="bpm"><%= bpm %></span>
                bpm
-             </p>
-             <a data-action="click->tab-component#decreaseBpm" class="btn">
-               <i class="bi bi-dash"></i>
-             </a>
+               </p>
+               <a data-action="click->tab-component#decreaseBpm" class="btn">
+                 <i class="bi bi-dash"></i>
+               </a>
+             <% end %>
              <a data-action="click->tab-component#toggleCountIn" data-tab-component-target="countIn" class="btn toggle at-count-in">
                <i class="bi bi-hourglass-bottom"></i>
              </a>  
