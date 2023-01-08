@@ -385,7 +385,6 @@ CREATE TABLE public.exercise_logs (
 CREATE TABLE public.exercises (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     name character varying NOT NULL,
-    tab text NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
     course_id uuid NOT NULL,
@@ -1104,6 +1103,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20230104200235'),
 ('20230104212747'),
 ('20230104215204'),
-('20230104215548');
+('20230104215548'),
+('20230108133152'),
+('20230108133334');
 
 

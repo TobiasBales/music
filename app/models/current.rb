@@ -14,7 +14,7 @@ class Current < ActiveSupport::CurrentAttributes
 
   sig { returns(Profile) }
   def profile
-    return Profile.new(count_in: true) if user.blank?
+    return Profile.new(count_in: true, muted: false) if user.blank?
 
     user.profile || Profile.new(user: user, count_in: true)
   end

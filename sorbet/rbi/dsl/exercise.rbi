@@ -10,6 +10,12 @@ class Exercise
   extend CommonRelationMethods
   extend GeneratedRelationMethods
 
+  sig { returns(ActiveStorage::Attached::One) }
+  def tab; end
+
+  sig { params(attachable: T.untyped).returns(T.untyped) }
+  def tab=(attachable); end
+
   private
 
   sig { returns(NilClass) }
@@ -179,6 +185,12 @@ class Exercise
     sig { params(args: T.untyped, blk: T.untyped).returns(::Course) }
     def build_course(*args, &blk); end
 
+    sig { params(args: T.untyped, blk: T.untyped).returns(::ActiveStorage::Attachment) }
+    def build_tab_attachment(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(::ActiveStorage::Blob) }
+    def build_tab_blob(*args, &blk); end
+
     sig { returns(T.nilable(::Course)) }
     def course; end
 
@@ -191,8 +203,38 @@ class Exercise
     sig { params(args: T.untyped, blk: T.untyped).returns(::Course) }
     def create_course!(*args, &blk); end
 
+    sig { params(args: T.untyped, blk: T.untyped).returns(::ActiveStorage::Attachment) }
+    def create_tab_attachment(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(::ActiveStorage::Attachment) }
+    def create_tab_attachment!(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(::ActiveStorage::Blob) }
+    def create_tab_blob(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(::ActiveStorage::Blob) }
+    def create_tab_blob!(*args, &blk); end
+
     sig { returns(T.nilable(::Course)) }
     def reload_course; end
+
+    sig { returns(T.nilable(::ActiveStorage::Attachment)) }
+    def reload_tab_attachment; end
+
+    sig { returns(T.nilable(::ActiveStorage::Blob)) }
+    def reload_tab_blob; end
+
+    sig { returns(T.nilable(::ActiveStorage::Attachment)) }
+    def tab_attachment; end
+
+    sig { params(value: T.nilable(::ActiveStorage::Attachment)).void }
+    def tab_attachment=(value); end
+
+    sig { returns(T.nilable(::ActiveStorage::Blob)) }
+    def tab_blob; end
+
+    sig { params(value: T.nilable(::ActiveStorage::Blob)).void }
+    def tab_blob=(value); end
   end
 
   module GeneratedAssociationRelationMethods
@@ -370,6 +412,9 @@ class Exercise
 
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateAssociationRelationWhereChain) }
     def where(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(PrivateAssociationRelation) }
+    def with_attached_tab(*args, &blk); end
 
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateAssociationRelation) }
     def without(*args, &blk); end
@@ -665,9 +710,6 @@ class Exercise
     def restore_order!; end
 
     sig { void }
-    def restore_tab!; end
-
-    sig { void }
     def restore_updated_at!; end
 
     sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
@@ -706,62 +748,11 @@ class Exercise
     sig { returns(T::Boolean) }
     def saved_change_to_order?; end
 
-    sig { returns(T.nilable([::String, ::String])) }
-    def saved_change_to_tab; end
-
-    sig { returns(T::Boolean) }
-    def saved_change_to_tab?; end
-
     sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
     def saved_change_to_updated_at; end
 
     sig { returns(T::Boolean) }
     def saved_change_to_updated_at?; end
-
-    sig { returns(::String) }
-    def tab; end
-
-    sig { params(value: ::String).returns(::String) }
-    def tab=(value); end
-
-    sig { returns(T::Boolean) }
-    def tab?; end
-
-    sig { returns(T.nilable(::String)) }
-    def tab_before_last_save; end
-
-    sig { returns(T.untyped) }
-    def tab_before_type_cast; end
-
-    sig { returns(T::Boolean) }
-    def tab_came_from_user?; end
-
-    sig { returns(T.nilable([::String, ::String])) }
-    def tab_change; end
-
-    sig { returns(T.nilable([::String, ::String])) }
-    def tab_change_to_be_saved; end
-
-    sig { returns(T::Boolean) }
-    def tab_changed?; end
-
-    sig { returns(T.nilable(::String)) }
-    def tab_in_database; end
-
-    sig { returns(T.nilable([::String, ::String])) }
-    def tab_previous_change; end
-
-    sig { returns(T::Boolean) }
-    def tab_previously_changed?; end
-
-    sig { returns(T.nilable(::String)) }
-    def tab_previously_was; end
-
-    sig { returns(T.nilable(::String)) }
-    def tab_was; end
-
-    sig { void }
-    def tab_will_change!; end
 
     sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
     def updated_at; end
@@ -825,9 +816,6 @@ class Exercise
 
     sig { returns(T::Boolean) }
     def will_save_change_to_order?; end
-
-    sig { returns(T::Boolean) }
-    def will_save_change_to_tab?; end
 
     sig { returns(T::Boolean) }
     def will_save_change_to_updated_at?; end
@@ -956,6 +944,9 @@ class Exercise
 
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateRelationWhereChain) }
     def where(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(PrivateRelation) }
+    def with_attached_tab(*args, &blk); end
 
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateRelation) }
     def without(*args, &blk); end
