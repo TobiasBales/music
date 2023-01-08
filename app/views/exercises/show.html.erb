@@ -5,6 +5,6 @@
   Bootstrap::Crumb.new(text: @exercise.course.name, to: @exercise.course),
   Bootstrap::Crumb.new(text: @exercise.name, to: @exercise)
 ], actions: @actions)) do %>
-  <%= render(TabComponent.new(tab: @exercise.tab, bpm: @bpm, count_in: Current.profile.count_in, type: :tex, muted: Current.user&.profile&.mute_exercises || false)) %>
+  <%= render(TabComponent.new(tab: @exercise.tab.url, bpm: @bpm, count_in: Current.profile.count_in, type: :file, muted: Current.profile.mute_exercises || false)) %>
     <%= turbo_frame_tag @exercise, :exercise_log, src: exercise_log_path(@exercise) %>
   <% end %>

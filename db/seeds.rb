@@ -42,7 +42,10 @@ class Seeds
 
     return if exercise.present?
 
-    Exercise.new(course: course, name: name, order: order, tab: tab, bpm: bpm).save!
+    exercise = Exercise.new(course: course, name: name, order: order, bpm: bpm)
+    exercise.tab.attach(io: File.open("db/seeds/#{tab}"), filename: tab)
+    exercise.save!
+    exercise
   end
 end
 
@@ -56,10 +59,4 @@ tobias = seeds.author("Tobias Bales")
 
 warmups = seeds.course(tobias, guitar, "Warmups")
 
-seeds.exercise(warmups, "Chromatic", 1, <<~TAB, 80)
-  \\title "Chromatic"
-  \\tempo BPM
-  \\instrument 29
-  .
-  \\ro :8 1.6 2.6 3.6 4.6 1.5 2.5 3.5 4.5 | 1.4 2.4 3.4 4.4 1.3 2.3 3.3 4.3 | \\rc 4 1.2 2.2 3.2 4.2 1.1 2.1 3.1 4.1
-TAB
+seeds.exercise(warmups, "Chromatic", 1, "chromatic.gp", 80)

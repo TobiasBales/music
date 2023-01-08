@@ -44,10 +44,6 @@ export default class extends Controller {
       this.toggleCountIn();
     }
 
-    if (this.isTex()) {
-      this.updateTabBpm();
-    }
-
     document.addEventListener('keypress', this.handleKeypress)
   }
 
@@ -61,6 +57,9 @@ export default class extends Controller {
     if (this.mutedValue) {
       this.toggleMute();
     }
+
+    this.updateTabBpm();
+
   }
 
   renderStarted = () => {
@@ -141,24 +140,34 @@ export default class extends Controller {
   }
 
   updateTabBpm() {
-    this.api.tex(this.tabTarget.innerHTML.replace("BPM", this.bpmValue));
     this.bpmTarget.innerHTML = this.bpmValue;
+    if (this.isTex()) {
+      this.api.tex(this.tabTarget.innerHTML.replace("BPM", this.bpmValue));
+    }
+
+    if (this.isFile()) {
+      this.updateFileBpm(this.bpmValue);
+    }
+  }
+
+  updateFileBpm(bpm) {
+    const score = this.api.score;
+    score.tempo = bpm;
+    for (const mb of score.masterBars) {
+      if (mb.tempoAutomation) {
+        mb.tempoAutomation.value = bpm;
+      }
+    }
+    this.api.loadMidiForScore();
+    this.api.renderTracks(this.api.tracks);
   }
 
   increaseBpm() {
-    if (this.isFile()) {
-      return;
-    }
-
     this.bpmValue += 5;
     this.updateTabBpm();
   }
 
   decreaseBpm() {
-    if (this.isFile()) {
-      return;
-    }
-
     this.bpmValue -= 5;
     this.updateTabBpm();
   }
