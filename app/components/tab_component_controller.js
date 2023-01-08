@@ -52,6 +52,11 @@ export default class extends Controller {
   }
 
   scoreLoaded = (score) => {
+    this.scoreBpm = score.tempo;
+    this.masterBarBpm = score.masterBars.map((mb) => {
+      return mb.tempoAutomation && mb.tempoAutomation.value
+    });
+
     this.updateTrackList(score);
     this.updateTitle(score);
     if (this.mutedValue) {
@@ -59,7 +64,6 @@ export default class extends Controller {
     }
 
     this.updateTabBpm();
-
   }
 
   renderStarted = () => {
@@ -153,11 +157,15 @@ export default class extends Controller {
   updateFileBpm(bpm) {
     const score = this.api.score;
     score.tempo = bpm;
-    for (const mb of score.masterBars) {
-      if (mb.tempoAutomation) {
-        mb.tempoAutomation.value = bpm;
+    const bpmFactor = bpm / this.scoreBpm;
+
+    score.masterBars.forEach((mb, i) => {
+      if (!mb.tempoAutomation) {
+        return;
       }
-    }
+      mb.tempoAutomation.value = parseInt(this.masterBarBpm[i] * bpmFactor, 10);
+    });
+
     this.api.loadMidiForScore();
     this.api.renderTracks(this.api.tracks);
   }
